@@ -1,244 +1,793 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filippetti Yachts webform</title>
-    <link rel="icon" type="image/svg+xml" href="https://filippettiyachts.com/wp-content/uploads/2024/04/Logo_FY_w.svg">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css" />
-    <link rel="stylesheet" href="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/css/intlTelInput.min.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contatti | Filippetti Yachts</title>
+  <link rel="icon" href="https://filippettiyachts.com/wp-content/uploads/2024/04/logo_ico-150x150.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prata&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* Reset e Font */
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #f0f2f5;
-            color: #1c1e21;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            margin: 0;
-            padding: 40px 20px;
-        }
+  <style>
+    /* ── VARS (from real theme) ─────────────────── */
+    :root {
+      --gold:      #A77660;
+      --blue:      #23576A;
+      --gray:      #707070;
+      --lightgray: #F4F4F4;
+      --sage:      #CBCEC2;
+      --black:     #000000;
+      --white:     #FFFFFF;
+    }
 
-        /* Container del Form */
-        form#__vtigerWebForm_2 {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            max-width: 600px;
-            width: 100%;
-        }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Logo o Intestazione (opzionale) */
-        form::before {
-            content: "";
-            display: block;
-            width: 150px;
-            height: 50px;
-            margin: 0 auto 30px;
-            background: url('https://filippettiyachts.com/wp-content/uploads/2024/04/Logo_FY_w.svg') no-repeat center;
-            background-size: contain;
-            filter: invert(1); /* Lo rende scuro se il logo originale è bianco */
-        }
+    html { box-sizing: border-box; -webkit-text-size-adjust: 100%; }
 
-        /* Tabella layout */
-        table { width: 100%; border-collapse: collapse; }
-        td { padding: 10px 0; vertical-align: middle; }
-        
-        /* Etichette */
-        label {
-            font-weight: 600;
-            font-size: 14px;
-            color: #4b4f56;
-            display: block;
-            margin-bottom: 5px;
-        }
+    body, button, input, select, optgroup, textarea {
+      color: var(--gray);
+      font-family: "Rajdhani", sans-serif;
+      font-weight: 300;
+      font-size: 1.3rem;
+    }
 
-        /* Campi di Input e Select */
-        input[type="text"], 
-        input[type="email"], 
-        input[type="number"],
-        select {
-            width: 100% !important;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 15px;
-            transition: border-color 0.2s;
-            box-sizing: border-box;
-        }
+    img { border-style: none; height: auto; max-width: 100%; }
+    a { background-color: transparent; color: var(--blue); }
+    a:visited { color: inherit; }
+    a:hover, a:focus, a:active { color: var(--black); }
 
-        input:focus, select:focus {
-            border-color: #003366;
-            outline: none;
-        }
+    /* ── LAYOUT ─────────────────────────────────── */
+    .alignfull  { width: 100%; max-width: 100%; position: relative; }
+    .alignwide  { width: 100%; max-width: 1640px; margin: auto; padding: 0 20px !important; position: relative; }
+    .alignboxed { width: 100%; max-width: 1340px; margin: auto; padding: 0 20px; position: relative; }
 
-        /* Checkbox e Privacy */
-        input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
+    /* ── HEADER (exact replica) ──────────────────── */
+    header#masthead {
+      background-color: var(--white);
+      position: sticky;
+      z-index: 9999;
+      top: 0;
+    }
+    .fy_header {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      max-width: 1640px;
+      margin: auto;
+      padding: 0 20px;
+    }
+    .fy_header_logo {
+      position: absolute;
+      left: 50%;
+      top: 0;
+    }
+    .fy_header_logo a {
+      display: block;
+      position: relative;
+      left: -50%;
+    }
+    .fy_header_logo img { height: 38px; margin-top: 21px; }
+    .fy_header_sx, .fy_header_dx {
+      display: flex;
+      align-items: center;
+      height: 80px;
+    }
+    .menu-button {
+      padding: 30px 20px 30px 0;
+      cursor: pointer;
+      color: var(--blue);
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+    .btnHeaderRight { padding: 30px 0 30px 20px; }
+    .btnHeaderRight a {
+      font-size: 16px;
+      display: block;
+      text-transform: uppercase;
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .btnHeaderRight a:hover { font-weight: 600; }
+    .btnHeaderRight a::after {
+      content: '';
+      height: 1px;
+      width: 100%;
+      background: var(--gold);
+      display: block;
+    }
 
-        /* Pulsante Invia */
-        input[type="submit"] {
-            background-color: #003366;
-            color: white;
-            border: none;
-            padding: 16px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 25px;
-            transition: background 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    /* ── INTRO HEADQUARTER ───────────────────────── */
+    .overview-wrapper.headquarter {
+      padding-top: 140px;
+      padding-bottom: 60px;
+    }
+    .introtext-imgs.yacht-cols-a .yacht-cols {
+      display: flex;
+    }
+    .yacht-col-1 {
+      position: relative;
+      width: 55%;
+      text-align: right;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      padding-right: 6%;
+      font-size: 1.3rem;
+    }
+    .yacht-col-2 {
+      position: relative;
+      width: 45%;
+      padding-left: 4%;
+      padding-right: 8%;
+    }
+    .line-wrapper {
+      width: 100%;
+      position: relative;
+      height: 80px;
+      margin-bottom: 30px;
+    }
+    .line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 1px;
+      transform: translateX(-50%);
+      height: 100%;
+      background-color: var(--gold);
+    }
+    .break { width: 100%; }
+    .yacht-testo_int {
+      max-width: 320px;
+      text-align: right;
+      margin-left: auto;
+      margin-right: 0;
+      font-family: 'Prata', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+    }
+    .prata-40 {
+      font-family: 'Prata', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      padding-bottom: 15px;
+    }
+    .headquarter .prata-40 { color: var(--blue); }
+    .indirizzo {
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.875rem;
+      font-weight: 300;
+      line-height: 1.1;
+    }
+    .indirizzo a {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+      margin-top: 8px;
+    }
+    .indirizzo a:hover { color: var(--blue); text-decoration: underline; }
+    .introimgcont { overflow: hidden; }
+    .introimgcont img { width: 100%; display: block; }
+    .yacht-col-2 .introimgcont { margin-top: 160px; }
 
-        input[type="submit"]:hover {
-            background-color: #001a33;
-        }
+    /* ── CONTATTI COMMERCIALI ────────────────────── */
+    .contatti.alignfull {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+    .prata-40.cctit {
+      text-align: center;
+      padding-bottom: 40px;
+      color: var(--blue);
+    }
 
-        input[type="submit"]:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
+    /* ── CONTACT FORM (exact .page-template-template-contatti rules) ── */
+    .contact-form.alignfull {
+      background: var(--blue);
+      padding: 100px 0;
+    }
+    .contact-form .prata-40.cftit {
+      color: #fff;
+      max-width: 1080px;
+      margin: auto;
+      font-family: 'Prata', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      padding-bottom: 40px;
+      text-align: center;
+    }
+    /* Gravity Forms fieldset/legend reset */
+    fieldset { border: 0; padding: 0; margin: 0; }
+    legend { padding: 0; }
 
-        /* Correzione Select2 per lo stile moderno */
-        .select2-container--default .select2-selection--single {
-            height: 45px !important;
-            padding-top: 8px;
-            border: 1px solid #ddd !important;
-        }
-        
-        [aria-multiselectable="true"] .select2-results__option[aria-selected="true"] {
-            display: none !important;
-        }
-    </style>
+    /* gform_fields grid */
+    .gform_fields {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px 40px;
+      grid-row-gap: 25px !important;
+    }
+    .gfield { display: flex; flex-direction: column; }
+    .gfield--width-full, .gfield--type-textarea, .gfield--type-html,
+    .gfield--type-checkbox, .gfield--width-full.gfield--type-radio { grid-column: 1 / -1; }
+    .gfield--width-half { grid-column: span 1; }
+
+    /* hide labels (placeholder approach) */
+    .gfield_label { display: none; }
+    /* show radio group label */
+    .gfield--type-radio .gfield_label { display: block; color: rgba(255,255,255,0.55); font-size: 20px; margin-bottom: 8px; }
+
+    /* inputs / select / textarea – exact from CSS */
+    .gform_fields input[type=text],
+    .gform_fields input[type=email],
+    .gform_fields input[type=tel],
+    .gform_fields select {
+      font-size: 20px !important;
+      min-height: fit-content !important;
+      border-radius: 0 !important;
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      color: #fff !important;
+      padding: 4px 0 !important;
+      border-bottom: 1px solid #fff !important;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s;
+      font-family: "Rajdhani", sans-serif;
+      font-weight: 300;
+    }
+    .gform_fields input::placeholder { color: rgba(255,255,255,0.55); }
+    .gform_fields input:focus,
+    .gform_fields select:focus { border-bottom-color: var(--gold) !important; }
+
+    .gform_fields select { cursor: pointer; appearance: none; -webkit-appearance: none; }
+    .gform_fields select option { color: #000 !important; background: #fff; }
+
+    /* select wrapper with arrow */
+    .ginput_container_address { position: relative; }
+    .ginput_container_address::after {
+      content: '';
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px; height: 6px;
+      background: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.293 0.293C0.683-.097 1.317-.097 1.707.293L5 3.586 8.293.293C8.683-.097 9.317-.097 9.707.293 10.098.683 10.098 1.317 9.707 1.707L5.707 5.707C5.317 6.098 4.683 6.098 4.293 5.707L0.293 1.707C-.097 1.317-.097 0.683.293.293Z' fill='rgba(255,255,255,0.6)'/%3E%3C/svg%3E") no-repeat center;
+      pointer-events: none;
+    }
+
+    /* textarea – exact from CSS */
+    .gform_fields textarea {
+      font-size: 20px !important;
+      min-height: fit-content !important;
+      border-radius: 0 !important;
+      border: 1px solid #fff !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      color: #fff !important;
+      padding: 20px !important;
+      outline: none;
+      width: 100%;
+      resize: vertical;
+      min-height: 160px;
+      font-family: "Rajdhani", sans-serif;
+      font-weight: 300;
+      transition: border-color 0.2s;
+    }
+    .gform_fields textarea:focus { border-color: var(--gold) !important; }
+    .gform_fields textarea::placeholder { color: rgba(255,255,255,0.55); }
+
+    /* Radio buttons */
+    .gform-theme--framework .gfield_radio { flex-direction: row !important; gap: 30px; }
+    .gfield_radio { display: flex; gap: 30px; margin-top: 4px; }
+    .gchoice { display: flex; align-items: center; gap: 8px; }
+    .gchoice input[type=radio] {
+      appearance: none; -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border: 1px solid #fff !important;
+      border-radius: 50%;
+      flex-shrink: 0; cursor: pointer;
+      position: relative; background: transparent !important;
+      box-shadow: none !important;
+      transition: border-color 0.2s;
+    }
+    .gchoice input[type=radio]:checked { border-color: var(--gold) !important; }
+    .gchoice input[type=radio]:checked::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 10px; height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .gchoice label, .gform-field-label--type-inline {
+      color: #fff !important;
+      font-size: 20px;
+      font-weight: 300;
+      cursor: pointer;
+      font-family: "Rajdhani", sans-serif;
+    }
+
+    /* Checkboxes */
+    .gfield_checkbox { display: flex; flex-direction: column; gap: 10px; }
+    .gchoice_check,
+    .gfield_checkbox .gchoice { display: flex; align-items: flex-start; gap: 12px; }
+    .gfield_checkbox .gchoice input[type=checkbox] {
+      appearance: none; -webkit-appearance: none;
+      width: 18px; height: 18px; min-width: 18px;
+      border: 1px solid #fff !important;
+      flex-shrink: 0; margin-top: 3px; cursor: pointer;
+      position: relative; background: transparent !important;
+      box-shadow: none !important;
+      transition: background 0.2s, border-color 0.2s;
+      border-radius: 0 !important;
+    }
+    .gfield_checkbox .gchoice input[type=checkbox]:checked {
+      background: var(--gold) !important;
+      border-color: var(--gold) !important;
+    }
+    .gform-theme--framework input[type=checkbox]::before { color: #fff !important; }
+    .gfield_checkbox .gchoice input[type=checkbox]:checked::after {
+      content: '';
+      position: absolute;
+      left: 5px; top: 1px;
+      width: 5px; height: 10px;
+      border: 2px solid #fff;
+      border-top: none; border-left: none;
+      transform: rotate(45deg);
+    }
+    .gfield_checkbox label,
+    .gfield_checkbox .gform-field-label--type-inline {
+      color: #fff !important;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.5;
+      cursor: pointer;
+      font-family: "Rajdhani", sans-serif;
+    }
+    .gfield_checkbox label a { color: #fff; text-decoration: underline; }
+
+    /* HTML field (privacy text) – exact from CSS */
+    .gfield--type-html, .gfield--type-html a {
+      color: #fff;
+      padding: 30px 0;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .gfield--type-html a { display: inline; text-decoration: underline; }
+
+    /* submit – exact from CSS */
+    .gform_footer.before {
+      margin-top: 20px;
+      text-align: center;
+      border: 0;
+      padding: 0;
+    }
+    .gform_button {
+      background: none !important;
+      box-shadow: none !important;
+      font-family: 'Rajdhani' !important;
+      font-size: 25px !important;
+      font-weight: 300 !important;
+      margin-top: 20px !important;
+      padding: 0 !important;
+      padding-bottom: 0 !important;
+      height: fit-content !important;
+      min-height: fit-content !important;
+      position: relative !important;
+      border: none !important;
+      border-bottom: 2px solid var(--gold) !important;
+      border-radius: 0 !important;
+      transition: .5s ease;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+    }
+    .gform_button:hover {
+      border-bottom: 0px solid var(--gold) !important;
+      padding-bottom: 2px !important;
+    }
+
+    /* hidden conditional field */
+    #field_2_8[data-conditional-logic="hidden"] { display: none; }
+
+    /* ── FOOTER CTA ──────────────────────────────── */
+    .footer_cta {
+      background-color: var(--blue);
+      padding: 80px 0;
+      text-align: center;
+    }
+    .formcta_tit {
+      font-family: 'Prata', serif;
+      font-size: 3.8rem;
+      font-weight: 400;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px 0 50px 0;
+      color: var(--white);
+    }
+    .formcta_tit strong, .formcta_tit b { font-weight: 400; }
+    a.formcta_cta {
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      color: var(--white) !important;
+      text-decoration: none;
+      display: inline-block;
+    }
+    a.formcta_cta::after {
+      content: '';
+      position: relative;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      left: 0;
+      display: block;
+      transition: all 0.3s ease-in-out;
+    }
+    a.formcta_cta:hover::after { width: 0%; }
+
+    /* ── FOOTER CONTENT ──────────────────────────── */
+    .footer_content { padding-top: 100px; padding-bottom: 20px; background-color: var(--sage); }
+    .footer_content_cols { display: flex; max-width: 1640px; margin: auto; padding: 0 20px; }
+    .footer_col-1 { width: 34%; padding-right: 20px; }
+    .footer_col-2, .footer_col-3, .footer_col-4 { width: 22%; padding-right: 20px; }
+    .footer_col-tit { font-family: 'Prata', serif; color: var(--blue); font-size: 20px; }
+    .footer_col-content { font-size: 18px; color: var(--blue); padding-top: 18px; }
+    .footer_col-content a { text-decoration: none; color: var(--blue); display: block; }
+    .footer_col-content a:hover { text-decoration: underline; }
+    .footer_content_copyright {
+      font-size: 14px;
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      max-width: 1640px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 15px 20px 0;
+      border-top: 1px solid rgba(35,87,106,0.2);
+    }
+    .footer_content_copyright a { color: var(--blue); text-decoration: none; }
+    .footer_credits a { color: var(--blue); }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media screen and (max-width: 767px) {
+      .alignwide { padding: 0 1.5rem !important; }
+      .gform_fields { grid-template-columns: 1fr !important; }
+      .gfield--width-full, .gfield--width-half { grid-column: 1; }
+      .yacht-cols { flex-wrap: wrap; }
+      .yacht-col-1, .yacht-col-2 { width: 100%; padding: 0 0 20px 0; }
+      .yacht-col-2 .introimgcont { margin-top: 40px; }
+      .footer_content_cols { flex-wrap: wrap; }
+      .footer_col-1, .footer_col-2, .footer_col-3, .footer_col-4 { width: 100%; padding-bottom: 20px; }
+      .footer_content_copyright { flex-direction: column; gap: 6px; }
+    }
+    @media screen and (max-width: 37.5em) {
+      .menu-button { display: none; }
+    }
+  </style>
 </head>
-<body>
+<body class="page-template-template-contatti">
 
-<form id="__vtigerWebForm_2" name="FILIPPETTI YACHTS" action="https://filippettiyachtsrl.od2.vtiger.com/modules/Webforms/capture.php" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-    <input type="hidden" name="publicid" value="d1b5b5e03206515ce42106af0d0f4a62" />
-    <input type="hidden" name="urlencodeenable" value="1" />
-    <input type="hidden" name="name" value="FILIPPETTI YACHTS" />
-    <input type="hidden" name="__vtCurrency" value="1" />
+<!-- ═══════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════ -->
+<header id="masthead" class="site-header">
+  <div class="fy_header">
+    <div class="fy_header_sx">
+      <div class="menu-button">Yachts</div>
+      <div class="menu-button" style="display:flex;gap:0">
+        <a href="https://filippettiyachts.com/it/brokerage/" style="color:var(--blue);text-decoration:none;padding:30px 20px 30px 0;text-transform:uppercase;font-size:16px;">Brokerage</a>
+        <a href="https://filippettiyachts.com/it/azienda/"   style="color:var(--blue);text-decoration:none;padding:30px 20px 30px 0;text-transform:uppercase;font-size:16px;">Azienda</a>
+        <a href="https://filippettiyachts.com/it/assistenza/" style="color:var(--blue);text-decoration:none;padding:30px 20px 30px 0;text-transform:uppercase;font-size:16px;">Assistenza</a>
+        <a href="https://filippettiyachts.com/it/news-ed-eventi/" style="color:var(--blue);text-decoration:none;padding:30px 20px 30px 0;text-transform:uppercase;font-size:16px;">News ed eventi</a>
+      </div>
+    </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <td><label>Last Name *</label></td>
-                <td><input type="text" name="lastname" maxlength="80" required="" /></td>
-                <td><input type="checkbox" name="vtField" value="1" style="display: none !important" tabindex="-1" autocomplete="off" /></td>
-            </tr>
-            <tr>
-                <td><label>Primary Email *</label></td>
-                <td><input type="email" name="email" data-label="Primary Email" required="" /></td>
-            </tr>
-            <tr>
-                <td><label>Email Opt-in *</label></td>
-                <td>
-                    <input type="hidden" name="emailoptin" value="0" />
-                    <input type="checkbox" name="emailoptin" value="1" required="" />
-                </td>
-            </tr>
-            <tr>
-                <td><label>Contact Type *</label></td>
-                <td>
-                    <select name="contacttype" data-label="contacttype" required="">
-                        <option value="">Select Value</option>
-                        <option value="Lead">Lead</option>
-                        <option value="Customer">Customer</option>
-                        <option value="Broker">Broker</option>
-                        <option value="Dealer">Dealer</option>
-                        <option value="Captain">Captain</option>
-                        <option value="Other">Other</option>
-                        </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Office Phone</label></td>
-                <td><input type="text" name="phone" maxlength="50" data-type="phone" /></td>
-            </tr>
-            <tr>
-                <td><label>Newsletter Authorization</label></td>
-                <td>
-                    <input type="hidden" name="cf_contacts_newsletterauthorization" value="0" />
-                    <input type="checkbox" name="cf_contacts_newsletterauthorization" value="1" />
-                </td>
-            </tr>
-            <tr>
-                <td><label>Privacy Policy Authorization</label></td>
-                <td>
-                    <input type="hidden" name="cf_contacts_privacypolicyauthorization" value="0" />
-                    <input type="checkbox" name="cf_contacts_privacypolicyauthorization" value="1" />
-                </td>
-            </tr>
-            <tr>
-                <td><label>Yacht Owner</label></td>
-                <td>
-                    <select name="cf_contacts_ownedyacht" data-label="label:Owned+Yacht">
-                        <option value="">Select Value</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Yacht Owned - Model and Year</label></td>
-                <td><input type="text" name="cf_contacts_modelyachtowned" maxlength="50" /></td>
-            </tr>
-            <tr>
-                <td><label>Interested in</label></td>
-                <td>
-                    <select name="cf_contacts_interestedin" data-label="label:Interested+in">
-                        <option value="">Select Value</option>
-                        <option value="New Yacht">New Yacht</option>
-                        <option value="Pre Owned Yacht">Pre Owned Yacht</option>
-                        <option value="Charter">Charter</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Length</label></td>
-                <td>
-                    <select name="cf_contacts_length" data-label="label:Length">
-                        <option value="">Select Value</option>
-                        <option value="up to 10mt/33ft">up to 10mt/33ft</option>
-                        <option value="10mt-15mt (33ft - 49ft)">10mt-15mt (33ft - 49ft)</option>
-                        <option value="15mt-20mt (50ft - 66ft)">15mt-20mt (50ft - 66ft)</option>
-                        <option value="20mt-25mt (67ft - 82ft)">20mt-25mt (67ft - 82ft)</option>
-                        <option value="25mt-30mt (82ft - 98ft)">25mt-30mt (82ft - 98ft)</option>
-                        <option value="35mt/116ft and more">35mt/116ft and more</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Budget - specify € or $</label></td>
-                <td><input type="text" name="cf_contacts_budget" maxlength="30" /></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="fy_header_logo">
+      <a href="https://filippettiyachts.com/it/">
+        <img src="https://filippettiyachts.com/wp-content/uploads/2024/04/Logo_FY_w.svg"
+             alt="Filippetti Yachts"
+             onerror="this.src='';this.alt='Filippetti Yachts'">
+      </a>
+    </div>
 
-    <input type="submit" value="Submit" id="vtigerFormSubmitBtn_2" />
+    <div class="fy_header_dx">
+      <div class="btnHeaderRight">
+        <a href="https://filippettiyachts.com/it/contatti/">Contattaci</a>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
-    <script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/utils.js"></script>
-    <script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/jquery/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
+<!-- ═══════════════════════════════════════════
+     INTRO HEADQUARTER
+════════════════════════════════════════════ -->
+<div class="overview-wrapper headquarter alignfull yacht_type2" id="overview">
+  <img class="productmedia_bg" src="https://filippettiyachts.com/wp-content/uploads/2024/05/f_logo_img.png" alt="" style="position:absolute;left:0;top:0;max-width:194px;">
+  <div class="introtext-wrapper alignwide">
+    <div class="introtext-imgs yacht-cols-a">
+      <div class="yacht-cols">
+        <div class="yacht-col-1">
+          <div class="line-wrapper">
+            <div class="line"></div>
+          </div>
+          <div class="break"></div>
+          <div class="yacht-testo_int">
+            <h1 class="prata-40">HeadQuarter</h1>
+            <div class="indirizzo">
+              <p>Via Val Cesano, 66<br>61037 Mondolfo (Pu) – ITALY</p>
+              <a href="mailto:sales@filippettiyachts.com">sales@filippettiyachts.com</a>
+              <a href="tel:+390721930262">+39 0721 930 262</a>
+            </div>
+          </div>
+          <div class="introimgcont" style="margin-top:40px;width:100%;">
+            <img src="https://filippettiyachts.com/wp-content/uploads/2024/06/contatti_img2.jpg" alt="">
+          </div>
+        </div>
+        <div class="yacht-col-2">
+          <div class="introimgcont">
+            <img src="https://filippettiyachts.com/wp-content/uploads/2024/06/contatti_img1.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <script type="text/javascript">
-        // [Tutti i tuoi script originali di Vtiger qui... mantenuti invariati]
-        // ... (il codice JS che avevi inviato sopra) ...
-    </script>
-</form>
+<!-- ═══════════════════════════════════════════
+     CONTACT FORM  (riproduce .contact-form.alignfull)
+════════════════════════════════════════════ -->
+<div class="contact-form alignfull" id="contattiForm">
+  <div class="contact-form-box alignwide">
+    <div class="contact-form-top">
+      <div class="prata-40 cftit">Contattateci per ricevere maggiori informazioni</div>
+    </div>
+
+    <div class="contact-form-form" style="max-width:1080px;margin:auto;padding:0;">
+
+      <form
+        id="__vtigerWebForm_2"
+        name="FILIPPETTI YACHTS"
+        action="https://filippettiyachtsrl.od2.vtiger.com/modules/Webforms/capture.php"
+        method="post"
+        accept-charset="utf-8"
+        enctype="multipart/form-data"
+      >
+        <!-- vtiger hidden fields -->
+        <input type="hidden" name="publicid"       value="d1b5b5e03206515ce42106af0d0f4a62"/>
+        <input type="hidden" name="urlencodeenable" value="1"/>
+        <input type="hidden" name="name"            value="FILIPPETTI YACHTS"/>
+        <input type="hidden" name="__vtCurrency"    value="1"/>
+
+        <div class="gform_fields">
+
+          <!-- Nome -->
+          <div class="gfield gfield--type-text gfield--width-half">
+            <label class="gfield_label" for="f_nome">Nome</label>
+            <div class="ginput_container">
+              <input type="text" id="f_nome" name="firstname" maxlength="80" placeholder="Nome *" required>
+            </div>
+          </div>
+
+          <!-- Cognome -->
+          <div class="gfield gfield--type-text gfield--width-half">
+            <label class="gfield_label" for="f_cognome">Cognome</label>
+            <div class="ginput_container">
+              <input type="text" id="f_cognome" name="lastname" maxlength="80" placeholder="Cognome *" required>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="gfield gfield--type-email gfield--width-half">
+            <label class="gfield_label" for="f_email">Email</label>
+            <div class="ginput_container">
+              <input type="email" id="f_email" name="email" placeholder="Email *" required>
+            </div>
+          </div>
+
+          <!-- Telefono -->
+          <div class="gfield gfield--type-phone gfield--width-half">
+            <label class="gfield_label" for="f_tel">Telefono</label>
+            <div class="ginput_container">
+              <input type="tel" id="f_tel" name="phone" maxlength="50" placeholder="Telefono">
+            </div>
+          </div>
+
+          <!-- Nazione (country select – full list) -->
+          <fieldset class="gfield gfield--type-address gfield--width-half">
+            <legend class="gfield_label">Nazione <span style="color:rgba(255,255,255,0.55);font-weight:300;">(Obbligatorio)</span></legend>
+            <div class="ginput_container ginput_container_address">
+              <select name="cf_contacts_country" id="f_nazione" required>
+                <option value="">Nazione *</option>
+                <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Andorra</option><option>Angola</option><option>Argentina</option><option>Armenia</option><option>Australia</option><option>Austria</option><option>Azerbaijan</option><option>Bahamas</option><option>Bahrain</option><option>Belgio</option><option>Bosnia-Erzegovina</option><option>Brasile</option><option>Bulgaria</option><option>Canada</option><option>Cile</option><option>Cina</option><option>Cipro</option><option>Colombia</option><option>Croazia</option><option>Danimarca</option><option>Egitto</option><option>Emirati Arabi Uniti</option><option>Estonia</option><option>Federazione Russa</option><option>Finlandia</option><option>Francia</option><option>Georgia</option><option>Germania</option><option>Grecia</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Irlanda</option><option>Islanda</option><option>Israele</option><option>Italia</option><option>Kazakistan</option><option>Kuwait</option><option>Lettonia</option><option>Libano</option><option>Liechtenstein</option><option>Lituania</option><option>Lussemburgo</option><option>Macedonia del Nord</option><option>Malta</option><option>Marocco</option><option>Messico</option><option>Monaco</option><option>Montenegro</option><option>Norvegia</option><option>Nuova Zelanda</option><option>Oman</option><option>Paesi Bassi</option><option>Pakistan</option><option>Panama</option><option>Peru</option><option>Polonia</option><option>Portogallo</option><option>Qatar</option><option>Regno Unito</option><option>Repubblica Ceca</option><option>Romania</option><option>San Marino</option><option>Serbia</option><option>Singapore</option><option>Slovacchia</option><option>Slovenia</option><option>Spagna</option><option>Sri Lanka</option><option>Stati Uniti</option><option>Sudafrica</option><option>Svezia</option><option>Svizzera</option><option>Tailandia</option><option>Taiwan</option><option>Turchia</option><option>Ucraina</option><option>Ungheria</option><option>Uruguay</option><option>Venezuela</option><option>Vietnam</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- Possiedi già uno yacht? -->
+          <fieldset class="gfield gfield--type-radio gfield--width-half">
+            <legend class="gfield_label">Possiedi già uno yacht?</legend>
+            <div class="ginput_container ginput_container_radio">
+              <div class="gfield_radio">
+                <div class="gchoice">
+                  <input class="gfield-choice-input" type="radio" name="cf_contacts_ownedyacht" id="yacht_si" value="Sì">
+                  <label for="yacht_si" class="gform-field-label gform-field-label--type-inline">Sì</label>
+                </div>
+                <div class="gchoice">
+                  <input class="gfield-choice-input" type="radio" name="cf_contacts_ownedyacht" id="yacht_no" value="No">
+                  <label for="yacht_no" class="gform-field-label gform-field-label--type-inline">No</label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Modello / Anno (conditional: mostra se Sì) -->
+          <div class="gfield gfield--type-text gfield--width-full" id="field_2_8" data-conditional-logic="hidden" style="display:none;">
+            <label class="gfield_label" for="f_modello">Modello / Anno</label>
+            <div class="ginput_container">
+              <input type="text" id="f_modello" name="cf_contacts_modelyachtowned" maxlength="50" placeholder="Modello / Anno" disabled>
+            </div>
+          </div>
+
+          <!-- Messaggio -->
+          <div class="gfield gfield--type-textarea gfield--width-full">
+            <label class="gfield_label" for="f_msg">Messaggio</label>
+            <div class="ginput_container ginput_container_textarea">
+              <textarea id="f_msg" name="message" placeholder="Come possiamo aiutarti? Descrivi brevemente la tua richiesta" rows="6"></textarea>
+            </div>
+          </div>
+
+          <!-- Privacy info text -->
+          <div class="gfield gfield--type-html gfield--width-full">
+            Informativa sulla privacy ai sensi dell'art. 13 del Regolamento (UE) n. 679/2016.
+            I dati inseriti nel presente modulo potranno essere comunicati a soggetti esterni,
+            Titolari autonomi del trattamento, direttamente collegati a Filippetti Yacht,
+            al fine di rispondere alla richiesta inoltrata. Per maggiori dettagli si prega di
+            consultare il testo completo dell'Informativa sulla privacy.
+            (<a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Informativa sulla privacy</a>)
+          </div>
+
+          <!-- Privacy checkbox (required) -->
+          <fieldset class="gfield gfield--type-checkbox gfield--width-full">
+            <legend class="gfield_label" style="display:none;">Privacy</legend>
+            <div class="ginput_container ginput_container_checkbox">
+              <div class="gfield_checkbox">
+                <div class="gchoice">
+                  <input class="gfield-choice-input" type="checkbox" id="chk_privacy" name="cf_contacts_privacypolicyauthorization" value="1" required>
+                  <label for="chk_privacy" class="gform-field-label gform-field-label--type-inline">
+                    Ho letto la <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a> e autorizzo l'utilizzo dei miei dati personali ai fini del presente modulo <strong>*</strong>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Newsletter checkbox -->
+          <fieldset class="gfield gfield--type-checkbox gfield--width-full">
+            <legend class="gfield_label" style="display:none;">Newsletter</legend>
+            <div class="ginput_container ginput_container_checkbox">
+              <div class="gfield_checkbox">
+                <div class="gchoice">
+                  <input class="gfield-choice-input" type="checkbox" id="chk_newsletter" name="cf_contacts_newsletterauthorization" value="1">
+                  <label for="chk_newsletter" class="gform-field-label gform-field-label--type-inline">
+                    Iscriviti alla nostra newsletter per ricevere aggiornamenti e novità
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+        </div><!-- /gform_fields -->
+
+        <div class="gform_footer before">
+          <input type="submit" id="gform_submit_button_2" class="gform_button button" value="Invia richiesta">
+        </div>
+
+      </form>
+    </div><!-- /contact-form-form -->
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER CTA (nascosto su contatti secondo CSS)
+     → mostrato qui solo come completezza layout
+════════════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════════════
+     FOOTER CONTENT
+════════════════════════════════════════════ -->
+<div class="footer_content">
+  <div class="footer_content_cols">
+    <div class="footer_col footer_col-1">
+      <div class="footer_col-tit">Headquarter</div>
+      <div class="footer_col-content">
+        FSY S.r.l.<br>
+        Sede Operativa/Operational Headquarters<br>
+        Via Val Cesano 66, 61037 Mondolfo (PU), Italy<br>
+        Sede Legale/Registered Office<br>
+        Via Nicolò Porpora 12, 00198 Roma, Italy<br>
+        C.f e P.Iva / Tax No. 16621211008
+      </div>
+    </div>
+    <div class="footer_col footer_col-2">
+      <div class="footer_col-tit">Yachts</div>
+      <div class="footer_col-content">
+        <a href="https://filippettiyachts.com/it/serie/serie-flybridge/">Serie Flybridge</a>
+        <a href="https://filippettiyachts.com/it/serie/serie-sport/">Serie Sport</a>
+        <a href="https://filippettiyachts.com/it/serie/serie-navetta/">Serie Navetta</a>
+      </div>
+    </div>
+    <div class="footer_col footer_col-3">
+      <div class="footer_col-tit">Menu</div>
+      <div class="footer_col-content">
+        <a href="https://filippettiyachts.com/it/">Home</a>
+        <a href="https://filippettiyachts.com/it/azienda/">Azienda</a>
+        <a href="https://filippettiyachts.com/it/brokerage/">Brokerage</a>
+        <a href="https://filippettiyachts.com/it/assistenza/">Assistenza</a>
+        <a href="https://filippettiyachts.com/it/news-ed-eventi/">News ed eventi</a>
+        <a href="https://filippettiyachts.com/it/contatti/" aria-current="page">Contatti</a>
+      </div>
+    </div>
+    <div class="footer_col footer_col-4">
+      <div class="footer_col-tit">Seguici</div>
+      <div class="footer_col-content">
+        <a href="https://www.facebook.com/FilippettiYachts" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/filippettiyachts/" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/company/filippetti-yacht/" target="_blank">Linkedin</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer_content_copyright">
+    <div class="footer_copyright">
+      © <script>document.write(new Date().getFullYear())</script> Filippetti Yachts All rights reserved –
+      <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank" rel="noopener">privacy &amp; cookie policy</a>
+    </div>
+    <div class="footer_credits">Made with love and care by <a href="https://bebit.it/" target="_blank">Bebit</a></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS – vtiger + conditional logic
+════════════════════════════════════════════ -->
+<script src="https://filippettiyachts.com/wp-includes/js/jquery/jquery.min.js"></script>
+<script>
+(function () {
+  /* ── Conditional: mostra "Modello/Anno" se Sì ── */
+  var radios  = document.querySelectorAll('input[name="cf_contacts_ownedyacht"]');
+  var field8  = document.getElementById('field_2_8');
+  var input8  = document.getElementById('f_modello');
+  radios.forEach(function (r) {
+    r.addEventListener('change', function () {
+      if (this.value === 'Sì') {
+        field8.style.display = 'flex';
+        if (input8) { input8.disabled = false; }
+      } else {
+        field8.style.display = 'none';
+        if (input8) { input8.disabled = true; input8.value = ''; }
+      }
+    });
+  });
+
+  /* ── Basic email validation on submit ── */
+  var form = document.getElementById('__vtigerWebForm_2');
+  var btn  = document.getElementById('gform_submit_button_2');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      btn.disabled = true;
+      var emailEl = form.querySelector('input[type="email"]');
+      if (emailEl && emailEl.value) {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
+          alert('Inserisci un indirizzo email valido.');
+          btn.disabled = false;
+          e.preventDefault();
+        }
+      }
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
