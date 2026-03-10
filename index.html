@@ -9,783 +9,856 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Prata&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Select2 CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css"/>
+  <!-- intl-tel-input CSS -->
+  <link rel="stylesheet" href="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/css/intlTelInput.min.css"/>
+
   <style>
-    /* ── VARS (from real theme) ─────────────────── */
+    /* ── BRAND VARS ─────────────────────────────── */
     :root {
       --gold:      #A77660;
       --blue:      #23576A;
       --gray:      #707070;
       --lightgray: #F4F4F4;
       --sage:      #CBCEC2;
-      --black:     #000000;
       --white:     #FFFFFF;
+      --black:     #000000;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { box-sizing: border-box; -webkit-text-size-adjust: 100%; }
+    html { -webkit-text-size-adjust: 100%; }
 
-    body, button, input, select, optgroup, textarea {
-      color: var(--gray);
+    body {
       font-family: "Rajdhani", sans-serif;
       font-weight: 300;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
+      color: var(--gray);
+      background: var(--white);
     }
 
-    img { border-style: none; height: auto; max-width: 100%; }
-    a { background-color: transparent; color: var(--blue); }
-    a:visited { color: inherit; }
-    a:hover, a:focus, a:active { color: var(--black); }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { color: var(--black); }
+    img { max-width: 100%; height: auto; display: block; }
 
     /* ── LAYOUT ─────────────────────────────────── */
-    .alignfull  { width: 100%; max-width: 100%; position: relative; }
-    .alignwide  { width: 100%; max-width: 1640px; margin: auto; padding: 0 20px !important; position: relative; }
-    .alignboxed { width: 100%; max-width: 1340px; margin: auto; padding: 0 20px; position: relative; }
+    .alignwide {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
 
-    /* ── HEADER (exact replica) ──────────────────── */
-    header#masthead {
-      background-color: var(--white);
+    /* ── HEADER ──────────────────────────────────── */
+    header {
+      background: var(--white);
       position: sticky;
+      top: 0;
       z-index: 9999;
-      top: 0;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.07);
     }
-    .fy_header {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      max-width: 1640px;
-      margin: auto;
-      padding: 0 20px;
-    }
-    .fy_header_logo {
-      position: absolute;
-      left: 50%;
-      top: 0;
-    }
-    .fy_header_logo a {
-      display: block;
-      position: relative;
-      left: -50%;
-    }
-    .fy_header_logo img { height: 38px; margin-top: 21px; }
-    .fy_header_sx, .fy_header_dx {
+    .header-inner {
       display: flex;
       align-items: center;
+      justify-content: center;
       height: 80px;
+      max-width: 1640px;
+      margin: 0 auto;
+      padding: 0 40px;
+      position: relative;
     }
-    .menu-button {
-      padding: 30px 20px 30px 0;
-      cursor: pointer;
-      color: var(--blue);
-      text-transform: uppercase;
-      font-size: 16px;
-    }
-    .btnHeaderRight { padding: 30px 0 30px 20px; }
-    .btnHeaderRight a {
-      font-size: 16px;
-      display: block;
-      text-transform: uppercase;
-      color: var(--blue);
-      text-decoration: none;
-    }
-    .btnHeaderRight a:hover { font-weight: 600; }
-    .btnHeaderRight a::after {
-      content: '';
-      height: 1px;
-      width: 100%;
-      background: var(--gold);
-      display: block;
-    }
-
-    /* ── INTRO HEADQUARTER ───────────────────────── */
-    .overview-wrapper.headquarter {
-      padding-top: 140px;
-      padding-bottom: 60px;
-    }
-    .introtext-imgs.yacht-cols-a .yacht-cols {
+    .header-logo {
       display: flex;
+      align-items: center;
     }
-    .yacht-col-1 {
-      position: relative;
-      width: 55%;
-      text-align: right;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      padding-right: 6%;
-      font-size: 1.3rem;
+    .header-logo img {
+      height: 36px;
     }
-    .yacht-col-2 {
-      position: relative;
-      width: 45%;
-      padding-left: 4%;
-      padding-right: 8%;
-    }
-    .line-wrapper {
-      width: 100%;
-      position: relative;
-      height: 80px;
-      margin-bottom: 30px;
-    }
-    .line {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      width: 1px;
-      transform: translateX(-50%);
-      height: 100%;
-      background-color: var(--gold);
-    }
-    .break { width: 100%; }
-    .yacht-testo_int {
-      max-width: 320px;
-      text-align: right;
-      margin-left: auto;
-      margin-right: 0;
+    /* fallback text logo if image fails */
+    .header-logo-text {
       font-family: 'Prata', serif;
-      font-size: 1.3rem;
-      font-weight: 300;
-    }
-    .prata-40 {
-      font-family: 'Prata', serif;
-      font-size: 2.5rem;
-      font-weight: 400;
-      padding-bottom: 15px;
-    }
-    .headquarter .prata-40 { color: var(--blue); }
-    .indirizzo {
-      font-family: "Rajdhani", sans-serif;
-      font-size: 1.875rem;
-      font-weight: 300;
-      line-height: 1.1;
-    }
-    .indirizzo a {
-      color: inherit;
-      text-decoration: none;
-      display: block;
-      margin-top: 8px;
-    }
-    .indirizzo a:hover { color: var(--blue); text-decoration: underline; }
-    .introimgcont { overflow: hidden; }
-    .introimgcont img { width: 100%; display: block; }
-    .yacht-col-2 .introimgcont { margin-top: 160px; }
-
-    /* ── CONTATTI COMMERCIALI ────────────────────── */
-    .contatti.alignfull {
-      padding-top: 100px;
-      padding-bottom: 100px;
-    }
-    .prata-40.cctit {
-      text-align: center;
-      padding-bottom: 40px;
+      font-size: 1.1rem;
       color: var(--blue);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
     }
 
-    /* ── CONTACT FORM (exact .page-template-template-contatti rules) ── */
-    .contact-form.alignfull {
+    /* ── FORM SECTION ────────────────────────────── */
+    .contact-section {
       background: var(--blue);
-      padding: 100px 0;
+      padding: 100px 0 120px;
     }
-    .contact-form .prata-40.cftit {
-      color: #fff;
-      max-width: 1080px;
-      margin: auto;
+    .contact-section-title {
       font-family: 'Prata', serif;
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
       font-weight: 400;
-      padding-bottom: 40px;
+      color: var(--white);
       text-align: center;
+      margin-bottom: 60px;
+      line-height: 1.3;
     }
-    /* Gravity Forms fieldset/legend reset */
-    fieldset { border: 0; padding: 0; margin: 0; }
-    legend { padding: 0; }
 
-    /* gform_fields grid */
-    .gform_fields {
-      display: grid !important;
+    /* ── VTIGER FORM WRAPPER ─────────────────────── */
+    #__vtigerWebForm_2 {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Remove default table layout, use CSS grid */
+    #__vtigerWebForm_2 table {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+    #__vtigerWebForm_2 table tbody {
+      display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 25px 40px;
-      grid-row-gap: 25px !important;
+      gap: 30px 50px;
+      width: 100%;
     }
-    .gfield { display: flex; flex-direction: column; }
-    .gfield--width-full, .gfield--type-textarea, .gfield--type-html,
-    .gfield--type-checkbox, .gfield--width-full.gfield--type-radio { grid-column: 1 / -1; }
-    .gfield--width-half { grid-column: span 1; }
+    #__vtigerWebForm_2 table tr {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    /* Full-width rows */
+    #__vtigerWebForm_2 table tr.row-full {
+      grid-column: 1 / -1;
+    }
 
-    /* hide labels (placeholder approach) */
-    .gfield_label { display: none; }
-    /* show radio group label */
-    .gfield--type-radio .gfield_label { display: block; color: rgba(255,255,255,0.55); font-size: 20px; margin-bottom: 8px; }
+    /* Labels */
+    #__vtigerWebForm_2 table tr td:first-child label {
+      display: block;
+      color: rgba(255,255,255,0.5);
+      font-family: "Rajdhani", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 6px;
+    }
+    /* Hide the 3rd td (vtField honeypot) */
+    #__vtigerWebForm_2 table tr td:nth-child(3) {
+      display: none;
+    }
+    #__vtigerWebForm_2 table tr td {
+      display: block;
+    }
 
-    /* inputs / select / textarea – exact from CSS */
-    .gform_fields input[type=text],
-    .gform_fields input[type=email],
-    .gform_fields input[type=tel],
-    .gform_fields select {
-      font-size: 20px !important;
-      min-height: fit-content !important;
-      border-radius: 0 !important;
+    /* ── BASE INPUT STYLES ───────────────────────── */
+    #__vtigerWebForm_2 input[type=text],
+    #__vtigerWebForm_2 input[type=email] {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.6);
+      border-radius: 0;
+      color: var(--white);
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.15rem;
+      font-weight: 300;
+      padding: 6px 0;
+      outline: none;
+      transition: border-color 0.25s;
+      -webkit-appearance: none;
+    }
+    #__vtigerWebForm_2 input[type=text]:focus,
+    #__vtigerWebForm_2 input[type=email]:focus {
+      border-bottom-color: var(--gold);
+    }
+    #__vtigerWebForm_2 input[type=text]::placeholder,
+    #__vtigerWebForm_2 input[type=email]::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── PHONE FIELD (intl-tel-input overrides) ──── */
+    .iti { width: 100%; }
+    .iti__flag-container { border-bottom: none; }
+    .iti--separate-dial-code .iti__selected-flag {
+      background: transparent;
+      border-bottom: none;
+    }
+    .iti--separate-dial-code .iti__selected-dial-code {
+      color: rgba(255,255,255,0.7);
+      font-family: "Rajdhani", sans-serif;
+    }
+    .iti--separate-dial-code input[type=text] {
+      padding-left: 90px !important;
+    }
+    #__vtigerWebForm_2 .iti input[type=text] {
+      border-bottom: 1px solid rgba(255,255,255,0.6);
+    }
+    #__vtigerWebForm_2 .iti input[type=text]:focus {
+      border-bottom-color: var(--gold);
+    }
+
+    /* ── SELECT2 OVERRIDES ───────────────────────── */
+    .select2-container--default .select2-selection--single {
+      background: transparent !important;
       border: none !important;
-      background: transparent !important;
-      box-shadow: none !important;
-      color: #fff !important;
+      border-bottom: 1px solid rgba(255,255,255,0.6) !important;
+      border-radius: 0 !important;
+      height: auto !important;
       padding: 4px 0 !important;
-      border-bottom: 1px solid #fff !important;
-      outline: none;
-      width: 100%;
-      transition: border-color 0.2s;
-      font-family: "Rajdhani", sans-serif;
-      font-weight: 300;
     }
-    .gform_fields input::placeholder { color: rgba(255,255,255,0.55); }
-    .gform_fields input:focus,
-    .gform_fields select:focus { border-bottom-color: var(--gold) !important; }
-
-    .gform_fields select { cursor: pointer; appearance: none; -webkit-appearance: none; }
-    .gform_fields select option { color: #000 !important; background: #fff; }
-
-    /* select wrapper with arrow */
-    .ginput_container_address { position: relative; }
-    .ginput_container_address::after {
-      content: '';
-      position: absolute;
-      right: 4px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 10px; height: 6px;
-      background: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.293 0.293C0.683-.097 1.317-.097 1.707.293L5 3.586 8.293.293C8.683-.097 9.317-.097 9.707.293 10.098.683 10.098 1.317 9.707 1.707L5.707 5.707C5.317 6.098 4.683 6.098 4.293 5.707L0.293 1.707C-.097 1.317-.097 0.683.293.293Z' fill='rgba(255,255,255,0.6)'/%3E%3C/svg%3E") no-repeat center;
-      pointer-events: none;
+    .select2-container--default .select2-selection--single:focus-within,
+    .select2-container--default.select2-container--open .select2-selection--single {
+      border-bottom-color: var(--gold) !important;
     }
-
-    /* textarea – exact from CSS */
-    .gform_fields textarea {
-      font-size: 20px !important;
-      min-height: fit-content !important;
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+      color: var(--white) !important;
+      font-family: "Rajdhani", sans-serif !important;
+      font-size: 1.15rem !important;
+      font-weight: 300 !important;
+      line-height: 1.6 !important;
+      padding-left: 0 !important;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__placeholder {
+      color: rgba(255,255,255,0.35) !important;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+      top: 4px !important;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__arrow b {
+      border-color: rgba(255,255,255,0.5) transparent transparent transparent !important;
+    }
+    .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+      border-color: transparent transparent var(--gold) transparent !important;
+    }
+    /* Dropdown panel */
+    .select2-dropdown {
+      background: var(--blue) !important;
+      border: 1px solid rgba(255,255,255,0.15) !important;
       border-radius: 0 !important;
-      border: 1px solid #fff !important;
-      background: transparent !important;
-      box-shadow: none !important;
-      color: #fff !important;
-      padding: 20px !important;
-      outline: none;
-      width: 100%;
-      resize: vertical;
-      min-height: 160px;
-      font-family: "Rajdhani", sans-serif;
-      font-weight: 300;
-      transition: border-color 0.2s;
     }
-    .gform_fields textarea:focus { border-color: var(--gold) !important; }
-    .gform_fields textarea::placeholder { color: rgba(255,255,255,0.55); }
+    .select2-container--default .select2-results__option {
+      color: rgba(255,255,255,0.8) !important;
+      font-family: "Rajdhani", sans-serif !important;
+      font-size: 1rem !important;
+      font-weight: 300 !important;
+      padding: 8px 12px !important;
+    }
+    .select2-container--default .select2-results__option--highlighted[aria-selected] {
+      background: rgba(167,118,96,0.35) !important;
+      color: var(--white) !important;
+    }
+    .select2-container--default .select2-results__option[aria-selected=true] {
+      background: rgba(167,118,96,0.2) !important;
+    }
+    .select2-search--dropdown .select2-search__field {
+      background: rgba(255,255,255,0.08) !important;
+      border: 1px solid rgba(255,255,255,0.15) !important;
+      color: var(--white) !important;
+      font-family: "Rajdhani", sans-serif !important;
+    }
+    .select2-container { width: 100% !important; }
 
-    /* Radio buttons */
-    .gform-theme--framework .gfield_radio { flex-direction: row !important; gap: 30px; }
-    .gfield_radio { display: flex; gap: 30px; margin-top: 4px; }
-    .gchoice { display: flex; align-items: center; gap: 8px; }
-    .gchoice input[type=radio] {
-      appearance: none; -webkit-appearance: none;
-      width: 18px; height: 18px;
-      border: 1px solid #fff !important;
-      border-radius: 50%;
-      flex-shrink: 0; cursor: pointer;
-      position: relative; background: transparent !important;
-      box-shadow: none !important;
-      transition: border-color 0.2s;
-    }
-    .gchoice input[type=radio]:checked { border-color: var(--gold) !important; }
-    .gchoice input[type=radio]:checked::after {
-      content: '';
-      position: absolute;
-      top: 3px; left: 3px;
-      width: 10px; height: 10px;
-      background: var(--gold);
-      border-radius: 50%;
-    }
-    .gchoice label, .gform-field-label--type-inline {
-      color: #fff !important;
-      font-size: 20px;
-      font-weight: 300;
+    /* ── CHECKBOXES ──────────────────────────────── */
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
       cursor: pointer;
-      font-family: "Rajdhani", sans-serif;
     }
-
-    /* Checkboxes */
-    .gfield_checkbox { display: flex; flex-direction: column; gap: 10px; }
-    .gchoice_check,
-    .gfield_checkbox .gchoice { display: flex; align-items: flex-start; gap: 12px; }
-    .gfield_checkbox .gchoice input[type=checkbox] {
-      appearance: none; -webkit-appearance: none;
-      width: 18px; height: 18px; min-width: 18px;
-      border: 1px solid #fff !important;
-      flex-shrink: 0; margin-top: 3px; cursor: pointer;
-      position: relative; background: transparent !important;
-      box-shadow: none !important;
+    #__vtigerWebForm_2 input[type=checkbox] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 17px;
+      height: 17px;
+      min-width: 17px;
+      border: 1px solid rgba(255,255,255,0.6);
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      margin-top: 2px;
       transition: background 0.2s, border-color 0.2s;
-      border-radius: 0 !important;
+      flex-shrink: 0;
     }
-    .gfield_checkbox .gchoice input[type=checkbox]:checked {
-      background: var(--gold) !important;
-      border-color: var(--gold) !important;
+    #__vtigerWebForm_2 input[type=checkbox]:checked {
+      background: var(--gold);
+      border-color: var(--gold);
     }
-    .gform-theme--framework input[type=checkbox]::before { color: #fff !important; }
-    .gfield_checkbox .gchoice input[type=checkbox]:checked::after {
+    #__vtigerWebForm_2 input[type=checkbox]:checked::after {
       content: '';
       position: absolute;
-      left: 5px; top: 1px;
-      width: 5px; height: 10px;
+      left: 4px; top: 1px;
+      width: 5px; height: 9px;
       border: 2px solid #fff;
-      border-top: none; border-left: none;
+      border-top: none;
+      border-left: none;
       transform: rotate(45deg);
     }
-    .gfield_checkbox label,
-    .gfield_checkbox .gform-field-label--type-inline {
-      color: #fff !important;
-      font-size: 16px;
+    /* Hide vtiger's paired hidden checkbox inputs */
+    #__vtigerWebForm_2 input[type=hidden] { display: none; }
+
+    /* Checkbox label text */
+    .checkbox-label-text {
+      color: rgba(255,255,255,0.75);
+      font-family: "Rajdhani", sans-serif;
+      font-size: 0.95rem;
       font-weight: 300;
       line-height: 1.5;
-      cursor: pointer;
-      font-family: "Rajdhani", sans-serif;
     }
-    .gfield_checkbox label a { color: #fff; text-decoration: underline; }
-
-    /* HTML field (privacy text) – exact from CSS */
-    .gfield--type-html, .gfield--type-html a {
-      color: #fff;
-      padding: 30px 0;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-    .gfield--type-html a { display: inline; text-decoration: underline; }
-
-    /* submit – exact from CSS */
-    .gform_footer.before {
-      margin-top: 20px;
-      text-align: center;
-      border: 0;
-      padding: 0;
-    }
-    .gform_button {
-      background: none !important;
-      box-shadow: none !important;
-      font-family: 'Rajdhani' !important;
-      font-size: 25px !important;
-      font-weight: 300 !important;
-      margin-top: 20px !important;
-      padding: 0 !important;
-      padding-bottom: 0 !important;
-      height: fit-content !important;
-      min-height: fit-content !important;
-      position: relative !important;
-      border: none !important;
-      border-bottom: 2px solid var(--gold) !important;
-      border-radius: 0 !important;
-      transition: .5s ease;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-    }
-    .gform_button:hover {
-      border-bottom: 0px solid var(--gold) !important;
-      padding-bottom: 2px !important;
-    }
-
-    /* hidden conditional field */
-    #field_2_8[data-conditional-logic="hidden"] { display: none; }
-
-    /* ── FOOTER CTA ──────────────────────────────── */
-    .footer_cta {
-      background-color: var(--blue);
-      padding: 80px 0;
-      text-align: center;
-    }
-    .formcta_tit {
-      font-family: 'Prata', serif;
-      font-size: 3.8rem;
-      font-weight: 400;
-      max-width: 800px;
-      margin: auto;
-      padding: 20px 0 50px 0;
+    .checkbox-label-text a {
       color: var(--white);
+      text-decoration: underline;
+      text-underline-offset: 2px;
     }
-    .formcta_tit strong, .formcta_tit b { font-weight: 400; }
-    a.formcta_cta {
+
+    /* ── PRIVACY TEXT ────────────────────────────── */
+    .privacy-text {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      padding: 24px 0 8px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .privacy-text a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: underline;
+    }
+
+    /* ── SUBMIT BUTTON ───────────────────────────── */
+    .form-submit-row {
+      margin-top: 40px;
+      text-align: center;
+    }
+    #vtigerFormSubmitBtn_2 {
+      background: none;
+      border: none;
+      border-bottom: 2px solid var(--gold);
+      border-radius: 0;
+      color: var(--white);
+      font-family: "Rajdhani", sans-serif;
       font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--white) !important;
-      text-decoration: none;
+      padding: 0 0 2px;
+      cursor: pointer;
+      transition: border-bottom-width 0.3s, padding-bottom 0.3s;
       display: inline-block;
     }
-    a.formcta_cta::after {
-      content: '';
-      position: relative;
-      width: 100%;
-      height: 2px;
-      background: var(--gold);
-      left: 0;
-      display: block;
-      transition: all 0.3s ease-in-out;
+    #vtigerFormSubmitBtn_2:hover {
+      border-bottom-width: 0;
+      padding-bottom: 4px;
     }
-    a.formcta_cta:hover::after { width: 0%; }
+    #vtigerFormSubmitBtn_2:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
 
-    /* ── FOOTER CONTENT ──────────────────────────── */
-    .footer_content { padding-top: 100px; padding-bottom: 20px; background-color: var(--sage); }
-    .footer_content_cols { display: flex; max-width: 1640px; margin: auto; padding: 0 20px; }
-    .footer_col-1 { width: 34%; padding-right: 20px; }
-    .footer_col-2, .footer_col-3, .footer_col-4 { width: 22%; padding-right: 20px; }
-    .footer_col-tit { font-family: 'Prata', serif; color: var(--blue); font-size: 20px; }
-    .footer_col-content { font-size: 18px; color: var(--blue); padding-top: 18px; }
-    .footer_col-content a { text-decoration: none; color: var(--blue); display: block; }
-    .footer_col-content a:hover { text-decoration: underline; }
-    .footer_content_copyright {
-      font-size: 14px;
-      margin-top: 30px;
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--sage);
+      padding: 70px 0 30px;
+    }
+    .footer-inner {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .footer-cols {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(35,87,106,0.15);
+    }
+    .footer-col-title {
+      font-family: 'Prata', serif;
+      color: var(--blue);
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+    .footer-col-body {
+      color: var(--blue);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .footer-col-body a {
+      display: block;
+      color: var(--blue);
+    }
+    .footer-col-body a:hover { text-decoration: underline; }
+    .footer-bottom {
       display: flex;
       justify-content: space-between;
-      max-width: 1640px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 15px 20px 0;
-      border-top: 1px solid rgba(35,87,106,0.2);
+      align-items: center;
+      padding-top: 20px;
+      font-size: 0.82rem;
+      color: var(--blue);
     }
-    .footer_content_copyright a { color: var(--blue); text-decoration: none; }
-    .footer_credits a { color: var(--blue); }
+    .footer-bottom a { color: var(--blue); text-decoration: underline; }
 
     /* ── RESPONSIVE ──────────────────────────────── */
-    @media screen and (max-width: 767px) {
-      .alignwide { padding: 0 1.5rem !important; }
-      .gform_fields { grid-template-columns: 1fr !important; }
-      .gfield--width-full, .gfield--width-half { grid-column: 1; }
-      .yacht-cols { flex-wrap: wrap; }
-      .yacht-col-1, .yacht-col-2 { width: 100%; padding: 0 0 20px 0; }
-      .yacht-col-2 .introimgcont { margin-top: 40px; }
-      .footer_content_cols { flex-wrap: wrap; }
-      .footer_col-1, .footer_col-2, .footer_col-3, .footer_col-4 { width: 100%; padding-bottom: 20px; }
-      .footer_content_copyright { flex-direction: column; gap: 6px; }
+    @media (max-width: 900px) {
+      #__vtigerWebForm_2 table tbody {
+        grid-template-columns: 1fr;
+      }
+      #__vtigerWebForm_2 table tr.row-full {
+        grid-column: 1;
+      }
+      .footer-cols {
+        grid-template-columns: 1fr 1fr;
+      }
     }
-    @media screen and (max-width: 37.5em) {
-      .menu-button { display: none; }
+    @media (max-width: 600px) {
+      .alignwide { padding: 0 20px; }
+      .contact-section { padding: 60px 0 80px; }
+      .footer-cols { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
 </head>
-<body class="page-template-template-contatti">
+<body>
 
-<!-- ═══════════════════════════════════════════
+<!-- ════════════════════════════════════════
      HEADER
-════════════════════════════════════════════ -->
-<header id="masthead" class="site-header">
-  <div class="fy_header">
-    <div class="fy_header_sx">
-      <div class="menu-button">Yachts</div>
-      <div class="menu-button" style="display:flex;gap:0">
-        <a href="https://filippettiyachts.com/it/brokerage/" style="color:var(--blue);text-decoration:none;padding:30px 20px 30px 0;text-transform:uppercase;font-size:16px;">Brokerage</a>
-        <a href="https://filippettiyachts.com/it/azienda/"   style="color:var(--blue);text-decoration:none;padding:30px 20px 30px 0;text-transform:uppercase;font-size:16px;">Azienda</a>
-        <a href="https://filippettiyachts.com/it/assistenza/" style="color:var(--blue);text-decoration:none;padding:30px 20px 30px 0;text-transform:uppercase;font-size:16px;">Assistenza</a>
-        <a href="https://filippettiyachts.com/it/news-ed-eventi/" style="color:var(--blue);text-decoration:none;padding:30px 20px 30px 0;text-transform:uppercase;font-size:16px;">News ed eventi</a>
-      </div>
-    </div>
-
-    <div class="fy_header_logo">
-      <a href="https://filippettiyachts.com/it/">
-        <img src="https://filippettiyachts.com/wp-content/uploads/2024/04/Logo_FY_w.svg"
-             alt="Filippetti Yachts"
-             onerror="this.src='';this.alt='Filippetti Yachts'">
-      </a>
-    </div>
-
-    <div class="fy_header_dx">
-      <div class="btnHeaderRight">
-        <a href="https://filippettiyachts.com/it/contatti/">Contattaci</a>
-      </div>
-    </div>
+════════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <a href="https://filippettiyachts.com/it/" class="header-logo">
+      <img
+        src="https://filippettiyachts.com/wp-content/uploads/2024/04/Logo_FY_w.svg"
+        alt="Filippetti Yachts"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+      >
+      <span class="header-logo-text" style="display:none;">Filippetti Yachts</span>
+    </a>
   </div>
 </header>
 
-<!-- ═══════════════════════════════════════════
-     INTRO HEADQUARTER
-════════════════════════════════════════════ -->
-<div class="overview-wrapper headquarter alignfull yacht_type2" id="overview">
-  <img class="productmedia_bg" src="https://filippettiyachts.com/wp-content/uploads/2024/05/f_logo_img.png" alt="" style="position:absolute;left:0;top:0;max-width:194px;">
-  <div class="introtext-wrapper alignwide">
-    <div class="introtext-imgs yacht-cols-a">
-      <div class="yacht-cols">
-        <div class="yacht-col-1">
-          <div class="line-wrapper">
-            <div class="line"></div>
-          </div>
-          <div class="break"></div>
-          <div class="yacht-testo_int">
-            <h1 class="prata-40">HeadQuarter</h1>
-            <div class="indirizzo">
-              <p>Via Val Cesano, 66<br>61037 Mondolfo (Pu) – ITALY</p>
-              <a href="mailto:sales@filippettiyachts.com">sales@filippettiyachts.com</a>
-              <a href="tel:+390721930262">+39 0721 930 262</a>
-            </div>
-          </div>
-          <div class="introimgcont" style="margin-top:40px;width:100%;">
-            <img src="https://filippettiyachts.com/wp-content/uploads/2024/06/contatti_img2.jpg" alt="">
-          </div>
-        </div>
-        <div class="yacht-col-2">
-          <div class="introimgcont">
-            <img src="https://filippettiyachts.com/wp-content/uploads/2024/06/contatti_img1.jpg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- ════════════════════════════════════════
+     CONTACT FORM SECTION
+════════════════════════════════════════ -->
+<section class="contact-section">
+  <div class="alignwide">
 
-<!-- ═══════════════════════════════════════════
-     CONTACT FORM  (riproduce .contact-form.alignfull)
-════════════════════════════════════════════ -->
-<div class="contact-form alignfull" id="contattiForm">
-  <div class="contact-form-box alignwide">
-    <div class="contact-form-top">
-      <div class="prata-40 cftit">Contattateci per ricevere maggiori informazioni</div>
-    </div>
+    <h1 class="contact-section-title">
+      Contattateci per ricevere maggiori informazioni
+    </h1>
 
-    <div class="contact-form-form" style="max-width:1080px;margin:auto;padding:0;">
+    <!-- ── VTIGER WEBFORM (original fields + hooks preserved) ── -->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 
-      <form
-        id="__vtigerWebForm_2"
-        name="FILIPPETTI YACHTS"
-        action="https://filippettiyachtsrl.od2.vtiger.com/modules/Webforms/capture.php"
-        method="post"
-        accept-charset="utf-8"
-        enctype="multipart/form-data"
-      >
-        <!-- vtiger hidden fields -->
-        <input type="hidden" name="publicid"       value="d1b5b5e03206515ce42106af0d0f4a62"/>
-        <input type="hidden" name="urlencodeenable" value="1"/>
-        <input type="hidden" name="name"            value="FILIPPETTI YACHTS"/>
-        <input type="hidden" name="__vtCurrency"    value="1"/>
+    <form
+      id="__vtigerWebForm_2"
+      name="FILIPPETTI YACHTS"
+      action="https://filippettiyachtsrl.od2.vtiger.com/modules/Webforms/capture.php"
+      method="post"
+      accept-charset="utf-8"
+      enctype="multipart/form-data"
+    >
+      <!-- vtiger required hidden fields -->
+      <input type="hidden" name="publicid"        value="d1b5b5e03206515ce42106af0d0f4a62"/>
+      <input type="hidden" name="urlencodeenable" value="1"/>
+      <input type="hidden" name="name"            value="FILIPPETTI YACHTS"/>
+      <input type="hidden" name="__vtCurrency"    value="1"/>
 
-        <div class="gform_fields">
+      <table>
+        <tbody>
 
-          <!-- Nome -->
-          <div class="gfield gfield--type-text gfield--width-half">
-            <label class="gfield_label" for="f_nome">Nome</label>
-            <div class="ginput_container">
-              <input type="text" id="f_nome" name="firstname" maxlength="80" placeholder="Nome *" required>
-            </div>
-          </div>
+          <!-- Last Name -->
+          <tr>
+            <td><label>Last Name *</label></td>
+            <td>
+              <input type="text" name="lastname" maxlength="80" data-label="" value="" required="" placeholder="Cognome *"/>
+            </td>
+            <td>
+              <!-- vtField honeypot -->
+              <input type="checkbox" name="vtField" value="1" style="display:none !important" tabindex="-1" autocomplete="off"/>
+            </td>
+          </tr>
 
-          <!-- Cognome -->
-          <div class="gfield gfield--type-text gfield--width-half">
-            <label class="gfield_label" for="f_cognome">Cognome</label>
-            <div class="ginput_container">
-              <input type="text" id="f_cognome" name="lastname" maxlength="80" placeholder="Cognome *" required>
-            </div>
-          </div>
+          <!-- Primary Email -->
+          <tr>
+            <td><label>Primary Email *</label></td>
+            <td>
+              <input type="email" name="email" data-label="Primary Email" value="" required="" placeholder="Email *"/>
+            </td>
+          </tr>
 
-          <!-- Email -->
-          <div class="gfield gfield--type-email gfield--width-half">
-            <label class="gfield_label" for="f_email">Email</label>
-            <div class="ginput_container">
-              <input type="email" id="f_email" name="email" placeholder="Email *" required>
-            </div>
-          </div>
+          <!-- Office Phone -->
+          <tr>
+            <td><label>Office Phone</label></td>
+            <td>
+              <input type="text" name="phone" maxlength="50" data-label="" value="" data-type="phone" placeholder="Telefono"/>
+            </td>
+          </tr>
 
-          <!-- Telefono -->
-          <div class="gfield gfield--type-phone gfield--width-half">
-            <label class="gfield_label" for="f_tel">Telefono</label>
-            <div class="ginput_container">
-              <input type="tel" id="f_tel" name="phone" maxlength="50" placeholder="Telefono">
-            </div>
-          </div>
-
-          <!-- Nazione (country select – full list) -->
-          <fieldset class="gfield gfield--type-address gfield--width-half">
-            <legend class="gfield_label">Nazione <span style="color:rgba(255,255,255,0.55);font-weight:300;">(Obbligatorio)</span></legend>
-            <div class="ginput_container ginput_container_address">
-              <select name="cf_contacts_country" id="f_nazione" required>
-                <option value="">Nazione *</option>
-                <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Andorra</option><option>Angola</option><option>Argentina</option><option>Armenia</option><option>Australia</option><option>Austria</option><option>Azerbaijan</option><option>Bahamas</option><option>Bahrain</option><option>Belgio</option><option>Bosnia-Erzegovina</option><option>Brasile</option><option>Bulgaria</option><option>Canada</option><option>Cile</option><option>Cina</option><option>Cipro</option><option>Colombia</option><option>Croazia</option><option>Danimarca</option><option>Egitto</option><option>Emirati Arabi Uniti</option><option>Estonia</option><option>Federazione Russa</option><option>Finlandia</option><option>Francia</option><option>Georgia</option><option>Germania</option><option>Grecia</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Irlanda</option><option>Islanda</option><option>Israele</option><option>Italia</option><option>Kazakistan</option><option>Kuwait</option><option>Lettonia</option><option>Libano</option><option>Liechtenstein</option><option>Lituania</option><option>Lussemburgo</option><option>Macedonia del Nord</option><option>Malta</option><option>Marocco</option><option>Messico</option><option>Monaco</option><option>Montenegro</option><option>Norvegia</option><option>Nuova Zelanda</option><option>Oman</option><option>Paesi Bassi</option><option>Pakistan</option><option>Panama</option><option>Peru</option><option>Polonia</option><option>Portogallo</option><option>Qatar</option><option>Regno Unito</option><option>Repubblica Ceca</option><option>Romania</option><option>San Marino</option><option>Serbia</option><option>Singapore</option><option>Slovacchia</option><option>Slovenia</option><option>Spagna</option><option>Sri Lanka</option><option>Stati Uniti</option><option>Sudafrica</option><option>Svezia</option><option>Svizzera</option><option>Tailandia</option><option>Taiwan</option><option>Turchia</option><option>Ucraina</option><option>Ungheria</option><option>Uruguay</option><option>Venezuela</option><option>Vietnam</option>
+          <!-- Contact Type -->
+          <tr>
+            <td><label>Contact Type *</label></td>
+            <td>
+              <select name="contacttype" data-label="contacttype" required="">
+                <option value="">Select Value</option>
+                <option value="Lead">Lead</option>
+                <option value="Customer">Customer</option>
+                <option value="Broker">Broker</option>
+                <option value="Dealer">Dealer</option>
+                <option value="Competitor">Competitor</option>
+                <option value="Captain">Captain</option>
+                <option value="Surveyor">Surveyor</option>
+                <option value="Supplier/ Technician / Vendor">Supplier / Technician / Vendor</option>
+                <option value="Boat Manager">Boat Manager</option>
+                <option value="Insurance Broker">Insurance Broker</option>
+                <option value="Lawyer/ Law Firm">Lawyer / Law Firm</option>
+                <option value="Press">Press</option>
+                <option value="Other">Other</option>
+                <option value="Editor">Editor</option>
               </select>
-            </div>
-          </fieldset>
+            </td>
+          </tr>
 
-          <!-- Possiedi già uno yacht? -->
-          <fieldset class="gfield gfield--type-radio gfield--width-half">
-            <legend class="gfield_label">Possiedi già uno yacht?</legend>
-            <div class="ginput_container ginput_container_radio">
-              <div class="gfield_radio">
-                <div class="gchoice">
-                  <input class="gfield-choice-input" type="radio" name="cf_contacts_ownedyacht" id="yacht_si" value="Sì">
-                  <label for="yacht_si" class="gform-field-label gform-field-label--type-inline">Sì</label>
-                </div>
-                <div class="gchoice">
-                  <input class="gfield-choice-input" type="radio" name="cf_contacts_ownedyacht" id="yacht_no" value="No">
-                  <label for="yacht_no" class="gform-field-label gform-field-label--type-inline">No</label>
-                </div>
+          <!-- Interested in -->
+          <tr>
+            <td><label>Interested in</label></td>
+            <td>
+              <select name="cf_contacts_interestedin" data-label="label:Interested+in">
+                <option value="">Select Value</option>
+                <option value="New Yacht">New Yacht</option>
+                <option value="Pre Owned Yacht">Pre Owned Yacht</option>
+                <option value="New and Pre Owned Yacht">New and Pre Owned Yacht</option>
+                <option value="Refitting">Refitting</option>
+                <option value="Service">Service</option>
+                <option value="Charter">Charter</option>
+                <option value="Represent Filippetti Yachts">Represent Filippetti Yachts</option>
+                <option value="Other">Other</option>
+              </select>
+            </td>
+          </tr>
+
+          <!-- Yacht Owner -->
+          <tr>
+            <td><label>Yacht Owner</label></td>
+            <td>
+              <select name="cf_contacts_ownedyacht" data-label="label:Owned+Yacht" id="ownedYachtSelect">
+                <option value="">Select Value</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </td>
+          </tr>
+
+          <!-- Yacht Model and Year (shown conditionally) -->
+          <tr id="yachtModelRow" class="row-full" style="display:none;">
+            <td><label>Yacht Owned — Model and Year</label></td>
+            <td>
+              <input type="text" name="cf_contacts_modelyachtowned" maxlength="50" data-label="" value="" placeholder="Modello / Anno" id="yachtModelInput" disabled/>
+            </td>
+          </tr>
+
+          <!-- Length -->
+          <tr>
+            <td><label>Length</label></td>
+            <td>
+              <select name="cf_contacts_length" data-label="label:Length">
+                <option value="">Select Value</option>
+                <option value="up to 10mt/33ft">up to 10mt / 33ft</option>
+                <option value="10mt-15mt (33ft - 49ft)">10mt–15mt (33ft–49ft)</option>
+                <option value="15mt-20mt (50ft - 66ft)">15mt–20mt (50ft–66ft)</option>
+                <option value="20mt-25mt (67ft - 82ft)">20mt–25mt (67ft–82ft)</option>
+                <option value="25mt-30mt (82ft - 98ft)">25mt–30mt (82ft–98ft)</option>
+                <option value="30mt-35mt (99ft - 115ft)">30mt–35mt (99ft–115ft)</option>
+                <option value="35mt/116ft and more">35mt / 116ft and more</option>
+              </select>
+            </td>
+          </tr>
+
+          <!-- Budget -->
+          <tr>
+            <td><label>Budget — specify € or $</label></td>
+            <td>
+              <input type="text" name="cf_contacts_budget" maxlength="30" data-label="" value="" placeholder="Budget"/>
+            </td>
+          </tr>
+
+          <!-- Privacy text row -->
+          <tr class="row-full">
+            <td colspan="2">
+              <div class="privacy-text">
+                Informativa sulla privacy ai sensi dell'art. 13 del Regolamento (UE) n. 679/2016.
+                I dati inseriti nel presente modulo potranno essere comunicati a soggetti esterni,
+                Titolari autonomi del trattamento, direttamente collegati a Filippetti Yacht,
+                al fine di rispondere alla richiesta inoltrata. Per maggiori dettagli si prega di
+                consultare il testo completo dell'
+                <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Informativa sulla privacy</a>.
               </div>
-            </div>
-          </fieldset>
+            </td>
+          </tr>
 
-          <!-- Modello / Anno (conditional: mostra se Sì) -->
-          <div class="gfield gfield--type-text gfield--width-full" id="field_2_8" data-conditional-logic="hidden" style="display:none;">
-            <label class="gfield_label" for="f_modello">Modello / Anno</label>
-            <div class="ginput_container">
-              <input type="text" id="f_modello" name="cf_contacts_modelyachtowned" maxlength="50" placeholder="Modello / Anno" disabled>
-            </div>
-          </div>
+          <!-- Email Opt-in -->
+          <tr class="row-full">
+            <td><label>Email Opt-in *</label></td>
+            <td>
+              <label class="checkbox-row">
+                <input type="hidden"   name="emailoptin" data-label="" value="0"/>
+                <input type="checkbox" name="emailoptin" data-label="" value="1" required=""/>
+                <span class="checkbox-label-text">
+                  Acconsento a ricevere comunicazioni commerciali via email da Filippetti Yachts <strong>*</strong>
+                </span>
+              </label>
+            </td>
+          </tr>
 
-          <!-- Messaggio -->
-          <div class="gfield gfield--type-textarea gfield--width-full">
-            <label class="gfield_label" for="f_msg">Messaggio</label>
-            <div class="ginput_container ginput_container_textarea">
-              <textarea id="f_msg" name="message" placeholder="Come possiamo aiutarti? Descrivi brevemente la tua richiesta" rows="6"></textarea>
-            </div>
-          </div>
+          <!-- Privacy Policy Authorization -->
+          <tr class="row-full">
+            <td><label>Privacy Policy Authorization</label></td>
+            <td>
+              <label class="checkbox-row">
+                <input type="hidden"   name="cf_contacts_privacypolicyauthorization" data-label="" value="0"/>
+                <input type="checkbox" name="cf_contacts_privacypolicyauthorization" data-label="" value="1"/>
+                <span class="checkbox-label-text">
+                  Ho letto la <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a>
+                  e autorizzo l'utilizzo dei miei dati personali ai fini del presente modulo
+                </span>
+              </label>
+            </td>
+          </tr>
 
-          <!-- Privacy info text -->
-          <div class="gfield gfield--type-html gfield--width-full">
-            Informativa sulla privacy ai sensi dell'art. 13 del Regolamento (UE) n. 679/2016.
-            I dati inseriti nel presente modulo potranno essere comunicati a soggetti esterni,
-            Titolari autonomi del trattamento, direttamente collegati a Filippetti Yacht,
-            al fine di rispondere alla richiesta inoltrata. Per maggiori dettagli si prega di
-            consultare il testo completo dell'Informativa sulla privacy.
-            (<a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Informativa sulla privacy</a>)
-          </div>
+          <!-- Newsletter Authorization -->
+          <tr class="row-full">
+            <td><label>Newsletter Authorization</label></td>
+            <td>
+              <label class="checkbox-row">
+                <input type="hidden"   name="cf_contacts_newsletterauthorization" data-label="" value="0"/>
+                <input type="checkbox" name="cf_contacts_newsletterauthorization" data-label="" value="1"/>
+                <span class="checkbox-label-text">
+                  Iscriviti alla nostra newsletter per ricevere aggiornamenti e novità
+                </span>
+              </label>
+            </td>
+          </tr>
 
-          <!-- Privacy checkbox (required) -->
-          <fieldset class="gfield gfield--type-checkbox gfield--width-full">
-            <legend class="gfield_label" style="display:none;">Privacy</legend>
-            <div class="ginput_container ginput_container_checkbox">
-              <div class="gfield_checkbox">
-                <div class="gchoice">
-                  <input class="gfield-choice-input" type="checkbox" id="chk_privacy" name="cf_contacts_privacypolicyauthorization" value="1" required>
-                  <label for="chk_privacy" class="gform-field-label gform-field-label--type-inline">
-                    Ho letto la <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a> e autorizzo l'utilizzo dei miei dati personali ai fini del presente modulo <strong>*</strong>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </fieldset>
+        </tbody>
+      </table>
 
-          <!-- Newsletter checkbox -->
-          <fieldset class="gfield gfield--type-checkbox gfield--width-full">
-            <legend class="gfield_label" style="display:none;">Newsletter</legend>
-            <div class="ginput_container ginput_container_checkbox">
-              <div class="gfield_checkbox">
-                <div class="gchoice">
-                  <input class="gfield-choice-input" type="checkbox" id="chk_newsletter" name="cf_contacts_newsletterauthorization" value="1">
-                  <label for="chk_newsletter" class="gform-field-label gform-field-label--type-inline">
-                    Iscriviti alla nostra newsletter per ricevere aggiornamenti e novità
-                  </label>
-                </div>
-              </div>
-            </div>
-          </fieldset>
+      <!-- Submit -->
+      <div class="form-submit-row">
+        <input type="submit" value="Invia richiesta" id="vtigerFormSubmitBtn_2"/>
+      </div>
 
-        </div><!-- /gform_fields -->
+    </form>
+    <!-- /vtiger form -->
 
-        <div class="gform_footer before">
-          <input type="submit" id="gform_submit_button_2" class="gform_button button" value="Invia richiesta">
+    <!-- Vtiger required hidden fields outside form (as in original) -->
+    <input type="hidden" name="isCaptchaEnabled"     value="" disabled=""/>
+    <input type="hidden" name="isVerificationEnabled" value="0" disabled=""/>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div>
+        <div class="footer-col-title">Headquarter</div>
+        <div class="footer-col-body">
+          FSY S.r.l.<br>
+          Via Val Cesano 66<br>
+          61037 Mondolfo (PU) – Italy<br><br>
+          <a href="mailto:sales@filippettiyachts.com">sales@filippettiyachts.com</a>
+          <a href="tel:+390721930262">+39 0721 930 262</a>
         </div>
-
-      </form>
-    </div><!-- /contact-form-form -->
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     FOOTER CTA (nascosto su contatti secondo CSS)
-     → mostrato qui solo come completezza layout
-════════════════════════════════════════════ -->
-
-<!-- ═══════════════════════════════════════════
-     FOOTER CONTENT
-════════════════════════════════════════════ -->
-<div class="footer_content">
-  <div class="footer_content_cols">
-    <div class="footer_col footer_col-1">
-      <div class="footer_col-tit">Headquarter</div>
-      <div class="footer_col-content">
-        FSY S.r.l.<br>
-        Sede Operativa/Operational Headquarters<br>
-        Via Val Cesano 66, 61037 Mondolfo (PU), Italy<br>
-        Sede Legale/Registered Office<br>
-        Via Nicolò Porpora 12, 00198 Roma, Italy<br>
-        C.f e P.Iva / Tax No. 16621211008
+      </div>
+      <div>
+        <div class="footer-col-title">Yachts</div>
+        <div class="footer-col-body">
+          <a href="https://filippettiyachts.com/it/serie/serie-flybridge/">Serie Flybridge</a>
+          <a href="https://filippettiyachts.com/it/serie/serie-sport/">Serie Sport</a>
+          <a href="https://filippettiyachts.com/it/serie/serie-navetta/">Serie Navetta</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Menu</div>
+        <div class="footer-col-body">
+          <a href="https://filippettiyachts.com/it/">Home</a>
+          <a href="https://filippettiyachts.com/it/azienda/">Azienda</a>
+          <a href="https://filippettiyachts.com/it/brokerage/">Brokerage</a>
+          <a href="https://filippettiyachts.com/it/assistenza/">Assistenza</a>
+          <a href="https://filippettiyachts.com/it/news-ed-eventi/">News</a>
+          <a href="#">Contatti</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Seguici</div>
+        <div class="footer-col-body">
+          <a href="https://www.facebook.com/FilippettiYachts" target="_blank">Facebook</a>
+          <a href="https://www.instagram.com/filippettiyachts/" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/company/filippetti-yacht/" target="_blank">LinkedIn</a>
+        </div>
       </div>
     </div>
-    <div class="footer_col footer_col-2">
-      <div class="footer_col-tit">Yachts</div>
-      <div class="footer_col-content">
-        <a href="https://filippettiyachts.com/it/serie/serie-flybridge/">Serie Flybridge</a>
-        <a href="https://filippettiyachts.com/it/serie/serie-sport/">Serie Sport</a>
-        <a href="https://filippettiyachts.com/it/serie/serie-navetta/">Serie Navetta</a>
-      </div>
-    </div>
-    <div class="footer_col footer_col-3">
-      <div class="footer_col-tit">Menu</div>
-      <div class="footer_col-content">
-        <a href="https://filippettiyachts.com/it/">Home</a>
-        <a href="https://filippettiyachts.com/it/azienda/">Azienda</a>
-        <a href="https://filippettiyachts.com/it/brokerage/">Brokerage</a>
-        <a href="https://filippettiyachts.com/it/assistenza/">Assistenza</a>
-        <a href="https://filippettiyachts.com/it/news-ed-eventi/">News ed eventi</a>
-        <a href="https://filippettiyachts.com/it/contatti/" aria-current="page">Contatti</a>
-      </div>
-    </div>
-    <div class="footer_col footer_col-4">
-      <div class="footer_col-tit">Seguici</div>
-      <div class="footer_col-content">
-        <a href="https://www.facebook.com/FilippettiYachts" target="_blank">Facebook</a>
-        <a href="https://www.instagram.com/filippettiyachts/" target="_blank">Instagram</a>
-        <a href="https://www.linkedin.com/company/filippetti-yacht/" target="_blank">Linkedin</a>
-      </div>
+    <div class="footer-bottom">
+      <span>© <script>document.write(new Date().getFullYear())</script> Filippetti Yachts – All rights reserved –
+        <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy &amp; Cookie Policy</a>
+      </span>
+      <span>Made with love and care by <a href="https://bebit.it/" target="_blank">Bebit</a></span>
     </div>
   </div>
-  <div class="footer_content_copyright">
-    <div class="footer_copyright">
-      © <script>document.write(new Date().getFullYear())</script> Filippetti Yachts All rights reserved –
-      <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank" rel="noopener">privacy &amp; cookie policy</a>
-    </div>
-    <div class="footer_credits">Made with love and care by <a href="https://bebit.it/" target="_blank">Bebit</a></div>
-  </div>
-</div>
+</footer>
 
-<!-- ═══════════════════════════════════════════
-     SCRIPTS – vtiger + conditional logic
-════════════════════════════════════════════ -->
-<script src="https://filippettiyachts.com/wp-includes/js/jquery/jquery.min.js"></script>
-<script>
-(function () {
-  /* ── Conditional: mostra "Modello/Anno" se Sì ── */
-  var radios  = document.querySelectorAll('input[name="cf_contacts_ownedyacht"]');
-  var field8  = document.getElementById('field_2_8');
-  var input8  = document.getElementById('f_modello');
-  radios.forEach(function (r) {
-    r.addEventListener('change', function () {
-      if (this.value === 'Sì') {
-        field8.style.display = 'flex';
-        if (input8) { input8.disabled = false; }
-      } else {
-        field8.style.display = 'none';
-        if (input8) { input8.disabled = true; input8.value = ''; }
-      }
-    });
-  });
+<!-- ════════════════════════════════════════
+     SCRIPTS (vtiger originals, preserved exactly)
+════════════════════════════════════════ -->
+<!-- intl-tel-input -->
+<script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
+<script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/utils.js"></script>
 
-  /* ── Basic email validation on submit ── */
-  var form = document.getElementById('__vtigerWebForm_2');
-  var btn  = document.getElementById('gform_submit_button_2');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      btn.disabled = true;
-      var emailEl = form.querySelector('input[type="email"]');
-      if (emailEl && emailEl.value) {
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
-          alert('Inserisci un indirizzo email valido.');
-          btn.disabled = false;
-          e.preventDefault();
-        }
-      }
+<!-- intl-tel-input init (vtiger original) -->
+<script type="text/javascript">
+window.addEventListener("load", function () {
+  function getCountryCode() {
+    var timezoneCountryMap = {"Africa/Abidjan":"ci","Africa/Accra":"gh","Africa/Addis_Ababa":"et","Africa/Algiers":"dz","Africa/Asmara":"er","Africa/Asmera":"er","Africa/Bamako":"ml","Africa/Bangui":"cf","Africa/Banjul":"gm","Africa/Bissau":"gw","Africa/Blantyre":"mw","Africa/Brazzaville":"cg","Africa/Bujumbura":"bi","Africa/Cairo":"eg","Africa/Casablanca":"ma","Africa/Ceuta":"es","Africa/Conakry":"gn","Africa/Dakar":"sn","Africa/Dar_es_Salaam":"tz","Africa/Djibouti":"dj","Africa/Douala":"cm","Africa/El_Aaiun":"eh","Africa/Freetown":"sl","Africa/Gaborone":"bw","Africa/Harare":"zw","Africa/Johannesburg":"za","Africa/Juba":"ss","Africa/Kampala":"ug","Africa/Khartoum":"sd","Africa/Kigali":"rw","Africa/Kinshasa":"cd","Africa/Lagos":"ng","Africa/Libreville":"ga","Africa/Lome":"tg","Africa/Luanda":"ao","Africa/Lubumbashi":"cd","Africa/Lusaka":"zm","Africa/Malabo":"gq","Africa/Maputo":"mz","Africa/Maseru":"ls","Africa/Mbabane":"sz","Africa/Mogadishu":"so","Africa/Monrovia":"lr","Africa/Nairobi":"ke","Africa/Ndjamena":"td","Africa/Niamey":"ne","Africa/Nouakchott":"mr","Africa/Ouagadougou":"bf","Africa/Porto-Novo":"bj","Africa/Sao_Tome":"st","Africa/Timbuktu":"ml","Africa/Tripoli":"ly","Africa/Tunis":"tn","Africa/Windhoek":"na","America/Adak":"us","America/Anchorage":"us","America/Anguilla":"ai","America/Antigua":"ag","America/Araguaina":"br","America/Argentina/Buenos_Aires":"ar","America/Argentina/Catamarca":"ar","America/Argentina/ComodRivadavia":"ar","America/Argentina/Cordoba":"ar","America/Argentina/Jujuy":"ar","America/Argentina/La_Rioja":"ar","America/Argentina/Mendoza":"ar","America/Argentina/Rio_Gallegos":"ar","America/Argentina/Salta":"ar","America/Argentina/San_Juan":"ar","America/Argentina/San_Luis":"ar","America/Argentina/Tucuman":"ar","America/Argentina/Ushuaia":"ar","America/Aruba":"aw","America/Asuncion":"py","America/Atikokan":"ca","America/Atka":"us","America/Bahia":"br","America/Bahia_Banderas":"mx","America/Barbados":"bb","America/Belem":"br","America/Belize":"bz","America/Blanc-Sablon":"ca","America/Boa_Vista":"br","America/Bogota":"co","America/Boise":"us","America/Buenos_Aires":"ar","America/Cambridge_Bay":"ca","America/Campo_Grande":"br","America/Cancun":"mx","America/Caracas":"ve","America/Catamarca":"ar","America/Cayenne":"gf","America/Cayman":"ky","America/Chicago":"us","America/Chihuahua":"mx","America/Coral_Harbour":"ca","America/Cordoba":"ar","America/Costa_Rica":"cr","America/Creston":"ca","America/Cuiaba":"br","America/Curacao":"cw","America/Danmarkshavn":"gl","America/Dawson":"ca","America/Dawson_Creek":"ca","America/Denver":"us","America/Detroit":"us","America/Dominica":"dm","America/Edmonton":"ca","America/Eirunepe":"br","America/El_Salvador":"sv","America/Ensenada":"mx","America/Fort_Nelson":"ca","America/Fort_Wayne":"us","America/Fortaleza":"br","America/Glace_Bay":"ca","America/Godthab":"gl","America/Goose_Bay":"ca","America/Grand_Turk":"tc","America/Grenada":"gd","America/Guadeloupe":"gp","America/Guatemala":"gt","America/Guayaquil":"ec","America/Guyana":"gy","America/Halifax":"ca","America/Havana":"cu","America/Hermosillo":"mx","America/Indiana/Indianapolis":"us","America/Indiana/Knox":"us","America/Indiana/Marengo":"us","America/Indiana/Petersburg":"us","America/Indiana/Tell_City":"us","America/Indiana/Vevay":"us","America/Indiana/Vincennes":"us","America/Indiana/Winamac":"us","America/Indianapolis":"us","America/Inuvik":"ca","America/Iqaluit":"ca","America/Jamaica":"jm","America/Jujuy":"ar","America/Juneau":"us","America/Kentucky/Louisville":"us","America/Kentucky/Monticello":"us","America/Knox_IN":"us","America/Kralendijk":"bq","America/La_Paz":"bo","America/Lima":"pe","America/Los_Angeles":"us","America/Louisville":"us","America/Lower_Princes":"sx","America/Maceio":"br","America/Managua":"ni","America/Manaus":"br","America/Marigot":"mf","America/Martinique":"mq","America/Matamoros":"mx","America/Mazatlan":"mx","America/Mendoza":"ar","America/Menominee":"us","America/Merida":"mx","America/Metlakatla":"us","America/Mexico_City":"mx","America/Miquelon":"pm","America/Moncton":"ca","America/Monterrey":"mx","America/Montevideo":"uy","America/Montreal":"ca","America/Montserrat":"ms","America/Nassau":"bs","America/New_York":"us","America/Nipigon":"ca","America/Nome":"us","America/Noronha":"br","America/North_Dakota/Beulah":"us","America/North_Dakota/Center":"us","America/North_Dakota/New_Salem":"us","America/Nuuk":"gl","America/Ojinaga":"mx","America/Panama":"pa","America/Pangnirtung":"ca","America/Paramaribo":"sr","America/Phoenix":"us","America/Port-au-Prince":"ht","America/Port_of_Spain":"tt","America/Porto_Acre":"br","America/Porto_Velho":"br","America/Puerto_Rico":"pr","America/Punta_Arenas":"cl","America/Rainy_River":"ca","America/Rankin_Inlet":"ca","America/Recife":"br","America/Regina":"ca","America/Resolute":"ca","America/Rio_Branco":"br","America/Rosario":"ar","America/Santa_Isabel":"mx","America/Santarem":"br","America/Santiago":"cl","America/Santo_Domingo":"do","America/Sao_Paulo":"br","America/Scoresbysund":"gl","America/Shiprock":"us","America/Sitka":"us","America/St_Barthelemy":"bl","America/St_Johns":"ca","America/St_Kitts":"kn","America/St_Lucia":"lc","America/St_Thomas":"vi","America/St_Vincent":"vc","America/Swift_Current":"ca","America/Tegucigalpa":"hn","America/Thule":"gl","America/Thunder_Bay":"ca","America/Tijuana":"mx","America/Toronto":"ca","America/Tortola":"vg","America/Vancouver":"ca","America/Virgin":"vi","America/Whitehorse":"ca","America/Winnipeg":"ca","America/Yakutat":"us","America/Yellowknife":"ca","Antarctica/Casey":"aq","Antarctica/Davis":"aq","Antarctica/DumontDUrville":"aq","Antarctica/Macquarie":"au","Antarctica/Mawson":"aq","Antarctica/McMurdo":"aq","Antarctica/Palmer":"aq","Antarctica/Rothera":"aq","Antarctica/South_Pole":"aq","Antarctica/Syowa":"aq","Antarctica/Troll":"aq","Antarctica/Vostok":"aq","Arctic/Longyearbyen":"sj","Asia/Aden":"ye","Asia/Almaty":"kz","Asia/Amman":"jo","Asia/Anadyr":"ru","Asia/Aqtau":"kz","Asia/Aqtobe":"kz","Asia/Ashgabat":"tm","Asia/Ashkhabad":"tm","Asia/Atyrau":"kz","Asia/Baghdad":"iq","Asia/Bahrain":"bh","Asia/Baku":"az","Asia/Bangkok":"th","Asia/Barnaul":"ru","Asia/Beirut":"lb","Asia/Bishkek":"kg","Asia/Brunei":"bn","Asia/Calcutta":"in","Asia/Chita":"ru","Asia/Choibalsan":"mn","Asia/Chongqing":"cn","Asia/Chungking":"cn","Asia/Colombo":"lk","Asia/Dacca":"bd","Asia/Damascus":"sy","Asia/Dhaka":"bd","Asia/Dili":"tl","Asia/Dubai":"ae","Asia/Dushanbe":"tj","Asia/Famagusta":"cy","Asia/Gaza":"ps","Asia/Harbin":"cn","Asia/Hebron":"ps","Asia/Ho_Chi_Minh":"vn","Asia/Hong_Kong":"hk","Asia/Hovd":"mn","Asia/Irkutsk":"ru","Asia/Istanbul":"tr","Asia/Jakarta":"id","Asia/Jayapura":"id","Asia/Jerusalem":"il","Asia/Kabul":"af","Asia/Kamchatka":"ru","Asia/Karachi":"pk","Asia/Kashgar":"cn","Asia/Kathmandu":"np","Asia/Katmandu":"np","Asia/Khandyga":"ru","Asia/Kolkata":"in","Asia/Krasnoyarsk":"ru","Asia/Kuala_Lumpur":"my","Asia/Kuching":"my","Asia/Kuwait":"kw","Asia/Macao":"mo","Asia/Macau":"mo","Asia/Magadan":"ru","Asia/Makassar":"id","Asia/Manila":"ph","Asia/Muscat":"om","Asia/Nicosia":"cy","Asia/Novokuznetsk":"ru","Asia/Novosibirsk":"ru","Asia/Omsk":"ru","Asia/Oral":"kz","Asia/Phnom_Penh":"kh","Asia/Pontianak":"id","Asia/Pyongyang":"kp","Asia/Qatar":"qa","Asia/Qostanay":"kz","Asia/Qyzylorda":"kz","Asia/Rangoon":"mm","Asia/Riyadh":"sa","Asia/Saigon":"vn","Asia/Sakhalin":"ru","Asia/Samarkand":"uz","Asia/Seoul":"kr","Asia/Shanghai":"cn","Asia/Singapore":"sg","Asia/Srednekolymsk":"ru","Asia/Taipei":"tw","Asia/Tashkent":"uz","Asia/Tbilisi":"ge","Asia/Tehran":"ir","Asia/Tel_Aviv":"il","Asia/Thimbu":"bt","Asia/Thimphu":"bt","Asia/Tokyo":"jp","Asia/Tomsk":"ru","Asia/Ujung_Pandang":"id","Asia/Ulaanbaatar":"mn","Asia/Ulan_Bator":"mn","Asia/Urumqi":"cn","Asia/Ust-Nera":"ru","Asia/Vientiane":"la","Asia/Vladivostok":"ru","Asia/Yakutsk":"ru","Asia/Yangon":"mm","Asia/Yekaterinburg":"ru","Asia/Yerevan":"am","Atlantic/Azores":"pt","Atlantic/Bermuda":"bm","Atlantic/Canary":"es","Atlantic/Cape_Verde":"cv","Atlantic/Faeroe":"fo","Atlantic/Faroe":"fo","Atlantic/Jan_Mayen":"sj","Atlantic/Madeira":"pt","Atlantic/Reykjavik":"is","Atlantic/South_Georgia":"gs","Atlantic/St_Helena":"sh","Atlantic/Stanley":"fk","Australia/ACT":"au","Australia/Adelaide":"au","Australia/Brisbane":"au","Australia/Broken_Hill":"au","Australia/Canberra":"au","Australia/Currie":"au","Australia/Darwin":"au","Australia/Eucla":"au","Australia/Hobart":"au","Australia/LHI":"au","Australia/Lindeman":"au","Australia/Lord_Howe":"au","Australia/Melbourne":"au","Australia/North":"au","Australia/NSW":"au","Australia/Perth":"au","Australia/Queensland":"au","Australia/South":"au","Australia/Sydney":"au","Australia/Tasmania":"au","Australia/Victoria":"au","Australia/West":"au","Australia/Yancowinna":"au","Brazil/Acre":"br","Brazil/DeNoronha":"br","Brazil/East":"br","Brazil/West":"br","Canada/Atlantic":"ca","Canada/Central":"ca","Canada/Eastern":"ca","Canada/Mountain":"ca","Canada/Newfoundland":"ca","Canada/Pacific":"ca","Canada/Saskatchewan":"ca","Canada/Yukon":"ca","Chile/Continental":"cl","Chile/EasterIsland":"cl","Cuba":"cu","Egypt":"eg","Eire":"ie","Europe/Amsterdam":"nl","Europe/Andorra":"ad","Europe/Astrakhan":"ru","Europe/Athens":"gr","Europe/Belfast":"gb","Europe/Belgrade":"rs","Europe/Berlin":"de","Europe/Bratislava":"sk","Europe/Brussels":"be","Europe/Bucharest":"ro","Europe/Budapest":"hu","Europe/Busingen":"de","Europe/Chisinau":"md","Europe/Copenhagen":"dk","Europe/Dublin":"ie","Europe/Gibraltar":"gi","Europe/Guernsey":"gg","Europe/Helsinki":"fi","Europe/Isle_of_Man":"im","Europe/Istanbul":"tr","Europe/Jersey":"je","Europe/Kaliningrad":"ru","Europe/Kiev":"ua","Europe/Kirov":"ru","Europe/Lisbon":"pt","Europe/Ljubljana":"si","Europe/London":"gb","Europe/Luxembourg":"lu","Europe/Madrid":"es","Europe/Malta":"mt","Europe/Mariehamn":"ax","Europe/Minsk":"by","Europe/Monaco":"mc","Europe/Moscow":"ru","Europe/Nicosia":"cy","Europe/Oslo":"no","Europe/Paris":"fr","Europe/Podgorica":"me","Europe/Prague":"cz","Europe/Riga":"lv","Europe/Rome":"it","Europe/Samara":"ru","Europe/San_Marino":"sm","Europe/Sarajevo":"ba","Europe/Saratov":"ru","Europe/Simferopol":"ru","Europe/Skopje":"mk","Europe/Sofia":"bg","Europe/Stockholm":"se","Europe/Tallinn":"ee","Europe/Tirane":"al","Europe/Tiraspol":"md","Europe/Ulyanovsk":"ru","Europe/Uzhgorod":"ua","Europe/Vaduz":"li","Europe/Vatican":"va","Europe/Vienna":"at","Europe/Vilnius":"lt","Europe/Volgograd":"ru","Europe/Warsaw":"pl","Europe/Zagreb":"hr","Europe/Zaporozhye":"ua","Europe/Zurich":"ch","GB":"gb","GB-Eire":"gb","Hongkong":"hk","Iceland":"is","Indian/Antananarivo":"mg","Indian/Chagos":"io","Indian/Christmas":"cx","Indian/Cocos":"cc","Indian/Comoro":"km","Indian/Kerguelen":"tf","Indian/Mahe":"sc","Indian/Maldives":"mv","Indian/Mauritius":"mu","Indian/Mayotte":"yt","Indian/Reunion":"re","Iran":"ir","Israel":"il","Jamaica":"jm","Japan":"jp","Kwajalein":"mh","Libya":"ly","Mexico/BajaNorte":"mx","Mexico/BajaSur":"mx","Mexico/General":"mx","Navajo":"us","NZ":"nz","NZ-CHAT":"nz","Pacific/Apia":"ws","Pacific/Auckland":"nz","Pacific/Bougainville":"pg","Pacific/Chatham":"nz","Pacific/Chuuk":"fm","Pacific/Easter":"cl","Pacific/Efate":"vu","Pacific/Enderbury":"ki","Pacific/Fakaofo":"tk","Pacific/Fiji":"fj","Pacific/Funafuti":"tv","Pacific/Galapagos":"ec","Pacific/Gambier":"pf","Pacific/Guadalcanal":"sb","Pacific/Guam":"gu","Pacific/Honolulu":"us","Pacific/Johnston":"um","Pacific/Kanton":"ki","Pacific/Kiritimati":"ki","Pacific/Kosrae":"fm","Pacific/Kwajalein":"mh","Pacific/Majuro":"mh","Pacific/Marquesas":"pf","Pacific/Midway":"um","Pacific/Nauru":"nr","Pacific/Niue":"nu","Pacific/Norfolk":"nf","Pacific/Noumea":"nc","Pacific/Pago_Pago":"as","Pacific/Palau":"pw","Pacific/Pitcairn":"pn","Pacific/Pohnpei":"fm","Pacific/Ponape":"fm","Pacific/Port_Moresby":"pg","Pacific/Rarotonga":"ck","Pacific/Saipan":"mp","Pacific/Samoa":"ws","Pacific/Tahiti":"pf","Pacific/Tarawa":"ki","Pacific/Tongatapu":"to","Pacific/Truk":"fm","Pacific/Wake":"um","Pacific/Wallis":"wf","Pacific/Yap":"fm","Poland":"pl","Portugal":"pt","PRC":"cn","ROC":"tw","ROK":"kr","Singapore":"sg","Turkey":"tr","US/Alaska":"us","US/Aleutian":"us","US/Arizona":"us","US/Central":"us","US/East-Indiana":"us","US/Eastern":"us","US/Hawaii":"us","US/Indiana-Starke":"us","US/Michigan":"us","US/Mountain":"us","US/Pacific":"us","US/Samoa":"ws","W-SU":"ru"};
+    var timezone = "";
+    var country = "us";
+    if (Intl && Intl.DateTimeFormat) timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (timezoneCountryMap[timezone]) country = timezoneCountryMap[timezone];
+    return country;
+  }
+  var phoneFields = document.querySelectorAll('[data-type="phone"]');
+  if (phoneFields && phoneFields.length) {
+    phoneFields.forEach(function(ele) {
+      window.intlTelInput(ele, {
+        initialCountry: "auto",
+        separateDialCode: true,
+        autoPlaceholder: false,
+        hiddenInput: ele.getAttribute("name"),
+        geoIpLookup: function(success, failure) { success(getCountryCode()); }
+      });
     });
   }
+});
+</script>
+
+<!-- vtiger hidden references -->
+<input type="hidden" id="phoneLibScript_2"  value="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/intlTelInput.min.js" disabled=""/>
+<input type="hidden" id="phoneUtilScript_2" value="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/utils.js" disabled=""/>
+
+<!-- jQuery + Select2 -->
+<script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/jquery/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
+
+<!-- Select2 init (vtiger original) -->
+<script type="text/javascript">
+window.addEventListener("load", function() {
+  var form = jQuery("#__vtigerWebForm_2");
+  form.find("select:visible").each(function() {
+    var isMultiple = jQuery(this).attr("multiple") !== undefined;
+    jQuery(this).select2({ tags: false, closeOnSelect: !isMultiple });
+  });
+});
+</script>
+
+<!-- vtiger hidden references -->
+<input type="hidden" id="jQueryScript_2"  value="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/jquery/jquery.min.js" disabled=""/>
+<input type="hidden" id="select2Script_2" value="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js" disabled=""/>
+
+<!-- vtiger submit + validation (original, untouched) -->
+<script type="text/javascript">
+window.addEventListener("load", function () {
+  var N = navigator.appName, ua = navigator.userAgent, tem;
+  var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+  if (M && (tem = ua.match(/version\/([\.\d]+)/i)) != null) M[2] = tem[1];
+  M = M ? [M[1], M[2]] : [N, navigator.appVersion, "-?"];
+  var form = document.getElementById("__vtigerWebForm_2"), inputs = form.elements;
+  form.onsubmit = function (event) {
+    document.getElementById("vtigerFormSubmitBtn_2").disabled = true;
+    var required = [], att, val;
+    var endDate, startDate, endDate1;
+    for (var i = 0; i < inputs.length; i++) {
+      att = inputs[i].getAttribute("required");
+      val = inputs[i].value;
+      type = inputs[i].type;
+      if (inputs[i].name == "birthday") {
+        birthdayDate = new Date(inputs[i].value); todayDate = new Date();
+        todayDate.setHours(0,0,0,0); birthdayDate.setHours(0,0,0,0);
+        if (birthdayDate >= todayDate) { alert("Date of Birth should be less than Today's Date."); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; }
+      }
+      if (inputs[i].getAttribute("data-type") == "anniversary" && inputs[i].value) {
+        anniversaryDate = new Date(inputs[i].value); todayDate = new Date();
+        todayDate.setHours(0,0,0,0); anniversaryDate.setHours(0,0,0,0);
+        if (anniversaryDate >= todayDate) { var anniversaryLabel = inputs[i].getAttribute("data-displaylabel"); alert(anniversaryLabel + " should be less than Today's Date."); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; }
+      }
+      if (inputs[i].name == "support_start_date" || inputs[i].name == "startdate") startDate = inputs[i].value;
+      if (inputs[i].name == "support_end_date" || inputs[i].name == "targetenddate" || inputs[i].name == "enddate") endDate = inputs[i].value;
+      if (inputs[i].name == "actualenddate") endDate1 = inputs[i].value;
+      if (type == "email") {
+        if (val != "") {
+          var elemLabel = inputs[i].getAttribute("data-label");
+          var emailFilter = /^[_/a-zA-Z0-9]+([!"#$%&()*+,./:;<=>?\^_`{|}~-]?[a-zA-Z0-9/_/-])*@[a-zA-Z0-9]+([\_\-\.]?[a-zA-Z0-9]+)*\.([\-\_]?[a-zA-Z0-9])+(\.?[a-zA-Z0-9]+)?$/;
+          var illegalChars = /[\(\)\<\>\,\;\:\"\[\]]/;
+          if (!emailFilter.test(val)) { alert("For " + elemLabel + " field please enter valid email address"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; }
+          else if (val.match(illegalChars)) { alert(elemLabel + " field contains illegal characters"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; }
+        }
+      }
+      if (startDate) {
+        if (typeof startDate !== "undefined") {
+          if (endDate && typeof endDate !== "undefined") { startDate = new Date(startDate); endDate = new Date(endDate); if (endDate < startDate) { alert("End Date should be greater than or equal to Start Date"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; } }
+          if (endDate1 && typeof endDate1 !== "undefined") { startDate = new Date(startDate); endDate1 = new Date(endDate1); if (endDate1 < startDate) { alert("End Date should be greater than or equal to Start Date"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; } }
+        }
+      }
+      if (att != null) { if (val.replace(/^\s+|\s+$/g, "") == "") { required.push(inputs[i].getAttribute("label")); } }
+    }
+    if (required.length > 0) { alert("The following fields are required: " + required.join()); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; }
+    var numberTypeInputs = document.querySelectorAll("input[type=number]");
+    for (var i = 0; i < numberTypeInputs.length; i++) { val = numberTypeInputs[i].value; var elemLabel = numberTypeInputs[i].getAttribute("label"); if (val != "") { var intRegex = /^[+-]?\d+$/; if (!intRegex.test(val)) { alert("For " + elemLabel + " field please enter valid number"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; } } }
+    var dateTypeInputs = document.querySelectorAll("input[type=date]");
+    for (var i = 0; i < dateTypeInputs.length; i++) { dateVal = dateTypeInputs[i].value; var elemLabel = dateTypeInputs[i].getAttribute("label"); if (dateVal != "") { var dateRegex = /^[1-9][0-9]{3}-(0[1-9]|1[0-2]|[1-9]{1})-(0[1-9]|[1-2][0-9]|3[0-1]|[1-9]{1})$/; if (!dateRegex.test(dateVal)) { alert("For " + elemLabel + " field please enter valid date in required format"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; } } }
+    var inputElems = document.getElementsByTagName("input"); var totalFileSize = 0;
+    for (var i = 0; i < inputElems.length; i++) { if (inputElems[i].type.toLowerCase() === "file") { var file = inputElems[i].files[0]; if (typeof file !== "undefined") { totalFileSize = totalFileSize + file.size; } } }
+    var dateTimeTypeInputs = document.querySelectorAll("input[type=datetime-local]");
+    for (var i = 0; i < dateTimeTypeInputs.length; i++) { dateTimeVal = dateTimeTypeInputs[i].value; var elemLabel = dateTimeTypeInputs[i].getAttribute("label"); if (dateTimeVal != "") { var dateTimeRegex = /^[1-9][0-9]{3}-(0[1-9]|1[0-2]|[1-9])-(0[1-9]|[12][0-9]|3[01]|[1-9])T(0[0-9]|1[0-9]|2[0-3]|[0-9]):([0-5][0-9]|[0-9])$/; if (!dateTimeRegex.test(dateTimeVal)) { alert("For " + elemLabel + " field please enter valid date in required format"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; } var formattedDateTime = dateTimeVal.replace("T", " "); var actulaFieldnameAttr = dateTimeTypeInputs[i].getAttribute("data-actual-fieldname"); document.querySelector("input[name=" + CSS.escape(actulaFieldnameAttr) + "]").value = formattedDateTime; } }
+    if (totalFileSize > 52428800) { alert("Maximum allowed file size including all files is 50MB."); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; }
+    var inputElem = document.querySelectorAll("input[type=file]"); var fileSize = 0;
+    for (var i = 0; i < inputElem.length; i++) { if (inputElem[i].type.toLowerCase() === "file") { if (inputElem[i].hasAttribute("selectedTypeImage")) { var imageFile = inputElem[i].files[0]; var fileSize = imageFile.size; } } if (fileSize > 5242880) { alert("Maximum allowed image size is 5MB."); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; } }
+  };
+  var getParams = function (a) {
+    var e = {}, t = document.createElement("a"); t.href = a;
+    for (var r = t.search.substring(1).split("&"), l = 0; l < r.length; l++) { var o = r[l].split("="); if (o[0]) { var c = decodeURIComponent(o[1]); c && ((e[o[0]] = c), c && localStorage.setItem(o[0], c)); } }
+    return e;
+  };
+  document.querySelectorAll("[data-type=storage]").forEach((a) => { if (a) { var e = a.getAttribute("data-param"), t = localStorage.getItem(e); t && (a.value = t); } });
+  var allParameters = getParams(window.location.href);
+  Object.keys(allParameters).length > 0 && document.querySelectorAll("[data-type=url]").forEach((a) => { if (a) { var e = a.getAttribute("data-param"); allParameters[e] && (a.value = allParameters[e]); } });
+});
+</script>
+
+<!-- Conditional: show Yacht Model row when "Yes" selected -->
+<script>
+(function() {
+  function initConditional() {
+    var sel   = document.getElementById("ownedYachtSelect");
+    var row   = document.getElementById("yachtModelRow");
+    var input = document.getElementById("yachtModelInput");
+    if (!sel || !row) return;
+
+    function update() {
+      // Select2 changes the underlying <select> value; read from there
+      var val = sel.value;
+      if (val === "Yes") {
+        row.style.display = "flex";
+        if (input) input.disabled = false;
+      } else {
+        row.style.display = "none";
+        if (input) { input.disabled = true; input.value = ""; }
+      }
+    }
+
+    // native change
+    sel.addEventListener("change", update);
+    // Select2 fires its own event on the element after init
+    if (window.jQuery) {
+      jQuery(sel).on("change", update);
+    }
+  }
+
+  // Run after all scripts (Select2 etc.) have loaded
+  window.addEventListener("load", initConditional);
 })();
 </script>
 
