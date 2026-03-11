@@ -8,14 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Prata&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Select2 CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css"/>
-  <!-- intl-tel-input CSS -->
   <link rel="stylesheet" href="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/css/intlTelInput.min.css"/>
 
   <style>
-    /* ── BRAND VARS ─────────────────────────────── */
     :root {
       --gold:      #A77660;
       --blue:      #23576A;
@@ -27,9 +23,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { -webkit-text-size-adjust: 100%; }
-
     body {
       font-family: "Rajdhani", sans-serif;
       font-weight: 300;
@@ -37,19 +31,13 @@
       color: var(--gray);
       background: var(--white);
     }
-
     a { color: var(--blue); text-decoration: none; }
     a:hover { color: var(--black); }
     img { max-width: 100%; height: auto; display: block; }
 
-    /* ── LAYOUT ─────────────────────────────────── */
-    .alignwide {
-      max-width: 1340px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
+    .alignwide { max-width: 1340px; margin: 0 auto; padding: 0 40px; }
 
-    /* ── HEADER ──────────────────────────────────── */
+    /* HEADER */
     header {
       background: var(--white);
       position: sticky;
@@ -65,16 +53,9 @@
       max-width: 1640px;
       margin: 0 auto;
       padding: 0 40px;
-      position: relative;
     }
-    .header-logo {
-      display: flex;
-      align-items: center;
-    }
-    .header-logo img {
-      height: 36px;
-    }
-    /* fallback text logo if image fails */
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; }
     .header-logo-text {
       font-family: 'Prata', serif;
       font-size: 1.1rem;
@@ -83,11 +64,8 @@
       text-transform: uppercase;
     }
 
-    /* ── FORM SECTION ────────────────────────────── */
-    .contact-section {
-      background: var(--blue);
-      padding: 100px 0 120px;
-    }
+    /* FORM SECTION */
+    .contact-section { background: var(--blue); padding: 100px 0 120px; }
     .contact-section-title {
       font-family: 'Prata', serif;
       font-size: clamp(1.8rem, 3vw, 2.6rem);
@@ -98,35 +76,12 @@
       line-height: 1.3;
     }
 
-    /* ── VTIGER FORM WRAPPER ─────────────────────── */
-    #__vtigerWebForm_2 {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    /* Remove default table layout, use CSS grid */
-    #__vtigerWebForm_2 table {
-      display: grid;
-      grid-template-columns: 1fr;
-      width: 100%;
-    }
-    #__vtigerWebForm_2 table tbody {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px 50px;
-      width: 100%;
-    }
-    #__vtigerWebForm_2 table tr {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    /* Full-width rows */
-    #__vtigerWebForm_2 table tr.row-full {
-      grid-column: 1 / -1;
-    }
-
-    /* Labels */
+    /* VTIGER FORM */
+    #__vtigerWebForm_2 { max-width: 1000px; margin: 0 auto; }
+    #__vtigerWebForm_2 table { display: grid; grid-template-columns: 1fr; width: 100%; }
+    #__vtigerWebForm_2 table tbody { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 50px; width: 100%; }
+    #__vtigerWebForm_2 table tr { display: flex; flex-direction: column; }
+    #__vtigerWebForm_2 table tr.row-full { grid-column: 1 / -1; }
     #__vtigerWebForm_2 table tr td:first-child label {
       display: block;
       color: rgba(255,255,255,0.5);
@@ -137,15 +92,10 @@
       letter-spacing: 0.12em;
       margin-bottom: 6px;
     }
-    /* Hide the 3rd td (vtField honeypot) */
-    #__vtigerWebForm_2 table tr td:nth-child(3) {
-      display: none;
-    }
-    #__vtigerWebForm_2 table tr td {
-      display: block;
-    }
+    #__vtigerWebForm_2 table tr td:nth-child(3) { display: none; }
+    #__vtigerWebForm_2 table tr td { display: block; }
 
-    /* ── BASE INPUT STYLES ───────────────────────── */
+    /* INPUTS */
     #__vtigerWebForm_2 input[type=text],
     #__vtigerWebForm_2 input[type=email] {
       width: 100%;
@@ -163,245 +113,129 @@
       -webkit-appearance: none;
     }
     #__vtigerWebForm_2 input[type=text]:focus,
-    #__vtigerWebForm_2 input[type=email]:focus {
-      border-bottom-color: var(--gold);
-    }
+    #__vtigerWebForm_2 input[type=email]:focus { border-bottom-color: var(--gold); }
     #__vtigerWebForm_2 input[type=text]::placeholder,
-    #__vtigerWebForm_2 input[type=email]::placeholder {
-      color: rgba(255,255,255,0.35);
-    }
+    #__vtigerWebForm_2 input[type=email]::placeholder { color: rgba(255,255,255,0.35); }
 
-    /* ── PHONE FIELD (intl-tel-input overrides) ──── */
+    /* PHONE */
     .iti { width: 100%; }
     .iti__flag-container { border-bottom: none; }
-    .iti--separate-dial-code .iti__selected-flag {
-      background: transparent;
-      border-bottom: none;
-    }
-    .iti--separate-dial-code .iti__selected-dial-code {
-      color: rgba(255,255,255,0.7);
-      font-family: "Rajdhani", sans-serif;
-    }
-    .iti--separate-dial-code input[type=text] {
-      padding-left: 90px !important;
-    }
-    #__vtigerWebForm_2 .iti input[type=text] {
-      border-bottom: 1px solid rgba(255,255,255,0.6);
-    }
-    #__vtigerWebForm_2 .iti input[type=text]:focus {
-      border-bottom-color: var(--gold);
-    }
+    .iti--separate-dial-code .iti__selected-flag { background: transparent; border-bottom: none; }
+    .iti--separate-dial-code .iti__selected-dial-code { color: rgba(255,255,255,0.7); font-family: "Rajdhani", sans-serif; }
+    .iti--separate-dial-code input[type=text] { padding-left: 90px !important; }
+    #__vtigerWebForm_2 .iti input[type=text] { border-bottom: 1px solid rgba(255,255,255,0.6); }
+    #__vtigerWebForm_2 .iti input[type=text]:focus { border-bottom-color: var(--gold); }
 
-    /* ── SELECT2 OVERRIDES ───────────────────────── */
+    /* SELECT2 */
     .select2-container--default .select2-selection--single {
-      background: transparent !important;
-      border: none !important;
+      background: transparent !important; border: none !important;
       border-bottom: 1px solid rgba(255,255,255,0.6) !important;
-      border-radius: 0 !important;
-      height: auto !important;
-      padding: 4px 0 !important;
+      border-radius: 0 !important; height: auto !important; padding: 4px 0 !important;
     }
     .select2-container--default .select2-selection--single:focus-within,
-    .select2-container--default.select2-container--open .select2-selection--single {
-      border-bottom-color: var(--gold) !important;
-    }
+    .select2-container--default.select2-container--open .select2-selection--single { border-bottom-color: var(--gold) !important; }
     .select2-container--default .select2-selection--single .select2-selection__rendered {
-      color: var(--white) !important;
-      font-family: "Rajdhani", sans-serif !important;
-      font-size: 1.15rem !important;
-      font-weight: 300 !important;
-      line-height: 1.6 !important;
-      padding-left: 0 !important;
+      color: var(--white) !important; font-family: "Rajdhani", sans-serif !important;
+      font-size: 1.15rem !important; font-weight: 300 !important; line-height: 1.6 !important; padding-left: 0 !important;
     }
-    .select2-container--default .select2-selection--single .select2-selection__placeholder {
-      color: rgba(255,255,255,0.35) !important;
-    }
-    .select2-container--default .select2-selection--single .select2-selection__arrow {
-      top: 4px !important;
-    }
-    .select2-container--default .select2-selection--single .select2-selection__arrow b {
-      border-color: rgba(255,255,255,0.5) transparent transparent transparent !important;
-    }
-    .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
-      border-color: transparent transparent var(--gold) transparent !important;
-    }
-    /* Dropdown panel */
-    .select2-dropdown {
-      background: var(--blue) !important;
-      border: 1px solid rgba(255,255,255,0.15) !important;
-      border-radius: 0 !important;
-    }
-    .select2-container--default .select2-results__option {
-      color: rgba(255,255,255,0.8) !important;
-      font-family: "Rajdhani", sans-serif !important;
-      font-size: 1rem !important;
-      font-weight: 300 !important;
-      padding: 8px 12px !important;
-    }
-    .select2-container--default .select2-results__option--highlighted[aria-selected] {
-      background: rgba(167,118,96,0.35) !important;
-      color: var(--white) !important;
-    }
-    .select2-container--default .select2-results__option[aria-selected=true] {
-      background: rgba(167,118,96,0.2) !important;
-    }
-    .select2-search--dropdown .select2-search__field {
-      background: rgba(255,255,255,0.08) !important;
-      border: 1px solid rgba(255,255,255,0.15) !important;
-      color: var(--white) !important;
-      font-family: "Rajdhani", sans-serif !important;
-    }
+    .select2-container--default .select2-selection--single .select2-selection__placeholder { color: rgba(255,255,255,0.35) !important; }
+    .select2-container--default .select2-selection--single .select2-selection__arrow { top: 4px !important; }
+    .select2-container--default .select2-selection--single .select2-selection__arrow b { border-color: rgba(255,255,255,0.5) transparent transparent transparent !important; }
+    .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b { border-color: transparent transparent var(--gold) transparent !important; }
+    .select2-dropdown { background: var(--blue) !important; border: 1px solid rgba(255,255,255,0.15) !important; border-radius: 0 !important; }
+    .select2-container--default .select2-results__option { color: rgba(255,255,255,0.8) !important; font-family: "Rajdhani", sans-serif !important; font-size: 1rem !important; font-weight: 300 !important; padding: 8px 12px !important; }
+    .select2-container--default .select2-results__option--highlighted[aria-selected] { background: rgba(167,118,96,0.35) !important; color: var(--white) !important; }
+    .select2-container--default .select2-results__option[aria-selected=true] { background: rgba(167,118,96,0.2) !important; }
+    .select2-search--dropdown .select2-search__field { background: rgba(255,255,255,0.08) !important; border: 1px solid rgba(255,255,255,0.15) !important; color: var(--white) !important; font-family: "Rajdhani", sans-serif !important; }
     .select2-container { width: 100% !important; }
 
-    /* ── CHECKBOXES ──────────────────────────────── */
-    .checkbox-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      cursor: pointer;
-    }
+    /* CHECKBOXES */
+    .checkbox-row { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
     #__vtigerWebForm_2 input[type=checkbox] {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 17px;
-      height: 17px;
-      min-width: 17px;
+      -webkit-appearance: none; appearance: none;
+      width: 17px; height: 17px; min-width: 17px;
       border: 1px solid rgba(255,255,255,0.6);
-      background: transparent;
-      cursor: pointer;
-      position: relative;
-      margin-top: 2px;
-      transition: background 0.2s, border-color 0.2s;
-      flex-shrink: 0;
+      background: transparent; cursor: pointer; position: relative; margin-top: 2px;
+      transition: background 0.2s, border-color 0.2s; flex-shrink: 0;
     }
-    #__vtigerWebForm_2 input[type=checkbox]:checked {
-      background: var(--gold);
-      border-color: var(--gold);
-    }
+    #__vtigerWebForm_2 input[type=checkbox]:checked { background: var(--gold); border-color: var(--gold); }
     #__vtigerWebForm_2 input[type=checkbox]:checked::after {
-      content: '';
-      position: absolute;
-      left: 4px; top: 1px;
-      width: 5px; height: 9px;
-      border: 2px solid #fff;
-      border-top: none;
-      border-left: none;
-      transform: rotate(45deg);
+      content: ''; position: absolute; left: 4px; top: 1px; width: 5px; height: 9px;
+      border: 2px solid #fff; border-top: none; border-left: none; transform: rotate(45deg);
     }
-    /* Hide vtiger's paired hidden checkbox inputs */
     #__vtigerWebForm_2 input[type=hidden] { display: none; }
+    .checkbox-label-text { color: rgba(255,255,255,0.75); font-family: "Rajdhani", sans-serif; font-size: 0.95rem; font-weight: 300; line-height: 1.5; }
+    .checkbox-label-text a { color: var(--white); text-decoration: underline; text-underline-offset: 2px; }
 
-    /* Checkbox label text */
-    .checkbox-label-text {
-      color: rgba(255,255,255,0.75);
-      font-family: "Rajdhani", sans-serif;
-      font-size: 0.95rem;
-      font-weight: 300;
-      line-height: 1.5;
-    }
-    .checkbox-label-text a {
-      color: var(--white);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
+    /* PRIVACY TEXT */
+    .privacy-text { color: rgba(255,255,255,0.55); font-size: 0.88rem; line-height: 1.65; padding: 24px 0 8px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .privacy-text a { color: rgba(255,255,255,0.75); text-decoration: underline; }
 
-    /* ── PRIVACY TEXT ────────────────────────────── */
-    .privacy-text {
-      color: rgba(255,255,255,0.55);
-      font-size: 0.88rem;
-      line-height: 1.65;
-      padding: 24px 0 8px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    .privacy-text a {
-      color: rgba(255,255,255,0.75);
-      text-decoration: underline;
-    }
-
-    /* ── SUBMIT BUTTON ───────────────────────────── */
-    .form-submit-row {
-      margin-top: 40px;
-      text-align: center;
-    }
+    /* SUBMIT */
+    .form-submit-row { margin-top: 40px; text-align: center; }
     #vtigerFormSubmitBtn_2 {
-      background: none;
-      border: none;
-      border-bottom: 2px solid var(--gold);
-      border-radius: 0;
-      color: var(--white);
-      font-family: "Rajdhani", sans-serif;
-      font-size: 1.3rem;
-      font-weight: 300;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0 0 2px;
-      cursor: pointer;
-      transition: border-bottom-width 0.3s, padding-bottom 0.3s;
-      display: inline-block;
+      background: none; border: none; border-bottom: 2px solid var(--gold); border-radius: 0;
+      color: var(--white); font-family: "Rajdhani", sans-serif; font-size: 1.3rem; font-weight: 300;
+      letter-spacing: 0.12em; text-transform: uppercase; padding: 0 0 2px; cursor: pointer;
+      transition: border-bottom-width 0.3s, padding-bottom 0.3s; display: inline-block;
     }
-    #vtigerFormSubmitBtn_2:hover {
-      border-bottom-width: 0;
-      padding-bottom: 4px;
+    #vtigerFormSubmitBtn_2:hover { border-bottom-width: 0; padding-bottom: 4px; }
+    #vtigerFormSubmitBtn_2:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* LOADER OVERLAY */
+    #fy-loader {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(35, 87, 106, 0.78);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 28px;
     }
-    #vtigerFormSubmitBtn_2:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
+    #fy-loader.active { display: flex; }
+    body.fy-loading * { pointer-events: none !important; }
+    body.fy-loading #fy-loader { pointer-events: auto !important; }
+    .fy-spinner {
+      width: 56px; height: 56px; position: relative;
+    }
+    .fy-spinner::before,
+    .fy-spinner::after {
+      content: ''; position: absolute; inset: 0; border-radius: 50%; border: 3px solid transparent;
+    }
+    .fy-spinner::before {
+      border-top-color: var(--gold); border-right-color: var(--gold);
+      animation: fy-spin 1s linear infinite;
+    }
+    .fy-spinner::after {
+      border-bottom-color: rgba(255,255,255,0.25); border-left-color: rgba(255,255,255,0.25);
+      animation: fy-spin 1s linear infinite reverse;
+    }
+    @keyframes fy-spin { to { transform: rotate(360deg); } }
+    .fy-loader-text {
+      font-family: 'Rajdhani', sans-serif; font-size: 0.9rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.65);
     }
 
-    /* ── FOOTER ──────────────────────────────────── */
-    footer {
-      background: var(--sage);
-      padding: 70px 0 30px;
-    }
-    .footer-inner {
-      max-width: 1340px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-    .footer-cols {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(35,87,106,0.15);
-    }
-    .footer-col-title {
-      font-family: 'Prata', serif;
-      color: var(--blue);
-      font-size: 1rem;
-      margin-bottom: 16px;
-    }
-    .footer-col-body {
-      color: var(--blue);
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-    .footer-col-body a {
-      display: block;
-      color: var(--blue);
-    }
+    /* FOOTER */
+    footer { background: var(--sage); padding: 70px 0 30px; }
+    .footer-inner { max-width: 1340px; margin: 0 auto; padding: 0 40px; }
+    .footer-cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(35,87,106,0.15); }
+    .footer-col-title { font-family: 'Prata', serif; color: var(--blue); font-size: 1rem; margin-bottom: 16px; }
+    .footer-col-body { color: var(--blue); font-size: 0.95rem; line-height: 1.8; }
+    .footer-col-body a { display: block; color: var(--blue); }
     .footer-col-body a:hover { text-decoration: underline; }
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 20px;
-      font-size: 0.82rem;
-      color: var(--blue);
-    }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; font-size: 0.82rem; color: var(--blue); }
     .footer-bottom a { color: var(--blue); text-decoration: underline; }
 
-    /* ── RESPONSIVE ──────────────────────────────── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-      #__vtigerWebForm_2 table tbody {
-        grid-template-columns: 1fr;
-      }
-      #__vtigerWebForm_2 table tr.row-full {
-        grid-column: 1;
-      }
-      .footer-cols {
-        grid-template-columns: 1fr 1fr;
-      }
+      #__vtigerWebForm_2 table tbody { grid-template-columns: 1fr; }
+      #__vtigerWebForm_2 table tr.row-full { grid-column: 1; }
+      .footer-cols { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
       .alignwide { padding: 0 20px; }
@@ -413,9 +247,13 @@
 </head>
 <body>
 
-<!-- ════════════════════════════════════════
-     HEADER
-════════════════════════════════════════ -->
+<!-- LOADER OVERLAY -->
+<div id="fy-loader" role="status" aria-live="polite" aria-label="Sending your request&hellip;">
+  <div class="fy-spinner"></div>
+  <span class="fy-loader-text">Sending&hellip;</span>
+</div>
+
+<!-- HEADER -->
 <header>
   <div class="header-inner">
     <a href="https://filippettiyachts.com/it/" class="header-logo">
@@ -429,20 +267,15 @@
   </div>
 </header>
 
-<!-- ════════════════════════════════════════
-     CONTACT FORM SECTION
-════════════════════════════════════════ -->
+<!-- CONTACT FORM SECTION -->
 <section class="contact-section">
   <div class="alignwide">
 
-    <h1 class="contact-section-title">
-      Contact us to receive more information
-    </h1>
+    <h1 class="contact-section-title">Contact us to receive more information</h1>
 
-    <!-- ── VTIGER WEBFORM (original fields + hooks preserved) ── -->
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 
-    <!-- Hidden iframe absorbs vtiger's JSON response so the page doesn't redirect -->
+    <!-- Hidden iframe absorbs vtiger's JSON response -->
     <iframe name="vtiger_sink" id="vtiger_sink" style="display:none;" aria-hidden="true"></iframe>
 
     <form
@@ -454,208 +287,166 @@
       enctype="multipart/form-data"
       target="vtiger_sink"
     >
-      <!-- vtiger required hidden fields -->
       <input type="hidden" name="publicid"        value="d1b5b5e03206515ce42106af0d0f4a62"/>
       <input type="hidden" name="urlencodeenable" value="1"/>
       <input type="hidden" name="name"            value="FILIPPETTI YACHTS"/>
       <input type="hidden" name="__vtCurrency"    value="1"/>
 
-      <table>
-        <tbody>
+      <table><tbody>
 
-          <!-- Last Name -->
-          <tr>
-            <td><label>Last Name *</label></td>
-            <td>
-              <input type="text" name="lastname" maxlength="80" data-label="" value="" required="" placeholder="Last Name *"/>
-            </td>
-            <td>
-              <!-- vtField honeypot -->
-              <input type="checkbox" name="vtField" value="1" style="display:none !important" tabindex="-1" autocomplete="off"/>
-            </td>
-          </tr>
+        <tr>
+          <td><label>Last Name *</label></td>
+          <td><input type="text" name="lastname" maxlength="80" data-label="" value="" required="" placeholder="Last Name *"/></td>
+          <td><input type="checkbox" name="vtField" value="1" style="display:none !important" tabindex="-1" autocomplete="off"/></td>
+        </tr>
 
-          <!-- Primary Email -->
-          <tr>
-            <td><label>Primary Email *</label></td>
-            <td>
-              <input type="email" name="email" data-label="Primary Email" value="" required="" placeholder="Email *"/>
-            </td>
-          </tr>
+        <tr>
+          <td><label>Primary Email *</label></td>
+          <td><input type="email" name="email" data-label="Primary Email" value="" required="" placeholder="Email *"/></td>
+        </tr>
 
-          <!-- Office Phone -->
-          <tr>
-            <td><label>Office Phone</label></td>
-            <td>
-              <input type="text" name="phone" maxlength="50" data-label="" value="" data-type="phone" placeholder="Phone"/>
-            </td>
-          </tr>
+        <tr>
+          <td><label>Office Phone</label></td>
+          <td><input type="text" name="phone" maxlength="50" data-label="" value="" data-type="phone" placeholder="Phone"/></td>
+        </tr>
 
-          <!-- Contact Type -->
-          <tr>
-            <td><label>Contact Type *</label></td>
-            <td>
-              <select name="contacttype" data-label="contacttype" required="">
-                <option value="">Select Value</option>
-                <option value="Lead">Lead</option>
-                <option value="Customer">Customer</option>
-                <option value="Broker">Broker</option>
-                <option value="Dealer">Dealer</option>
-                <option value="Competitor">Competitor</option>
-                <option value="Captain">Captain</option>
-                <option value="Surveyor">Surveyor</option>
-                <option value="Supplier/ Technician / Vendor">Supplier / Technician / Vendor</option>
-                <option value="Boat Manager">Boat Manager</option>
-                <option value="Insurance Broker">Insurance Broker</option>
-                <option value="Lawyer/ Law Firm">Lawyer / Law Firm</option>
-                <option value="Press">Press</option>
-                <option value="Other">Other</option>
-                <option value="Editor">Editor</option>
-              </select>
-            </td>
-          </tr>
+        <tr>
+          <td><label>Contact Type *</label></td>
+          <td>
+            <select name="contacttype" data-label="contacttype" required="">
+              <option value="">Select Value</option>
+              <option value="Lead">Lead</option>
+              <option value="Customer">Customer</option>
+              <option value="Broker">Broker</option>
+              <option value="Dealer">Dealer</option>
+              <option value="Competitor">Competitor</option>
+              <option value="Captain">Captain</option>
+              <option value="Surveyor">Surveyor</option>
+              <option value="Supplier/ Technician / Vendor">Supplier / Technician / Vendor</option>
+              <option value="Boat Manager">Boat Manager</option>
+              <option value="Insurance Broker">Insurance Broker</option>
+              <option value="Lawyer/ Law Firm">Lawyer / Law Firm</option>
+              <option value="Press">Press</option>
+              <option value="Other">Other</option>
+              <option value="Editor">Editor</option>
+            </select>
+          </td>
+        </tr>
 
-          <!-- Interested in -->
-          <tr>
-            <td><label>Interested in</label></td>
-            <td>
-              <select name="cf_contacts_interestedin" data-label="label:Interested+in">
-                <option value="">Select Value</option>
-                <option value="New Yacht">New Yacht</option>
-                <option value="Pre Owned Yacht">Pre Owned Yacht</option>
-                <option value="New and Pre Owned Yacht">New and Pre Owned Yacht</option>
-                <option value="Refitting">Refitting</option>
-                <option value="Service">Service</option>
-                <option value="Charter">Charter</option>
-                <option value="Represent Filippetti Yachts">Represent Filippetti Yachts</option>
-                <option value="Other">Other</option>
-              </select>
-            </td>
-          </tr>
+        <tr>
+          <td><label>Interested in</label></td>
+          <td>
+            <select name="cf_contacts_interestedin" data-label="label:Interested+in">
+              <option value="">Select Value</option>
+              <option value="New Yacht">New Yacht</option>
+              <option value="Pre Owned Yacht">Pre Owned Yacht</option>
+              <option value="New and Pre Owned Yacht">New and Pre Owned Yacht</option>
+              <option value="Refitting">Refitting</option>
+              <option value="Service">Service</option>
+              <option value="Charter">Charter</option>
+              <option value="Represent Filippetti Yachts">Represent Filippetti Yachts</option>
+              <option value="Other">Other</option>
+            </select>
+          </td>
+        </tr>
 
-          <!-- Yacht Owner -->
-          <tr>
-            <td><label>Yacht Owner</label></td>
-            <td>
-              <select name="cf_contacts_ownedyacht" data-label="label:Owned+Yacht" id="ownedYachtSelect">
-                <option value="">Select Value</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-          </tr>
+        <tr>
+          <td><label>Yacht Owner</label></td>
+          <td>
+            <select name="cf_contacts_ownedyacht" data-label="label:Owned+Yacht" id="ownedYachtSelect">
+              <option value="">Select Value</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </td>
+        </tr>
 
-          <!-- Yacht Model and Year (shown conditionally) -->
-          <tr id="yachtModelRow" class="row-full" style="display:none;">
-            <td><label>Yacht Owned — Model and Year</label></td>
-            <td>
-              <input type="text" name="cf_contacts_modelyachtowned" maxlength="50" data-label="" value="" placeholder="Modello / Anno" id="yachtModelInput" disabled/>
-            </td>
-          </tr>
+        <tr id="yachtModelRow" class="row-full" style="display:none;">
+          <td><label>Yacht Owned — Model and Year</label></td>
+          <td><input type="text" name="cf_contacts_modelyachtowned" maxlength="50" data-label="" value="" placeholder="Modello / Anno" id="yachtModelInput" disabled/></td>
+        </tr>
 
-          <!-- Length -->
-          <tr>
-            <td><label>Length</label></td>
-            <td>
-              <select name="cf_contacts_length" data-label="label:Length">
-                <option value="">Select Value</option>
-                <option value="up to 10mt/33ft">up to 10mt / 33ft</option>
-                <option value="10mt-15mt (33ft - 49ft)">10mt–15mt (33ft–49ft)</option>
-                <option value="15mt-20mt (50ft - 66ft)">15mt–20mt (50ft–66ft)</option>
-                <option value="20mt-25mt (67ft - 82ft)">20mt–25mt (67ft–82ft)</option>
-                <option value="25mt-30mt (82ft - 98ft)">25mt–30mt (82ft–98ft)</option>
-                <option value="30mt-35mt (99ft - 115ft)">30mt–35mt (99ft–115ft)</option>
-                <option value="35mt/116ft and more">35mt / 116ft and more</option>
-              </select>
-            </td>
-          </tr>
+        <tr>
+          <td><label>Length</label></td>
+          <td>
+            <select name="cf_contacts_length" data-label="label:Length">
+              <option value="">Select Value</option>
+              <option value="up to 10mt/33ft">up to 10mt / 33ft</option>
+              <option value="10mt-15mt (33ft - 49ft)">10mt&ndash;15mt (33ft&ndash;49ft)</option>
+              <option value="15mt-20mt (50ft - 66ft)">15mt&ndash;20mt (50ft&ndash;66ft)</option>
+              <option value="20mt-25mt (67ft - 82ft)">20mt&ndash;25mt (67ft&ndash;82ft)</option>
+              <option value="25mt-30mt (82ft - 98ft)">25mt&ndash;30mt (82ft&ndash;98ft)</option>
+              <option value="30mt-35mt (99ft - 115ft)">30mt&ndash;35mt (99ft&ndash;115ft)</option>
+              <option value="35mt/116ft and more">35mt / 116ft and more</option>
+            </select>
+          </td>
+        </tr>
 
-          <!-- Budget -->
-          <tr>
-            <td><label>Budget — specify € or $</label></td>
-            <td>
-              <input type="text" name="cf_contacts_budget" maxlength="30" data-label="" value="" placeholder="Budget"/>
-            </td>
-          </tr>
+        <tr>
+          <td><label>Budget &mdash; specify &euro; or $</label></td>
+          <td><input type="text" name="cf_contacts_budget" maxlength="30" data-label="" value="" placeholder="Budget"/></td>
+        </tr>
 
-          <!-- Privacy text row -->
-          <tr class="row-full">
-            <td colspan="2">
-              <div class="privacy-text">
-                Privacy notice pursuant to Art. 13 of EU Regulation no. 679/2016.
-                The data entered in this form may be shared with third parties who are
-                independent data controllers directly connected to Filippetti Yachts,
-                for the purpose of responding to your request. For further details please
-                refer to the full text of the
-                <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a>.
-              </div>
-            </td>
-          </tr>
+        <tr class="row-full">
+          <td colspan="2">
+            <div class="privacy-text">
+              Privacy notice pursuant to Art. 13 of EU Regulation no. 679/2016.
+              The data entered in this form may be shared with third parties who are independent data controllers
+              directly connected to Filippetti Yachts, for the purpose of responding to your request.
+              For further details please refer to the full text of the
+              <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a>.
+            </div>
+          </td>
+        </tr>
 
-          <!-- Email Opt-in -->
-          <tr class="row-full">
-            <td><label>Email Opt-in *</label></td>
-            <td>
-              <label class="checkbox-row">
-                <input type="hidden"   name="emailoptin" data-label="" value="0"/>
-                <input type="checkbox" name="emailoptin" data-label="" value="1" required=""/>
-                <span class="checkbox-label-text">
-                  I consent to receiving commercial communications by email from Filippetti Yachts <strong>*</strong>
-                </span>
-              </label>
-            </td>
-          </tr>
+        <tr class="row-full">
+          <td><label>Email Opt-in *</label></td>
+          <td>
+            <label class="checkbox-row">
+              <input type="hidden"   name="emailoptin" data-label="" value="0"/>
+              <input type="checkbox" name="emailoptin" data-label="" value="1" required=""/>
+              <span class="checkbox-label-text">I consent to receiving commercial communications by email from Filippetti Yachts <strong>*</strong></span>
+            </label>
+          </td>
+        </tr>
 
-          <!-- Privacy Policy Authorization -->
-          <tr class="row-full">
-            <td><label>Privacy Policy Authorization</label></td>
-            <td>
-              <label class="checkbox-row">
-                <input type="hidden"   name="cf_contacts_privacypolicyauthorization" data-label="" value="0"/>
-                <input type="checkbox" name="cf_contacts_privacypolicyauthorization" data-label="" value="1"/>
-                <span class="checkbox-label-text">
-                  I have read the <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a>
-                  and I authorise the use of my personal data for the purposes of this form
-                </span>
-              </label>
-            </td>
-          </tr>
+        <tr class="row-full">
+          <td><label>Privacy Policy Authorization</label></td>
+          <td>
+            <label class="checkbox-row">
+              <input type="hidden"   name="cf_contacts_privacypolicyauthorization" data-label="" value="0"/>
+              <input type="checkbox" name="cf_contacts_privacypolicyauthorization" data-label="" value="1"/>
+              <span class="checkbox-label-text">I have read the <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a> and I authorise the use of my personal data for the purposes of this form</span>
+            </label>
+          </td>
+        </tr>
 
-          <!-- Newsletter Authorization -->
-          <tr class="row-full">
-            <td><label>Newsletter Authorization</label></td>
-            <td>
-              <label class="checkbox-row">
-                <input type="hidden"   name="cf_contacts_newsletterauthorization" data-label="" value="0"/>
-                <input type="checkbox" name="cf_contacts_newsletterauthorization" data-label="" value="1"/>
-                <span class="checkbox-label-text">
-                  Subscribe to our newsletter to receive updates and news
-                </span>
-              </label>
-            </td>
-          </tr>
+        <tr class="row-full">
+          <td><label>Newsletter Authorization</label></td>
+          <td>
+            <label class="checkbox-row">
+              <input type="hidden"   name="cf_contacts_newsletterauthorization" data-label="" value="0"/>
+              <input type="checkbox" name="cf_contacts_newsletterauthorization" data-label="" value="1"/>
+              <span class="checkbox-label-text">Subscribe to our newsletter to receive updates and news</span>
+            </label>
+          </td>
+        </tr>
 
-        </tbody>
-      </table>
+      </tbody></table>
 
-      <!-- Submit -->
       <div class="form-submit-row">
         <input type="submit" value="Send request" id="vtigerFormSubmitBtn_2"/>
       </div>
 
     </form>
-    <!-- /vtiger form -->
 
-    <!-- Vtiger required hidden fields outside form (as in original) -->
-    <input type="hidden" name="isCaptchaEnabled"     value="" disabled=""/>
+    <input type="hidden" name="isCaptchaEnabled"      value="" disabled=""/>
     <input type="hidden" name="isVerificationEnabled" value="0" disabled=""/>
 
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-cols">
@@ -663,10 +454,11 @@
         <div class="footer-col-title">Headquarter</div>
         <div class="footer-col-body">
           FSY S.r.l.<br>
-          Via Val Cesano 66<br>
-          61037 Mondolfo (PU) – Italy<br><br>
-          <a href="/cdn-cgi/l/email-protection#6211030e071122040b0e0b12120716160b1b03010a16114c010d0f"><span class="__cf_email__" data-cfemail="99eaf8f5fcead9fff0f5f0e9e9fcededf0e0f8faf1edeab7faf6f4">[email&#160;protected]</span></a>
-          <a href="tel:+390721930262">+39 0721 930 262</a>
+          Sede Operativa / Operational Headquarters<br>
+          Via Val Cesano 66, 61037 Mondolfo (PU), Italy<br>
+          Sede Legale / Registered Office<br>
+          Via Nicol&ograve; Porpora 12, 00198 Roma, Italy<br>
+          C.f e P.Iva / Tax No. 16621211008
         </div>
       </div>
       <div>
@@ -698,7 +490,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Filippetti Yachts – All rights reserved –
+      <span>&copy; <script>document.write(new Date().getFullYear())</script> Filippetti Yachts &ndash; All rights reserved &ndash;
         <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy &amp; Cookie Policy</a>
       </span>
       <span>Made with love and care by <a href="https://bebit.it/" target="_blank">Bebit</a></span>
@@ -706,14 +498,10 @@
   </div>
 </footer>
 
-<!-- ════════════════════════════════════════
-     SCRIPTS (vtiger originals, preserved exactly)
-════════════════════════════════════════ -->
-<!-- intl-tel-input -->
+<!-- SCRIPTS -->
 <script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
 <script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/utils.js"></script>
 
-<!-- intl-tel-input init (vtiger original) -->
 <script type="text/javascript">
 window.addEventListener("load", function () {
   function getCountryCode() {
@@ -728,9 +516,7 @@ window.addEventListener("load", function () {
   if (phoneFields && phoneFields.length) {
     phoneFields.forEach(function(ele) {
       window.intlTelInput(ele, {
-        initialCountry: "auto",
-        separateDialCode: true,
-        autoPlaceholder: false,
+        initialCountry: "auto", separateDialCode: true, autoPlaceholder: false,
         hiddenInput: ele.getAttribute("name"),
         geoIpLookup: function(success, failure) { success(getCountryCode()); }
       });
@@ -739,15 +525,12 @@ window.addEventListener("load", function () {
 });
 </script>
 
-<!-- vtiger hidden references -->
 <input type="hidden" id="phoneLibScript_2"  value="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/intlTelInput.min.js" disabled=""/>
 <input type="hidden" id="phoneUtilScript_2" value="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/utils.js" disabled=""/>
 
-<!-- jQuery + Select2 -->
 <script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/jquery/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
 
-<!-- Select2 init (vtiger original) -->
 <script type="text/javascript">
 window.addEventListener("load", function() {
   var form = jQuery("#__vtigerWebForm_2");
@@ -758,7 +541,6 @@ window.addEventListener("load", function() {
 });
 </script>
 
-<!-- vtiger hidden references -->
 <input type="hidden" id="jQueryScript_2"  value="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/jquery/jquery.min.js" disabled=""/>
 <input type="hidden" id="select2Script_2" value="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js" disabled=""/>
 
@@ -840,71 +622,91 @@ window.addEventListener("load", function () {
     var row   = document.getElementById("yachtModelRow");
     var input = document.getElementById("yachtModelInput");
     if (!sel || !row) return;
-
     function update() {
-      // Select2 changes the underlying <select> value; read from there
       var val = sel.value;
-      if (val === "Yes") {
-        row.style.display = "flex";
-        if (input) input.disabled = false;
-      } else {
-        row.style.display = "none";
-        if (input) { input.disabled = true; input.value = ""; }
-      }
+      if (val === "Yes") { row.style.display = "flex"; if (input) input.disabled = false; }
+      else { row.style.display = "none"; if (input) { input.disabled = true; input.value = ""; } }
     }
-
-    // native change
     sel.addEventListener("change", update);
-    // Select2 fire
-    if (typeof jQuery !== 'undefined') {
-      jQuery('#ownedYachtSelect').on('change', update);
-    }
-
-    update(); // run once on load
+    if (typeof jQuery !== 'undefined') { jQuery('#ownedYachtSelect').on('change', update); }
+    update();
   }
-
   window.addEventListener('load', initConditional);
 })();
 </script>
 
-<!-- Form submission confirmation handler -->
+<!-- LOADER + CONFIRMATION HANDLER -->
 <script>
 (function() {
-  var sink = document.getElementById('vtiger_sink');
-  if (!sink) return;
 
+  var loader  = document.getElementById('fy-loader');
+  var sink    = document.getElementById('vtiger_sink');
+  var form    = document.getElementById('__vtigerWebForm_2');
+
+  if (!loader || !sink || !form) return;
+
+  /* ── Show loader when submit proceeds (vtiger's own validation must pass first) ── */
+  form.addEventListener('submit', function() {
+    // rAF so vtiger's onsubmit runs first; if validation fails it re-enables the button
+    requestAnimationFrame(function() {
+      var btn = document.getElementById('vtigerFormSubmitBtn_2');
+      // button stays disabled only when submission is actually proceeding
+      if (btn && btn.disabled) {
+        loader.classList.add('active');
+        document.body.classList.add('fy-loading');
+      }
+    });
+  });
+
+  /* ── Listen for vtiger's JSON response arriving in the hidden iframe ── */
   sink.addEventListener('load', function() {
+    // Ignore the initial blank load on page render
     try {
       var loc = sink.contentWindow.location.href;
       if (!loc || loc === 'about:blank') return;
     } catch(e) {
-      // cross-origin after vtiger responds — submission succeeded
+      // Cross-origin error = vtiger responded = success
     }
 
     var section = document.querySelector('.contact-section');
     if (!section) return;
 
-    section.innerHTML = [
-      '<div style="',
-        'display:flex;',
-        'align-items:center;',
-        'justify-content:center;',
-        'min-height:420px;',
-        'padding:100px 40px;">',
-        '<p style="',
-          'font-family:\'Prata\',serif;',
-          'font-size:clamp(1.4rem,2.5vw,2rem);',
-          'font-weight:400;',
-          'color:#ffffff;',
-          'text-align:center;',
-          'line-height:1.6;',
-          'max-width:680px;">',
-          'Thank you for submitting your request.<br>',
-          'We will contact you back as soon as possible.',
-        '</p>',
-      '</div>'
-    ].join('');
+    // 1. Hide loader and restore full page interactivity
+    loader.classList.remove('active');
+    document.body.classList.remove('fy-loading');
+
+    // 2. Replace form section with thank-you message
+    section.innerHTML =
+      '<div style="display:flex;align-items:center;justify-content:center;min-height:480px;padding:100px 40px;">' +
+        '<p id="fy-confirm-msg" style="' +
+          'font-family:\'Prata\',serif;' +
+          'font-size:clamp(1.4rem,2.5vw,2rem);' +
+          'font-weight:400;' +
+          'color:#ffffff;' +
+          'text-align:center;' +
+          'line-height:1.6;' +
+          'max-width:680px;' +
+          'opacity:0;' +
+          'transform:translateY(20px);' +
+          'transition:opacity 0.65s ease, transform 0.65s ease;">' +
+          'Thank you for submitting your request.<br>' +
+          'We will contact you back as soon as possible.' +
+        '</p>' +
+      '</div>';
+
+    // 3. Smooth-scroll so the message is centred in the viewport
+    var headerH = (document.querySelector('header') || {}).offsetHeight || 80;
+    var rect = section.getBoundingClientRect();
+    var scrollTarget = rect.top + window.pageYOffset - headerH - ((window.innerHeight - rect.height) / 2);
+    window.scrollTo({ top: Math.max(0, scrollTarget), behavior: 'smooth' });
+
+    // 4. Fade the message in after scroll settles (~650ms)
+    setTimeout(function() {
+      var msg = document.getElementById('fy-confirm-msg');
+      if (msg) { msg.style.opacity = '1'; msg.style.transform = 'translateY(0)'; }
+    }, 660);
   });
+
 })();
 </script>
 
