@@ -55,7 +55,7 @@
       padding: 0 40px;
     }
     .header-logo { display: flex; align-items: center; }
-    .header-logo img { height: 36px; }
+    .header-logo img { position: relative; top: 50px;}
     .header-logo-text {
       font-family: 'Prata', serif;
       font-size: 1.1rem;
@@ -238,6 +238,8 @@
       .footer-cols { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
+      .header-inner { height: 50px; }
+      .header-logo img { height: 80px; top: 30px;}
       .alignwide { padding: 0 20px; }
       .contact-section { padding: 60px 0 80px; }
       .footer-cols { grid-template-columns: 1fr; }
