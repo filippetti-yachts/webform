@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us | Filippetti Yachts</title>
+  <title>Contact | Filippetti Yachts</title>
   <link rel="icon" href="https://filippettiyachts.com/wp-content/uploads/2024/04/logo_ico-150x150.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -442,6 +442,9 @@
     <!-- ── VTIGER WEBFORM (original fields + hooks preserved) ── -->
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 
+    <!-- Hidden iframe absorbs vtiger's JSON response so the page doesn't redirect -->
+    <iframe name="vtiger_sink" id="vtiger_sink" style="display:none;" aria-hidden="true"></iframe>
+
     <form
       id="__vtigerWebForm_2"
       name="FILIPPETTI YACHTS"
@@ -449,6 +452,7 @@
       method="post"
       accept-charset="utf-8"
       enctype="multipart/form-data"
+      target="vtiger_sink"
     >
       <!-- vtiger required hidden fields -->
       <input type="hidden" name="publicid"        value="d1b5b5e03206515ce42106af0d0f4a62"/>
@@ -852,3 +856,57 @@ window.addEventListener("load", function () {
     // native change
     sel.addEventListener("change", update);
     // Select2 fire
+    if (typeof jQuery !== 'undefined') {
+      jQuery('#ownedYachtSelect').on('change', update);
+    }
+
+    update(); // run once on load
+  }
+
+  window.addEventListener('load', initConditional);
+})();
+</script>
+
+<!-- Form submission confirmation handler -->
+<script>
+(function() {
+  var sink = document.getElementById('vtiger_sink');
+  if (!sink) return;
+
+  sink.addEventListener('load', function() {
+    try {
+      var loc = sink.contentWindow.location.href;
+      if (!loc || loc === 'about:blank') return;
+    } catch(e) {
+      // cross-origin after vtiger responds — submission succeeded
+    }
+
+    var section = document.querySelector('.contact-section');
+    if (!section) return;
+
+    section.innerHTML = [
+      '<div style="',
+        'display:flex;',
+        'align-items:center;',
+        'justify-content:center;',
+        'min-height:420px;',
+        'padding:100px 40px;">',
+        '<p style="',
+          'font-family:\'Prata\',serif;',
+          'font-size:clamp(1.4rem,2.5vw,2rem);',
+          'font-weight:400;',
+          'color:#ffffff;',
+          'text-align:center;',
+          'line-height:1.6;',
+          'max-width:680px;">',
+          'Thank you for submitting your request.<br>',
+          'We will contact you back as soon as possible.',
+        '</p>',
+      '</div>'
+    ].join('');
+  });
+})();
+</script>
+
+</body>
+</html>
