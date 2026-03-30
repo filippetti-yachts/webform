@@ -415,6 +415,14 @@
             <select name="cf_contacts_languagespoken[]" data-label="label:Language+spoken" multiple="">
               <option value="IT">IT</option>
               <option value="EN">EN</option>
+              <option value="GE (DE)">GE (DE)</option>
+              <option value="RU">RU</option>
+              <option value="FR">FR</option>
+              <option value="CH">CH</option>
+              <option value="SPA">SPA</option>
+              <option value="PORT">PORT</option>
+              <option value="TU">TU</option>
+              <option value="OTHER">OTHER</option>
             </select>
           </td>
         </tr>
@@ -479,7 +487,7 @@
               <input type="hidden"   name="cf_contacts_newsletterauthorization" data-label="" value="0"/>
               <input type="checkbox" name="cf_contacts_newsletterauthorization" data-label="" value="1" style="display:none"/>
               <span class="checkbox-label-text">
-                I consent to receiving commercial communications and newsletter updates by email from FSY S.r.l. – Filippetti Yachts
+                I consent to receiving commercial communications and newsletter updates by email from FSY S.r.l. – Filippetti Yachts <strong>*</strong>
               </span>
             </label>
           </td>
@@ -545,8 +553,8 @@
     <div class="footer-bottom">
       <span>&copy; <script>document.write(new Date().getFullYear())</script> Filippetti Yachts &ndash; All rights reserved &ndash;
         <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a>
-        <a href="https://filippettiyachts.com/cookie-policy/" target="_blank">Cookie Policy</a>
-        <a href="https://filippettiyachts.com/termini-condizioni/" target="_blank">Terms of Service</a>
+        <a href="https://filippettiyachts.com/it/cookie-policy/" target="_blank">Cookie Policy</a>
+        <a href="https://filippettiyachts.com/it/termini-condizioni/" target="_blank">Terms of Service</a>
       </span>
     </div>
   </div>
@@ -728,6 +736,26 @@ window.addEventListener("load", function () {
 
     // Start with field excluded from submission
     if (sub) sub.name = INACTIVE_NAME;
+
+    // ALL mutual exclusion: selecting ALL disables all other options; deselecting ALL re-enables them
+    if (typeof jQuery !== 'undefined') {
+      jQuery(document).on('change', '#newYachtTypeSelect', function() {
+        var selected = jQuery(sub).val() || [];
+        if (selected.indexOf('ALL') !== -1) {
+          // ALL was just selected — remove every other value, keep only ALL
+          jQuery(sub).val(['ALL']).trigger('change.select2');
+          // Disable all options except ALL
+          jQuery(sub).find('option').each(function() {
+            if (this.value !== 'ALL') this.disabled = true;
+          });
+        } else {
+          // ALL not selected — re-enable everything
+          jQuery(sub).find('option').each(function() {
+            this.disabled = false;
+          });
+        }
+      });
+    }
 
     sel.addEventListener("change", update);
     if (typeof jQuery !== 'undefined') {
