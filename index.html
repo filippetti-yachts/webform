@@ -313,32 +313,9 @@
         </tr>
 
         <tr>
-          <td><label>Contact Type *</label></td>
-          <td>
-            <select name="contacttype" data-label="contacttype" required="">
-              <option value="">Select Value</option>
-              <option value="Lead">Lead</option>
-              <option value="Customer">Customer</option>
-              <option value="Broker">Broker</option>
-              <option value="Dealer">Dealer</option>
-              <option value="Competitor">Competitor</option>
-              <option value="Captain">Captain</option>
-              <option value="Surveyor">Surveyor</option>
-              <option value="Supplier/ Technician / Vendor">Supplier / Technician / Vendor</option>
-              <option value="Boat Manager">Boat Manager</option>
-              <option value="Insurance Broker">Insurance Broker</option>
-              <option value="Lawyer/ Law Firm">Lawyer / Law Firm</option>
-              <option value="Press">Press</option>
-              <option value="Other">Other</option>
-              <option value="Editor">Editor</option>
-            </select>
-          </td>
-        </tr>
-
-        <tr>
           <td><label>Interested in</label></td>
           <td>
-            <select name="cf_contacts_interestedin" data-label="label:Interested+in">
+            <select name="cf_contacts_interestedin" data-label="label:Interested+in" id="interestedInSelect">
               <option value="">Select Value</option>
               <option value="New Yacht">New Yacht</option>
               <option value="Pre Owned Yacht">Pre Owned Yacht</option>
@@ -348,6 +325,50 @@
               <option value="Charter">Charter</option>
               <option value="Represent Filippetti Yachts">Represent Filippetti Yachts</option>
               <option value="Other">Other</option>
+            </select>
+          </td>
+        </tr>
+
+        <!-- Type of New Yacht — shown conditionally when "New Yacht" or "New and Pre Owned Yacht" is selected -->
+        <tr id="newYachtTypeRow" class="row-full" style="display:none;">
+          <td><label>Type of New Yacht</label></td>
+          <td>
+            <select name="cf_contacts_typeofnewyacht" data-label="label:Type+of+New+Yacht" id="newYachtTypeSelect">
+              <option value="">Select Model</option>
+              <optgroup label="S Line">
+                <option value="S55">S55</option>
+                <option value="S70">S70</option>
+                <option value="S75">S75</option>
+                <option value="S80">S80</option>
+                <option value="S90">S90</option>
+                <option value="S100">S100</option>
+              </optgroup>
+              <optgroup label="F Line">
+                <option value="F70">F70</option>
+                <option value="F80">F80</option>
+                <option value="F90">F90</option>
+                <option value="F100">F100</option>
+              </optgroup>
+              <optgroup label="N Line">
+                <option value="N28">N28</option>
+                <option value="N32">N32</option>
+                <option value="N35">N35</option>
+              </optgroup>
+              <optgroup label="Heritage Collection">
+                <option value="Heritage Collection">Heritage Collection</option>
+              </optgroup>
+            </select>
+          </td>
+        </tr>
+
+        <!-- Language Preference -->
+        <tr>
+          <td><label>Language Preference</label></td>
+          <td>
+            <select name="cf_contacts_languagepreference" data-label="label:Language+Preference">
+              <option value="">Select Language</option>
+              <option value="Italiano">Italiano</option>
+              <option value="English">English</option>
             </select>
           </td>
         </tr>
@@ -392,44 +413,42 @@
         <tr class="row-full">
           <td colspan="2">
             <div class="privacy-text">
-              Privacy notice pursuant to Art. 13 of EU Regulation no. 679/2016.
-              The data entered in this form may be shared with third parties who are independent data controllers
-              directly connected to Filippetti Yachts, for the purpose of responding to your request.
-              For further details please refer to the full text of the
+              Privacy notice pursuant to Art. 13 of EU Regulation no. 679/2016 — FSY S.r.l. (Filippetti Yachts),
+              Via Nicolò Porpora 12, 00198 Roma, Italy (Tax No. 16621211008), as Data Controller,
+              informs you that the personal data collected through this form will be processed for the purpose
+              of responding to your request and, where consent is given, for sending commercial communications
+              and newsletters. Data may be shared with third parties who are independent data controllers
+              directly connected to Filippetti Yachts. For further details please refer to the full text of the
               <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a>.
             </div>
           </td>
         </tr>
 
         <tr class="row-full">
-          <td><label>Email Opt-in *</label></td>
-          <td>
-            <label class="checkbox-row">
-              <input type="hidden"   name="emailoptin" data-label="" value="0"/>
-              <input type="checkbox" name="emailoptin" data-label="" value="1" required=""/>
-              <span class="checkbox-label-text">I consent to receiving commercial communications by email from Filippetti Yachts <strong>*</strong></span>
-            </label>
-          </td>
-        </tr>
-
-        <tr class="row-full">
-          <td><label>Privacy Policy Authorization</label></td>
+          <td><label>Privacy Policy Authorization *</label></td>
           <td>
             <label class="checkbox-row">
               <input type="hidden"   name="cf_contacts_privacypolicyauthorization" data-label="" value="0"/>
               <input type="checkbox" name="cf_contacts_privacypolicyauthorization" data-label="" value="1"/>
-              <span class="checkbox-label-text">I have read the <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a> and I authorise the use of my personal data for the purposes of this form</span>
+              <span class="checkbox-label-text">
+                I have read the <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a>
+                of FSY S.r.l. – Filippetti Yachts and I authorise the processing of my personal data for the purposes of this form
+              </span>
             </label>
           </td>
         </tr>
 
         <tr class="row-full">
-          <td><label>Newsletter Authorization</label></td>
+          <td><label>Marketing &amp; Newsletter Consent *</label></td>
           <td>
             <label class="checkbox-row">
+              <input type="hidden"   name="emailoptin" data-label="" value="0"/>
+              <input type="checkbox" name="emailoptin" data-label="" value="1" required=""/>
               <input type="hidden"   name="cf_contacts_newsletterauthorization" data-label="" value="0"/>
-              <input type="checkbox" name="cf_contacts_newsletterauthorization" data-label="" value="1"/>
-              <span class="checkbox-label-text">Subscribe to our newsletter to receive updates and news</span>
+              <input type="checkbox" name="cf_contacts_newsletterauthorization" data-label="" value="1" style="display:none"/>
+              <span class="checkbox-label-text">
+                I consent to receiving commercial communications and newsletter updates by email from FSY S.r.l. – Filippetti Yachts <strong>*</strong>
+              </span>
             </label>
           </td>
         </tr>
@@ -634,6 +653,53 @@ window.addEventListener("load", function () {
     update();
   }
   window.addEventListener('load', initConditional);
+})();
+</script>
+
+<!-- Conditional: Type of New Yacht row when "New Yacht" or "New and Pre Owned Yacht" selected -->
+<script>
+(function() {
+  function initNewYachtConditional() {
+    var sel  = document.getElementById("interestedInSelect");
+    var row  = document.getElementById("newYachtTypeRow");
+    var sub  = document.getElementById("newYachtTypeSelect");
+    if (!sel || !row) return;
+
+    var NEW_YACHT_VALUES = ["New Yacht", "New and Pre Owned Yacht"];
+
+    function update() {
+      var val = sel.value;
+      if (NEW_YACHT_VALUES.indexOf(val) !== -1) {
+        row.style.display = "flex";
+        if (sub) sub.disabled = false;
+      } else {
+        row.style.display = "none";
+        if (sub) { sub.disabled = true; sub.value = ""; }
+      }
+    }
+
+    sel.addEventListener("change", update);
+    if (typeof jQuery !== 'undefined') {
+      jQuery('#interestedInSelect').on('change', update);
+    }
+    update();
+  }
+  window.addEventListener('load', initNewYachtConditional);
+})();
+</script>
+
+<!-- Sync hidden newsletter checkbox with the unified marketing consent checkbox -->
+<script>
+(function() {
+  window.addEventListener('load', function() {
+    var marketingCb = document.querySelector('input[name="emailoptin"][type="checkbox"]');
+    var newsletterCb = document.querySelector('input[name="cf_contacts_newsletterauthorization"][type="checkbox"]');
+    if (marketingCb && newsletterCb) {
+      marketingCb.addEventListener('change', function() {
+        newsletterCb.checked = marketingCb.checked;
+      });
+    }
+  });
 })();
 </script>
 
