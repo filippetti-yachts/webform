@@ -172,6 +172,46 @@
     .privacy-text a { color: rgba(255,255,255,0.75); text-decoration: underline; }
 
     /* SUBMIT */
+    /* Multiselect: hide already-selected options in the dropdown (vtiger behaviour) */
+    [aria-multiselectable="true"] .select2-results__option[aria-selected="true"] {
+      display: none !important;
+    }
+    /* Multiselect tag pills */
+    .select2-container--default .select2-selection--multiple {
+      background: transparent !important;
+      border: none !important;
+      border-bottom: 1px solid rgba(255,255,255,0.6) !important;
+      border-radius: 0 !important;
+      padding: 2px 0 !important;
+      min-height: 34px !important;
+    }
+    .select2-container--default .select2-selection--multiple:focus-within {
+      border-bottom-color: var(--gold) !important;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+      background: rgba(167,118,96,0.35) !important;
+      border: 1px solid rgba(167,118,96,0.5) !important;
+      color: var(--white) !important;
+      font-family: "Rajdhani", sans-serif !important;
+      font-size: 0.9rem !important;
+      border-radius: 2px !important;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+      color: rgba(255,255,255,0.7) !important;
+      margin-right: 4px !important;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+      padding: 0 !important;
+    }
+    .select2-container--default .select2-selection--multiple .select2-search__field {
+      color: var(--white) !important;
+      font-family: "Rajdhani", sans-serif !important;
+    }
+    .select2-container--default .select2-selection--multiple .select2-search__field::placeholder {
+      color: rgba(255,255,255,0.35) !important;
+    }
+
+    /* SUBMIT BUTTON */
     .form-submit-row { margin-top: 40px; text-align: center; }
     #vtigerFormSubmitBtn_2 {
       background: none; border: none; border-bottom: 2px solid var(--gold); border-radius: 0;
@@ -315,7 +355,7 @@
         <tr>
           <td><label>Interested in</label></td>
           <td>
-            <select name="cf_contacts_typeofyacht" data-label="label:Interested+in" id="interestedInSelect">
+            <select name="cf_contacts_interestedin" data-label="label:Interested+in" id="interestedInSelect">
               <option value="">Select Value</option>
               <option value="New Yacht">New Yacht</option>
               <option value="Pre Owned Yacht">Pre Owned Yacht</option>
@@ -333,42 +373,56 @@
         <tr id="newYachtTypeRow" class="row-full" style="display:none;">
           <td><label>Type of New Yacht</label></td>
           <td>
-            <select name="cf_contacts_typeofnewyacht" data-label="label:Type+of+New+Yacht" id="newYachtTypeSelect">
-              <option value="">Select Model</option>
-              <optgroup label="S Line">
-                <option value="S55">S55</option>
-                <option value="S70">S70</option>
-                <option value="S75">S75</option>
-                <option value="S80">S80</option>
-                <option value="S90">S90</option>
-                <option value="S100">S100</option>
-              </optgroup>
-              <optgroup label="F Line">
-                <option value="F70">F70</option>
-                <option value="F80">F80</option>
-                <option value="F90">F90</option>
-                <option value="F100">F100</option>
-              </optgroup>
-              <optgroup label="N Line">
-                <option value="N28">N28</option>
-                <option value="N32">N32</option>
-                <option value="N35">N35</option>
-              </optgroup>
-              <optgroup label="Heritage Collection">
-                <option value="Heritage Collection">Heritage Collection</option>
-              </optgroup>
+            <select name="cf_contacts_typeofyacht[]" data-label="label:Type+of+yacht" multiple="" id="newYachtTypeSelect">
+              <option value="ALL">ALL</option>
+              <option value="S Line">S Line</option>
+              <option value="S55">S55</option>
+              <option value="S70">S70</option>
+              <option value="S75">S75</option>
+              <option value="S80">S80</option>
+              <option value="S90">S90</option>
+              <option value="S100">S100</option>
+              <option value="F Line">F Line</option>
+              <option value="F70">F70</option>
+              <option value="F80">F80</option>
+              <option value="F90">F90</option>
+              <option value="F100">F100</option>
+              <option value="N Line">N Line</option>
+              <option value="N28">N28</option>
+              <option value="N32">N32</option>
+              <option value="N35">N35</option>
+              <option value="HERITAGE COLLECTION">HERITAGE COLLECTION</option>
+              <option value="F93">F93</option>
+              <option value="N26 C">N26 C</option>
+              <option value="N26 O">N26 O</option>
+              <option value="N30">N30</option>
+              <option value="S65 Old">S65 Old</option>
+              <option value="F76 Old">F76 Old</option>
+              <option value="E32 Old">E32 Old</option>
+              <option value="E36 Old">E36 Old</option>
+              <option value="E40 Old">E40 Old</option>
+              <option value="E series Old">E series Old</option>
+              <option value="C&amp;N Endeavour 42">C&amp;N Endeavour 42</option>
+              <option value="C&amp;N Velsheda 50">C&amp;N Velsheda 50</option>
             </select>
           </td>
         </tr>
 
-        <!-- Language Preference -->
+        <!-- Language Spoken (multiselect) -->
         <tr>
-          <td><label>Language Preference</label></td>
+          <td><label>Language Spoken</label></td>
           <td>
-            <select name="cf_contacts_languagespoken" data-label="label:Language+Preference">
-              <option value="">Select Language</option>
-              <option value="Italiano">Italiano</option>
-              <option value="English">English</option>
+            <select name="cf_contacts_languagespoken[]" data-label="label:Language+spoken" multiple="">
+              <option value="IT">IT</option>
+              <option value="EN">EN</option>
+              <option value="GE (DE)">GE (DE)</option>
+              <option value="RU">RU</option>
+              <option value="FR">FR</option>
+              <option value="CH">CH</option>
+              <option value="SPA">SPA</option>
+              <option value="PORT">PORT</option>
+              <option value="TU">TU</option>
+              <option value="OTHER">OTHER</option>
             </select>
           </td>
         </tr>
