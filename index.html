@@ -786,29 +786,17 @@ window.addEventListener("load", function () {
 
 <!-- Sync hidden newsletter checkbox with the unified marketing consent checkbox -->
 <script>
-(function() {
-  window.addEventListener('load', function() {
-    var marketingCb = document.querySelector('input[name="emailoptin"][type="checkbox"]');
-    var newsletterCb = document.querySelector('input[name="cf_contacts_newsletterauthorization"][type="checkbox"]');
-    
-    // Recuperiamo i campi hidden che portano il valore 0/1 a Vtiger
-    var hiddenOptIn = document.querySelector('input[name="emailoptin"][type="hidden"]');
-    var hiddenNewsletter = document.querySelector('input[name="cf_contacts_newsletterauthorization"][type="hidden"]');
+window.addEventListener("load", function() {
+    var mainCheckbox = document.querySelector('input[name="emailoptin"][type="checkbox"]');
+    var hiddenNewsletterCheckbox = document.querySelector('input[name="cf_contacts_newsletterauthorization"][type="checkbox"]');
 
-    if (marketingCb && newsletterCb) {
-      marketingCb.addEventListener('change', function() {
-        var isChecked = marketingCb.checked;
-        
-        // Sincronizza lo stato delle checkbox
-        newsletterCb.checked = isChecked;
-        
-        // Aggiorna i valori dei campi hidden per forzare lo "0" quando deselezionati
-        if (hiddenOptIn) hiddenOptIn.value = isChecked ? "1" : "0";
-        if (hiddenNewsletter) hiddenNewsletter.value = isChecked ? "1" : "0";
-      });
+    if (mainCheckbox && hiddenNewsletterCheckbox) {
+        mainCheckbox.addEventListener("change", function() {
+            // Sincronizza semplicemente lo stato "checked"
+            hiddenNewsletterCheckbox.checked = mainCheckbox.checked;
+        });
     }
-  });
-})();
+});
 </script>
 
 <!-- LOADER + CONFIRMATION HANDLER -->
