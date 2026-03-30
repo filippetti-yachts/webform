@@ -469,7 +469,7 @@
           <td>
             <label class="checkbox-row">
               <input type="hidden"   name="cf_contacts_privacypolicyauthorization" data-label="" value="0"/>
-              <input type="checkbox" name="cf_contacts_privacypolicyauthorization" data-label="" value="1"/>
+              <input type="checkbox" name="cf_contacts_privacypolicyauthorization" data-label="" value="1" required=""/>
               <span class="checkbox-label-text">
                 I have read the <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a>
                 of FSY S.r.l. – Filippetti Yachts and I authorise the processing of my personal data for the purposes of this form
@@ -479,7 +479,7 @@
         </tr>
 
         <tr class="row-full">
-          <td><label>Marketing &amp; Newsletter Consent *</label></td>
+          <td><label>Marketing &amp; Newsletter Consent</label></td>
           <td>
             <label class="checkbox-row">
               <input type="hidden"   name="emailoptin" data-label="" value="0"/>
@@ -706,23 +706,35 @@ window.addEventListener("load", function () {
     if (!sel || !row) return;
 
     var NEW_YACHT_VALUES = ["New Yacht", "New and Pre Owned Yacht"];
+    var ACTIVE_NAME = "cf_contacts_typeofyacht[]";
+    var INACTIVE_NAME = "_cf_contacts_typeofyacht_disabled";
 
     function update() {
       var val = sel.value;
       if (NEW_YACHT_VALUES.indexOf(val) !== -1) {
         row.style.display = "flex";
         if (sub) {
-          sub.disabled = false;
-          // Init Select2 now that the element is visible (was hidden at page load)
+          // Restore the real field name so the value is submitted
+          sub.name = ACTIVE_NAME;
+          // Init Select2 the first time the row becomes visible
           if (typeof jQuery !== 'undefined' && !jQuery(sub).hasClass('select2-hidden-accessible')) {
             jQuery(sub).select2({ tags: false, closeOnSelect: false });
           }
         }
       } else {
         row.style.display = "none";
-        if (sub) { sub.disabled = true; sub.value = ""; }
+        if (sub) {
+          // Rename the field so it is NOT submitted when hidden
+          sub.name = INACTIVE_NAME;
+          if (typeof jQuery !== 'undefined' && jQuery(sub).hasClass('select2-hidden-accessible')) {
+            jQuery(sub).val(null).trigger('change');
+          }
+        }
       }
     }
+
+    // Start with field excluded from submission
+    if (sub) sub.name = INACTIVE_NAME;
 
     sel.addEventListener("change", update);
     if (typeof jQuery !== 'undefined') {
@@ -731,6 +743,31 @@ window.addEventListener("load", function () {
     update();
   }
   window.addEventListener('load', initNewYachtConditional);
+})();
+</script>
+
+<!-- Custom validation for required checkboxes (vtiger's onsubmit doesn't handle checkbox required) -->
+<script>
+(function() {
+  window.addEventListener('load', function() {
+    var form = document.getElementById('__vtigerWebForm_2');
+    if (!form) return;
+    var originalOnsubmit = form.onsubmit;
+    form.onsubmit = function(event) {
+      // Run vtiger's original validation first
+      var result = originalOnsubmit ? originalOnsubmit.call(this, event) : true;
+      if (result === false) return false;
+
+      // Check required checkboxes manually
+      var privacyCb = form.querySelector('input[name="cf_contacts_privacypolicyauthorization"][type="checkbox"]');
+      if (privacyCb && !privacyCb.checked) {
+        alert('Privacy Policy Authorization is required.');
+        document.getElementById('vtigerFormSubmitBtn_2').disabled = false;
+        return false;
+      }
+      return true;
+    };
+  });
 })();
 </script>
 
