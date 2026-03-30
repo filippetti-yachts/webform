@@ -711,7 +711,13 @@ window.addEventListener("load", function () {
       var val = sel.value;
       if (NEW_YACHT_VALUES.indexOf(val) !== -1) {
         row.style.display = "flex";
-        if (sub) sub.disabled = false;
+        if (sub) {
+          sub.disabled = false;
+          // Init Select2 now that the element is visible (was hidden at page load)
+          if (typeof jQuery !== 'undefined' && !jQuery(sub).hasClass('select2-hidden-accessible')) {
+            jQuery(sub).select2({ tags: false, closeOnSelect: false });
+          }
+        }
       } else {
         row.style.display = "none";
         if (sub) { sub.disabled = true; sub.value = ""; }
