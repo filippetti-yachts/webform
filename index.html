@@ -788,11 +788,22 @@ window.addEventListener("load", function () {
 <script>
 (function() {
   window.addEventListener('load', function() {
+    // La checkbox visibile (Marketing & Newsletter)
     var marketingCb = document.querySelector('input[name="emailoptin"][type="checkbox"]');
+    // La checkbox nascosta (Newsletter Authorization)
     var newsletterCb = document.querySelector('input[name="cf_contacts_newsletterauthorization"][type="checkbox"]');
+    
     if (marketingCb && newsletterCb) {
       marketingCb.addEventListener('change', function() {
+        // Sincronizza lo stato checked
         newsletterCb.checked = marketingCb.checked;
+        
+        // IMPORTANTE: Sincronizza anche il valore del campo hidden precedente 
+        // per essere sicuri che Vtiger veda lo "0" se deselezionato
+        var hiddenNewsletter = document.querySelector('input[name="cf_contacts_newsletterauthorization"][type="hidden"]');
+        if (hiddenNewsletter) {
+          hiddenNewsletter.value = marketingCb.checked ? "1" : "0";
+        }
       });
     }
   });
