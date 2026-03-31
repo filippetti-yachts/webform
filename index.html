@@ -453,7 +453,12 @@
 
         <tr>
           <td><label>Budget &mdash; specify &euro; or $</label></td>
-          <td><input type="text" name="cf_contacts_budget" maxlength="30" data-label="" value="" placeholder="Budget"/></td>
+          <td>
+            <input type="text" name="cf_contacts_budget" maxlength="30" data-label="" value="" placeholder="Budget" id="budgetField"/>
+            <span id="budgetError" style="display:none; margin-top:6px; font-family:'Rajdhani',sans-serif; font-size:0.85rem; font-weight:400; letter-spacing:0.06em; color:rgba(255,255,255,0.55);">
+              Please enter digits followed by $ or € — e.g. 4000000$ or 5000000€
+            </span>
+          </td>
         </tr>
 
         <tr class="row-full">
@@ -474,7 +479,7 @@
           <td><label>Marketing &amp; Newsletter Consent</label></td>
           <td>
             <label class="checkbox-row">
-              <input type="hidden"   name="emailoptin" data-label="" value="None"/>
+              <input type="hidden"   name="emailoptin" data-label="" value="User opted out"/>
               <input type="checkbox" name="emailoptin" data-label="" value="Single opt-in (webform)"/>
               <input type="hidden"   name="cf_contacts_newsletterauthorization" data-label="" value="No"/>
               <input type="checkbox" name="cf_contacts_newsletterauthorization" data-label="" value="1" style="display:none"/>
@@ -781,14 +786,16 @@ window.addEventListener("load", function () {
 
       // Budget: if filled, must be digits followed by exactly one € or $
       var budgetField = form.querySelector('input[name="cf_contacts_budget"]');
+      var budgetError = document.getElementById('budgetError');
       if (budgetField && budgetField.value.trim() !== '') {
         var budgetRegex = /^\d+[$€]$/;
         if (!budgetRegex.test(budgetField.value.trim())) {
-          alert('Please enter a valid budget format — digits followed by $ or € (e.g. 4000000$ or 5000000€).');
+          if (budgetError) budgetError.style.display = 'block';
           document.getElementById('vtigerFormSubmitBtn_2').disabled = false;
           return false;
         }
       }
+      if (budgetError) budgetError.style.display = 'none';
 
       return true;
     };
@@ -796,7 +803,24 @@ window.addEventListener("load", function () {
 })();
 </script>
 
-<!-- Sync hidden newsletter checkbox with the unified marketing consent checkbox -->
+<!-- Budget real-time validation -->
+<script>
+(function() {
+  window.addEventListener('load', function() {
+    var field = document.getElementById('budgetField');
+    var error = document.getElementById('budgetError');
+    if (!field || !error) return;
+    var regex = /^\d+[$€]$/;
+    field.addEventListener('input', function() {
+      if (field.value.trim() === '' || regex.test(field.value.trim())) {
+        error.style.display = 'none';
+      } else {
+        error.style.display = 'block';
+      }
+    });
+  });
+})();
+</script>
 <script>
 window.addEventListener("load", function() {
     var mainCheckbox = document.querySelector('input[name="emailoptin"][type="checkbox"]');
