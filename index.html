@@ -778,6 +778,18 @@ window.addEventListener("load", function () {
         document.getElementById('vtigerFormSubmitBtn_2').disabled = false;
         return false;
       }
+
+      // Budget: if filled, must be digits followed by exactly one € or $
+      var budgetField = form.querySelector('input[name="cf_contacts_budget"]');
+      if (budgetField && budgetField.value.trim() !== '') {
+        var budgetRegex = /^\d+[$€]$/;
+        if (!budgetRegex.test(budgetField.value.trim())) {
+          alert('Please enter a valid budget format — digits followed by $ or € (e.g. 4000000$ or 5000000€).');
+          document.getElementById('vtigerFormSubmitBtn_2').disabled = false;
+          return false;
+        }
+      }
+
       return true;
     };
   });
