@@ -1,914 +1,2310 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Update Contact Info | Filippetti Yachts</title>
-  <link rel="icon" href="https://filippettiyachts.com/wp-content/uploads/2024/04/logo_ico-150x150.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Prata&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css"/>
-  <link rel="stylesheet" href="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/css/intlTelInput.min.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Contact Info | Filippetti Yachts</title>
+    <link
+      rel="icon"
+      href="https://filippettiyachts.com/wp-content/uploads/2024/04/logo_ico-150x150.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prata&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/css/intlTelInput.min.css"
+    />
 
-  <style>
-    :root {
-      --gold:      #A77660;
-      --blue:      #23576A;
-      --gray:      #707070;
-      --lightgray: #F4F4F4;
-      --sage:      #CBCEC2;
-      --white:     #FFFFFF;
-      --black:     #000000;
-    }
+    <style>
+      :root {
+        --gold: #a77660;
+        --blue: #23576a;
+        --gray: #707070;
+        --lightgray: #f4f4f4;
+        --sage: #cbcec2;
+        --white: #ffffff;
+        --black: #000000;
+      }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-text-size-adjust: 100%; }
-    body {
-      font-family: "Rajdhani", sans-serif;
-      font-weight: 300;
-      font-size: 1.1rem;
-      color: var(--gray);
-      background: var(--white);
-    }
-    a { color: var(--blue); text-decoration: none; }
-    a:hover { color: var(--black); }
-    img { max-width: 100%; height: auto; display: block; }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 300;
+        font-size: 1.1rem;
+        color: var(--gray);
+        background: var(--white);
+      }
+      a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+      a:hover {
+        color: var(--black);
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
 
-    .alignwide { max-width: 1340px; margin: 0 auto; padding: 0 40px; }
+      .alignwide {
+        max-width: 1340px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
 
-    /* HEADER */
-    header {
-      background: var(--white);
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.07);
-    }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 80px;
-      max-width: 1640px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-    .header-logo { display: flex; align-items: center; }
-    .header-logo img { position: relative; top: 50px;}
-    .header-logo-text {
-      font-family: 'Prata', serif;
-      font-size: 1.1rem;
-      color: var(--blue);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
+      /* HEADER */
+      header {
+        background: var(--white);
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.07);
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        max-width: 1640px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+      .header-logo {
+        display: flex;
+        align-items: center;
+      }
+      .header-logo img {
+        position: relative;
+        top: 50px;
+      }
+      .header-logo-text {
+        font-family: "Prata", serif;
+        font-size: 1.1rem;
+        color: var(--blue);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
 
-    /* FORM SECTION */
-    .contact-section { background: var(--blue); padding: 100px 0 120px; }
-    .contact-section-title {
-      font-family: 'Prata', serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 400;
-      color: var(--white);
-      text-align: center;
-      margin-bottom: 60px;
-      line-height: 1.3;
-    }
+      /* FORM SECTION */
+      .contact-section {
+        background: var(--blue);
+        padding: 100px 0 120px;
+      }
+      .contact-section-title {
+        font-family: "Prata", serif;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        font-weight: 400;
+        color: var(--white);
+        text-align: center;
+        margin-bottom: 60px;
+        line-height: 1.3;
+      }
 
-    /* VTIGER FORM */
-    #__vtigerWebForm_2 { max-width: 1000px; margin: 0 auto; }
-    #__vtigerWebForm_2 table { display: grid; grid-template-columns: 1fr; width: 100%; }
-    #__vtigerWebForm_2 table tbody { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 50px; width: 100%; }
-    #__vtigerWebForm_2 table tr { display: flex; flex-direction: column; }
-    #__vtigerWebForm_2 table tr.row-full { grid-column: 1 / -1; }
-    #__vtigerWebForm_2 table tr td:first-child label {
-      display: block;
-      color: rgba(255,255,255,0.5);
-      font-family: "Rajdhani", sans-serif;
-      font-size: 0.78rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 6px;
-    }
-    #__vtigerWebForm_2 table tr td:nth-child(3) { display: none; }
-    #__vtigerWebForm_2 table tr td { display: block; }
+      /* VTIGER FORM */
+      #__vtigerWebForm_2 {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      #__vtigerWebForm_2 table {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+      }
+      #__vtigerWebForm_2 table tbody {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 50px;
+        width: 100%;
+      }
+      #__vtigerWebForm_2 table tr {
+        display: flex;
+        flex-direction: column;
+      }
+      #__vtigerWebForm_2 table tr.row-full {
+        grid-column: 1 / -1;
+      }
+      #__vtigerWebForm_2 table tr td:first-child label {
+        display: block;
+        color: rgba(255, 255, 255, 0.5);
+        font-family: "Rajdhani", sans-serif;
+        font-size: 0.78rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 6px;
+      }
+      #__vtigerWebForm_2 table tr td:nth-child(3) {
+        display: none;
+      }
+      #__vtigerWebForm_2 table tr td {
+        display: block;
+      }
 
-    /* INPUTS */
-    #__vtigerWebForm_2 input[type=text],
-    #__vtigerWebForm_2 input[type=email] {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(255,255,255,0.6);
-      border-radius: 0;
-      color: var(--white);
-      font-family: "Rajdhani", sans-serif;
-      font-size: 1.15rem;
-      font-weight: 300;
-      padding: 6px 0;
-      outline: none;
-      transition: border-color 0.25s;
-      -webkit-appearance: none;
-    }
-    #__vtigerWebForm_2 input[type=text]:focus,
-    #__vtigerWebForm_2 input[type=email]:focus { border-bottom-color: var(--gold); }
-    #__vtigerWebForm_2 input[type=text]::placeholder,
-    #__vtigerWebForm_2 input[type=email]::placeholder { color: rgba(255,255,255,0.35); }
+      /* INPUTS */
+      #__vtigerWebForm_2 input[type="text"],
+      #__vtigerWebForm_2 input[type="email"] {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 0;
+        color: var(--white);
+        font-family: "Rajdhani", sans-serif;
+        font-size: 1.15rem;
+        font-weight: 300;
+        padding: 6px 0;
+        outline: none;
+        transition: border-color 0.25s;
+        -webkit-appearance: none;
+      }
+      #__vtigerWebForm_2 input[type="text"]:focus,
+      #__vtigerWebForm_2 input[type="email"]:focus {
+        border-bottom-color: var(--gold);
+      }
+      #__vtigerWebForm_2 input[type="text"]::placeholder,
+      #__vtigerWebForm_2 input[type="email"]::placeholder {
+        color: rgba(255, 255, 255, 0.35);
+      }
 
-    /* PHONE */
-    .iti { width: 100%; }
-    .iti__flag-container { border-bottom: none; }
-    .iti--separate-dial-code .iti__selected-flag { background: transparent; border-bottom: none; }
-    .iti--separate-dial-code .iti__selected-dial-code { color: rgba(255,255,255,0.7); font-family: "Rajdhani", sans-serif; }
-    .iti--separate-dial-code input[type=text] { padding-left: 90px !important; }
-    #__vtigerWebForm_2 .iti input[type=text] { border-bottom: 1px solid rgba(255,255,255,0.6); }
-    #__vtigerWebForm_2 .iti input[type=text]:focus { border-bottom-color: var(--gold); }
+      /* PHONE */
+      .iti {
+        width: 100%;
+      }
+      .iti__flag-container {
+        border-bottom: none;
+      }
+      .iti--separate-dial-code .iti__selected-flag {
+        background: transparent;
+        border-bottom: none;
+      }
+      .iti--separate-dial-code .iti__selected-dial-code {
+        color: rgba(255, 255, 255, 0.7);
+        font-family: "Rajdhani", sans-serif;
+      }
+      .iti--separate-dial-code input[type="text"] {
+        padding-left: 90px !important;
+      }
+      #__vtigerWebForm_2 .iti input[type="text"] {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+      }
+      #__vtigerWebForm_2 .iti input[type="text"]:focus {
+        border-bottom-color: var(--gold);
+      }
 
-    /* SELECT2 */
-    .select2-container--default .select2-selection--single {
-      background: transparent !important; border: none !important;
-      border-bottom: 1px solid rgba(255,255,255,0.6) !important;
-      border-radius: 0 !important; height: auto !important; padding: 4px 0 !important;
-    }
-    .select2-container--default .select2-selection--single:focus-within,
-    .select2-container--default.select2-container--open .select2-selection--single { border-bottom-color: var(--gold) !important; }
-    .select2-container--default .select2-selection--single .select2-selection__rendered {
-      color: var(--white) !important; font-family: "Rajdhani", sans-serif !important;
-      font-size: 1.15rem !important; font-weight: 300 !important; line-height: 1.6 !important; padding-left: 0 !important;
-    }
-    .select2-container--default .select2-selection--single .select2-selection__placeholder { color: rgba(255,255,255,0.35) !important; }
-    .select2-container--default .select2-selection--single .select2-selection__arrow { top: 4px !important; }
-    .select2-container--default .select2-selection--single .select2-selection__arrow b { border-color: rgba(255,255,255,0.5) transparent transparent transparent !important; }
-    .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b { border-color: transparent transparent var(--gold) transparent !important; }
-    .select2-dropdown { background: var(--blue) !important; border: 1px solid rgba(255,255,255,0.15) !important; border-radius: 0 !important; }
-    .select2-container--default .select2-results__option { color: rgba(255,255,255,0.8) !important; font-family: "Rajdhani", sans-serif !important; font-size: 1rem !important; font-weight: 300 !important; padding: 8px 12px !important; }
-    .select2-container--default .select2-results__option--highlighted[aria-selected] { background: rgba(167,118,96,0.35) !important; color: var(--white) !important; }
-    .select2-container--default .select2-results__option[aria-selected=true] { background: rgba(167,118,96,0.2) !important; }
-    .select2-search--dropdown .select2-search__field { background: rgba(255,255,255,0.08) !important; border: 1px solid rgba(255,255,255,0.15) !important; color: var(--white) !important; font-family: "Rajdhani", sans-serif !important; }
-    .select2-container { width: 100% !important; }
+      /* SELECT2 */
+      .select2-container--default .select2-selection--single {
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
+        border-radius: 0 !important;
+        height: auto !important;
+        padding: 4px 0 !important;
+      }
+      .select2-container--default .select2-selection--single:focus-within,
+      .select2-container--default.select2-container--open
+        .select2-selection--single {
+        border-bottom-color: var(--gold) !important;
+      }
+      .select2-container--default
+        .select2-selection--single
+        .select2-selection__rendered {
+        color: var(--white) !important;
+        font-family: "Rajdhani", sans-serif !important;
+        font-size: 1.15rem !important;
+        font-weight: 300 !important;
+        line-height: 1.6 !important;
+        padding-left: 0 !important;
+      }
+      .select2-container--default
+        .select2-selection--single
+        .select2-selection__placeholder {
+        color: rgba(255, 255, 255, 0.35) !important;
+      }
+      .select2-container--default
+        .select2-selection--single
+        .select2-selection__arrow {
+        top: 4px !important;
+      }
+      .select2-container--default
+        .select2-selection--single
+        .select2-selection__arrow
+        b {
+        border-color: rgba(255, 255, 255, 0.5) transparent transparent
+          transparent !important;
+      }
+      .select2-container--default.select2-container--open
+        .select2-selection--single
+        .select2-selection__arrow
+        b {
+        border-color: transparent transparent var(--gold) transparent !important;
+      }
+      .select2-dropdown {
+        background: var(--blue) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 0 !important;
+      }
+      .select2-container--default .select2-results__option {
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-family: "Rajdhani", sans-serif !important;
+        font-size: 1rem !important;
+        font-weight: 300 !important;
+        padding: 8px 12px !important;
+      }
+      .select2-container--default
+        .select2-results__option--highlighted[aria-selected] {
+        background: rgba(167, 118, 96, 0.35) !important;
+        color: var(--white) !important;
+      }
+      .select2-container--default
+        .select2-results__option[aria-selected="true"] {
+        background: rgba(167, 118, 96, 0.2) !important;
+      }
+      .select2-search--dropdown .select2-search__field {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        color: var(--white) !important;
+        font-family: "Rajdhani", sans-serif !important;
+      }
+      .select2-container {
+        width: 100% !important;
+      }
 
-    /* CHECKBOXES */
-    .checkbox-row { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
-    #__vtigerWebForm_2 input[type=checkbox] {
-      -webkit-appearance: none; appearance: none;
-      width: 17px; height: 17px; min-width: 17px;
-      border: 1px solid rgba(255,255,255,0.6);
-      background: transparent; cursor: pointer; position: relative; margin-top: 2px;
-      transition: background 0.2s, border-color 0.2s; flex-shrink: 0;
-    }
-    #__vtigerWebForm_2 input[type=checkbox]:checked { background: var(--gold); border-color: var(--gold); }
-    #__vtigerWebForm_2 input[type=checkbox]:checked::after {
-      content: ''; position: absolute; left: 4px; top: 1px; width: 5px; height: 9px;
-      border: 2px solid #fff; border-top: none; border-left: none; transform: rotate(45deg);
-    }
-    #__vtigerWebForm_2 input[type=hidden] { display: none; }
-    .checkbox-label-text { color: rgba(255,255,255,0.75); font-family: "Rajdhani", sans-serif; font-size: 0.95rem; font-weight: 300; line-height: 1.5; }
-    .checkbox-label-text a { color: var(--white); text-decoration: underline; text-underline-offset: 2px; }
+      /* CHECKBOXES */
+      .checkbox-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        cursor: pointer;
+      }
+      #__vtigerWebForm_2 input[type="checkbox"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 17px;
+        height: 17px;
+        min-width: 17px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        background: transparent;
+        cursor: pointer;
+        position: relative;
+        margin-top: 2px;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+        flex-shrink: 0;
+      }
+      #__vtigerWebForm_2 input[type="checkbox"]:checked {
+        background: var(--gold);
+        border-color: var(--gold);
+      }
+      #__vtigerWebForm_2 input[type="checkbox"]:checked::after {
+        content: "";
+        position: absolute;
+        left: 4px;
+        top: 1px;
+        width: 5px;
+        height: 9px;
+        border: 2px solid #fff;
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg);
+      }
+      #__vtigerWebForm_2 input[type="hidden"] {
+        display: none;
+      }
+      .checkbox-label-text {
+        color: rgba(255, 255, 255, 0.75);
+        font-family: "Rajdhani", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 300;
+        line-height: 1.5;
+      }
+      .checkbox-label-text a {
+        color: var(--white);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
 
-    /* PRIVACY TEXT */
-    .privacy-text { color: rgba(255,255,255,0.55); font-size: 0.88rem; line-height: 1.65; padding: 24px 0 8px; border-top: 1px solid rgba(255,255,255,0.1); }
-    .privacy-text a { color: rgba(255,255,255,0.75); text-decoration: underline; }
+      /* PRIVACY TEXT */
+      .privacy-text {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.88rem;
+        line-height: 1.65;
+        padding: 24px 0 8px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .privacy-text a {
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: underline;
+      }
 
-    /* SUBMIT */
-    /* Multiselect: hide already-selected options in the dropdown (vtiger behaviour) */
-    [aria-multiselectable="true"] .select2-results__option[aria-selected="true"] {
-      display: none !important;
-    }
-    /* Multiselect tag pills */
-    .select2-container--default .select2-selection--multiple {
-      background: transparent !important;
-      border: none !important;
-      border-bottom: 1px solid rgba(255,255,255,0.6) !important;
-      border-radius: 0 !important;
-      padding: 2px 0 !important;
-      min-height: 34px !important;
-    }
-    .select2-container--default .select2-selection--multiple:focus-within {
-      border-bottom-color: var(--gold) !important;
-    }
-    .select2-container--default .select2-selection--multiple .select2-selection__choice {
-      background: rgba(167,118,96,0.35) !important;
-      border: 1px solid rgba(167,118,96,0.5) !important;
-      color: var(--white) !important;
-      font-family: "Rajdhani", sans-serif !important;
-      font-size: 0.9rem !important;
-      border-radius: 2px !important;
-    }
-    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-      color: rgba(255,255,255,0.7) !important;
-      margin-right: 4px !important;
-    }
-    .select2-container--default .select2-selection--multiple .select2-selection__rendered {
-      padding: 0 !important;
-    }
-    .select2-container--default .select2-selection--multiple .select2-search__field {
-      color: var(--white) !important;
-      font-family: "Rajdhani", sans-serif !important;
-    }
-    .select2-container--default .select2-selection--multiple .select2-search__field::placeholder {
-      color: rgba(255,255,255,0.35) !important;
-    }
+      /* SUBMIT */
+      /* Error Styling */
+      .error-message {
+        color: #ff6b6b; /* Un rosso visibile ma elegante */
+        font-size: 0.85rem;
+        margin-top: 5px;
+        display: block;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+      }
 
-    /* SUBMIT BUTTON */
-    .form-submit-row { margin-top: 40px; text-align: center; }
-    #vtigerFormSubmitBtn_2 {
-      background: none; border: none; border-bottom: 2px solid var(--gold); border-radius: 0;
-      color: var(--white); font-family: "Rajdhani", sans-serif; font-size: 1.3rem; font-weight: 300;
-      letter-spacing: 0.12em; text-transform: uppercase; padding: 0 0 2px; cursor: pointer;
-      transition: border-bottom-width 0.3s, padding-bottom 0.3s; display: inline-block;
-    }
-    #vtigerFormSubmitBtn_2:hover { border-bottom-width: 0; padding-bottom: 4px; }
-    #vtigerFormSubmitBtn_2:disabled { opacity: 0.5; cursor: not-allowed; }
+      .input-error {
+        border-bottom-color: #ff6b6b !important;
+      }
 
-    /* LOADER OVERLAY */
-    #fy-loader {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      background: rgba(35, 87, 106, 0.78);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 28px;
-    }
-    #fy-loader.active { display: flex; }
-    body.fy-loading * { pointer-events: none !important; }
-    body.fy-loading #fy-loader { pointer-events: auto !important; }
-    .fy-spinner {
-      width: 56px; height: 56px; position: relative;
-    }
-    .fy-spinner::before,
-    .fy-spinner::after {
-      content: ''; position: absolute; inset: 0; border-radius: 50%; border: 3px solid transparent;
-    }
-    .fy-spinner::before {
-      border-top-color: var(--gold); border-right-color: var(--gold);
-      animation: fy-spin 1s linear infinite;
-    }
-    .fy-spinner::after {
-      border-bottom-color: rgba(255,255,255,0.25); border-left-color: rgba(255,255,255,0.25);
-      animation: fy-spin 1s linear infinite reverse;
-    }
-    @keyframes fy-spin { to { transform: rotate(360deg); } }
-    .fy-loader-text {
-      font-family: 'Rajdhani', sans-serif; font-size: 0.9rem; font-weight: 400;
-      letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.65);
-    }
+      #form-error-banner {
+        display: none;
+        background: rgba(255, 107, 107, 0.15);
+        border: 1px solid #ff6b6b;
+        color: #fff;
+        padding: 15px;
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+      }
 
-    /* FOOTER */
-    footer { background: var(--sage); padding: 70px 0 30px; }
-    .footer-inner { max-width: 1340px; margin: 0 auto; padding: 0 40px; }
-    .footer-cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(35,87,106,0.15); }
-    .footer-col-title { font-family: 'Prata', serif; color: var(--blue); font-size: 1rem; margin-bottom: 16px; }
-    .footer-col-body { color: var(--blue); font-size: 0.95rem; line-height: 1.8; }
-    .footer-col-body a { display: block; color: var(--blue); }
-    .footer-col-body a:hover { text-decoration: underline; }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; font-size: 0.82rem; color: var(--blue); }
-    .footer-bottom a { color: var(--blue); text-decoration: underline; }
+      /* Multiselect: hide already-selected options in the dropdown (vtiger behaviour) */
+      [aria-multiselectable="true"]
+        .select2-results__option[aria-selected="true"] {
+        display: none !important;
+      }
+      /* Multiselect tag pills */
+      .select2-container--default .select2-selection--multiple {
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
+        border-radius: 0 !important;
+        padding: 2px 0 !important;
+        min-height: 34px !important;
+      }
+      .select2-container--default .select2-selection--multiple:focus-within {
+        border-bottom-color: var(--gold) !important;
+      }
+      .select2-container--default
+        .select2-selection--multiple
+        .select2-selection__choice {
+        background: rgba(167, 118, 96, 0.35) !important;
+        border: 1px solid rgba(167, 118, 96, 0.5) !important;
+        color: var(--white) !important;
+        font-family: "Rajdhani", sans-serif !important;
+        font-size: 0.9rem !important;
+        border-radius: 2px !important;
+      }
+      .select2-container--default
+        .select2-selection--multiple
+        .select2-selection__choice__remove {
+        color: rgba(255, 255, 255, 0.7) !important;
+        margin-right: 4px !important;
+      }
+      .select2-container--default
+        .select2-selection--multiple
+        .select2-selection__rendered {
+        padding: 0 !important;
+      }
+      .select2-container--default
+        .select2-selection--multiple
+        .select2-search__field {
+        color: var(--white) !important;
+        font-family: "Rajdhani", sans-serif !important;
+      }
+      .select2-container--default
+        .select2-selection--multiple
+        .select2-search__field::placeholder {
+        color: rgba(255, 255, 255, 0.35) !important;
+      }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      #__vtigerWebForm_2 table tbody { grid-template-columns: 1fr; }
-      #__vtigerWebForm_2 table tr.row-full { grid-column: 1; }
-      .footer-cols { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 600px) {
-      .header-inner { height: 50px; }
-      .header-logo img { height: 80px; top: 30px;}
-      .alignwide { padding: 0 20px; }
-      .contact-section { padding: 60px 0 80px; }
-      .footer-cols { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-    }
-  </style>
-</head>
-<body>
+      /* SUBMIT BUTTON */
+      .form-submit-row {
+        margin-top: 40px;
+        text-align: center;
+      }
+      #vtigerFormSubmitBtn_2 {
+        background: none;
+        border: none;
+        border-bottom: 2px solid var(--gold);
+        border-radius: 0;
+        color: var(--white);
+        font-family: "Rajdhani", sans-serif;
+        font-size: 1.3rem;
+        font-weight: 300;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0 0 2px;
+        cursor: pointer;
+        transition:
+          border-bottom-width 0.3s,
+          padding-bottom 0.3s;
+        display: inline-block;
+      }
+      #vtigerFormSubmitBtn_2:hover {
+        border-bottom-width: 0;
+        padding-bottom: 4px;
+      }
+      #vtigerFormSubmitBtn_2:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
 
-<!-- LOADER OVERLAY -->
-<div id="fy-loader" role="status" aria-live="polite" aria-label="Sending your request&hellip;">
-  <div class="fy-spinner"></div>
-  <span class="fy-loader-text">Sending&hellip;</span>
-</div>
+      /* LOADER OVERLAY */
+      #fy-loader {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: rgba(35, 87, 106, 0.78);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 28px;
+      }
+      #fy-loader.active {
+        display: flex;
+      }
+      body.fy-loading * {
+        pointer-events: none !important;
+      }
+      body.fy-loading #fy-loader {
+        pointer-events: auto !important;
+      }
+      .fy-spinner {
+        width: 56px;
+        height: 56px;
+        position: relative;
+      }
+      .fy-spinner::before,
+      .fy-spinner::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 3px solid transparent;
+      }
+      .fy-spinner::before {
+        border-top-color: var(--gold);
+        border-right-color: var(--gold);
+        animation: fy-spin 1s linear infinite;
+      }
+      .fy-spinner::after {
+        border-bottom-color: rgba(255, 255, 255, 0.25);
+        border-left-color: rgba(255, 255, 255, 0.25);
+        animation: fy-spin 1s linear infinite reverse;
+      }
+      @keyframes fy-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .fy-loader-text {
+        font-family: "Rajdhani", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.65);
+      }
 
-<!-- HEADER -->
-<header>
-  <div class="header-inner">
-    <a href="https://filippettiyachts.com/it/" class="header-logo">
-      <img
-        src="https://filippettiyachts.com/wp-content/uploads/2024/04/Logo_FY_w.svg"
-        alt="Filippetti Yachts"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-      >
-      <span class="header-logo-text" style="display:none;">Filippetti Yachts</span>
-    </a>
-  </div>
-</header>
+      /* FOOTER */
+      footer {
+        background: var(--sage);
+        padding: 70px 0 30px;
+      }
+      .footer-inner {
+        max-width: 1340px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+      .footer-cols {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid rgba(35, 87, 106, 0.15);
+      }
+      .footer-col-title {
+        font-family: "Prata", serif;
+        color: var(--blue);
+        font-size: 1rem;
+        margin-bottom: 16px;
+      }
+      .footer-col-body {
+        color: var(--blue);
+        font-size: 0.95rem;
+        line-height: 1.8;
+      }
+      .footer-col-body a {
+        display: block;
+        color: var(--blue);
+      }
+      .footer-col-body a:hover {
+        text-decoration: underline;
+      }
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        font-size: 0.82rem;
+        color: var(--blue);
+      }
+      .footer-bottom a {
+        color: var(--blue);
+        text-decoration: underline;
+      }
 
-<!-- CONTACT FORM SECTION -->
-<section class="contact-section">
-  <div class="alignwide">
-
-    <h1 class="contact-section-title">Please fill the fields below to update your contact information.</h1>
-
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-
-    <!-- Hidden iframe absorbs vtiger's JSON response -->
-    <iframe name="vtiger_sink" id="vtiger_sink" style="display:none;" aria-hidden="true"></iframe>
-
-    <form
-      id="__vtigerWebForm_2"
-      name="FILIPPETTI YACHTS"
-      action="https://filippettiyachtsrl.od2.vtiger.com/modules/Webforms/capture.php"
-      method="post"
-      accept-charset="utf-8"
-      enctype="multipart/form-data"
-      target="vtiger_sink"
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        #__vtigerWebForm_2 table tbody {
+          grid-template-columns: 1fr;
+        }
+        #__vtigerWebForm_2 table tr.row-full {
+          grid-column: 1;
+        }
+        .footer-cols {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .header-inner {
+          height: 50px;
+        }
+        .header-logo img {
+          height: 80px;
+          top: 30px;
+        }
+        .alignwide {
+          padding: 0 20px;
+        }
+        .contact-section {
+          padding: 60px 0 80px;
+        }
+        .footer-cols {
+          grid-template-columns: 1fr;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- LOADER OVERLAY -->
+    <div
+      id="fy-loader"
+      role="status"
+      aria-live="polite"
+      aria-label="Sending your request&hellip;"
     >
-      <input type="hidden" name="publicid"        value="d1b5b5e03206515ce42106af0d0f4a62"/>
-      <input type="hidden" name="urlencodeenable" value="1"/>
-      <input type="hidden" name="name"            value="FILIPPETTI YACHTS"/>
-      <input type="hidden" name="__vtCurrency"    value="1"/>
-
-      <table><tbody>
-
-        <tr>
-          <td><label>Last Name *</label></td>
-          <td><input type="text" name="lastname" maxlength="80" data-label="" value="" required="" placeholder="Last Name *"/></td>
-          <td><input type="checkbox" name="vtField" value="1" style="display:none !important" tabindex="-1" autocomplete="off"/></td>
-        </tr>
-
-        <tr>
-          <td><label>Primary Email *</label></td>
-          <td><input type="email" name="email" data-label="Primary Email" value="" required="" placeholder="Email *"/></td>
-        </tr>
-
-        <tr>
-          <td><label>Office Phone</label></td>
-          <td><input type="text" name="phone" maxlength="50" data-label="" value="" data-type="phone" placeholder="Phone"/></td>
-        </tr>
-
-        <tr>
-          <td><label>Interested in</label></td>
-          <td>
-            <select name="cf_contacts_interestedin" data-label="label:Interested+in" id="interestedInSelect">
-              <option value="">Select Value</option>
-              <option value="New Yacht">New Yacht</option>
-              <option value="Pre Owned Yacht">Pre Owned Yacht</option>
-              <option value="New and Pre Owned Yacht">New and Pre Owned Yacht</option>
-              <option value="Refitting">Refitting</option>
-              <option value="Service">Service</option>
-              <option value="Charter">Charter</option>
-              <option value="Represent Filippetti Yachts">Represent Filippetti Yachts</option>
-              <option value="Other">Other</option>
-            </select>
-          </td>
-        </tr>
-
-        <!-- Type of New Yacht — shown conditionally when "New Yacht" or "New and Pre Owned Yacht" is selected -->
-        <tr id="newYachtTypeRow" class="row-full" style="display:none;">
-          <td><label>Type of New Yacht (select either ALL or one or more options)</label></td>
-          <td>
-            <select name="cf_contacts_typeofyacht[]" data-label="label:Type+of+yacht" multiple="" id="newYachtTypeSelect">
-              <option value="ALL">ALL</option>
-              <option value="S Line">S Line</option>
-              <option value="S55">S55</option>
-              <option value="S70">S70</option>
-              <option value="S75">S75</option>
-              <option value="S80">S80</option>
-              <option value="S90">S90</option>
-              <option value="S100">S100</option>
-              <option value="F Line">F Line</option>
-              <option value="F70">F70</option>
-              <option value="F80">F80</option>
-              <option value="F90">F90</option>
-              <option value="F100">F100</option>
-              <option value="N Line">N Line</option>
-              <option value="N28">N28</option>
-              <option value="N32">N32</option>
-              <option value="N35">N35</option>
-              <option value="HERITAGE COLLECTION">HERITAGE COLLECTION</option>
-              <option value="F93">F93</option>
-              <option value="N26 C">N26 C</option>
-              <option value="N26 O">N26 O</option>
-              <option value="N30">N30</option>
-              <option value="S65 Old">S65 Old</option>
-              <option value="F76 Old">F76 Old</option>
-              <option value="E32 Old">E32 Old</option>
-              <option value="E36 Old">E36 Old</option>
-              <option value="E40 Old">E40 Old</option>
-              <option value="E series Old">E series Old</option>
-              <option value="C&amp;N Endeavour 42">C&amp;N Endeavour 42</option>
-              <option value="C&amp;N Velsheda 50">C&amp;N Velsheda 50</option>
-            </select>
-          </td>
-        </tr>
-
-        <!-- Language Spoken (multiselect) -->
-        <tr>
-          <td><label>Language Spoken (select one or more options)</label></td>
-          <td>
-            <select name="cf_contacts_languagespoken[]" data-label="label:Language+spoken" multiple="">
-              <option value="IT">Italiano</option>
-              <option value="EN">English</option>
-            </select>
-          </td>
-        </tr>
-
-        <tr>
-          <td><label>Yacht Owner</label></td>
-          <td>
-            <select name="cf_contacts_ownedyacht" data-label="label:Owned+Yacht" id="ownedYachtSelect">
-              <option value="">Select Value</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-          </td>
-        </tr>
-
-        <tr id="yachtModelRow" class="row-full" style="display:none;">
-          <td><label>Yacht Owned — Model and Year</label></td>
-          <td><input type="text" name="cf_contacts_modelyachtowned" maxlength="50" data-label="" value="" placeholder="Modello / Anno" id="yachtModelInput" disabled/></td>
-        </tr>
-
-        <tr>
-          <td><label>Length</label></td>
-          <td>
-            <select name="cf_contacts_length" data-label="label:Length">
-              <option value="">Select Value</option>
-              <option value="up to 10mt/33ft">up to 10mt / 33ft</option>
-              <option value="10mt-15mt (33ft - 49ft)">10mt&ndash;15mt (33ft&ndash;49ft)</option>
-              <option value="15mt-20mt (50ft - 66ft)">15mt&ndash;20mt (50ft&ndash;66ft)</option>
-              <option value="20mt-25mt (67ft - 82ft)">20mt&ndash;25mt (67ft&ndash;82ft)</option>
-              <option value="25mt-30mt (82ft - 98ft)">25mt&ndash;30mt (82ft&ndash;98ft)</option>
-              <option value="30mt-35mt (99ft - 115ft)">30mt&ndash;35mt (99ft&ndash;115ft)</option>
-              <option value="35mt/116ft and more">35mt / 116ft and more</option>
-            </select>
-          </td>
-        </tr>
-
-        <tr>
-          <td><label>Budget &mdash; specify &euro; or $</label></td>
-          <td>
-            <input type="text" name="cf_contacts_budget" maxlength="30" data-label="" value="" placeholder="Budget" id="budgetField"/>
-            <span id="budgetError" style="display:none; margin-top:6px; font-family:'Rajdhani',sans-serif; font-size:0.85rem; font-weight:400; letter-spacing:0.06em; color:rgba(255,255,255,0.55);">
-              Please enter digits followed by $ or € — e.g. 4000000$ or 5000000€
-            </span>
-          </td>
-        </tr>
-
-        <tr class="row-full">
-          <td><label>Privacy Policy Authorization *</label></td>
-          <td>
-            <label class="checkbox-row">
-              <input type="hidden"   name="cf_contacts_privacypolicyauthorization" data-label="" value="0"/>
-              <input type="checkbox" name="cf_contacts_privacypolicyauthorization" data-label="" value="1" required=""/>
-              <span class="checkbox-label-text">
-                I have read the <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a>
-                of FSY S.r.l. – Filippetti Yachts and I authorise the processing of my personal data for the purposes of this form
-              </span>
-            </label>
-          </td>
-        </tr>
-
-        <tr class="row-full">
-          <td><label>Marketing &amp; Newsletter Consent</label></td>
-          <td>
-            <label class="checkbox-row">
-              <input type="hidden"   name="emailoptin" data-label="" value="User opted out"/>
-              <input type="checkbox" name="emailoptin" data-label="" value="Single opt-in (webform)"/>
-              <input type="hidden"   name="cf_contacts_newsletterauthorization" data-label="" value="No"/>
-              <input type="checkbox" name="cf_contacts_newsletterauthorization" data-label="" value="1" style="display:none"/>
-              <span class="checkbox-label-text">
-                I consent to receiving commercial communications and newsletter updates by email from FSY S.r.l. – Filippetti Yachts
-              </span>
-            </label>
-          </td>
-        </tr>
-
-      </tbody></table>
-
-      <div class="form-submit-row">
-        <input type="submit" value="Send request" id="vtigerFormSubmitBtn_2"/>
-      </div>
-
-    </form>
-
-    <input type="hidden" name="isCaptchaEnabled"      value="" disabled=""/>
-    <input type="hidden" name="isVerificationEnabled" value="0" disabled=""/>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-cols">
-      <div>
-        <div class="footer-col-title">Headquarter</div>
-        <div class="footer-col-body">
-          FSY S.r.l.<br>
-          Sede Operativa / Operational Headquarters<br>
-          Via Val Cesano 66, 61037 Mondolfo (PU), Italy<br>
-          Sede Legale / Registered Office<br>
-          Via Nicol&ograve; Porpora 12, 00198 Roma, Italy<br>
-          C.f e P.Iva / Tax No. 16621211008
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Yachts</div>
-        <div class="footer-col-body">
-          <a href="https://filippettiyachts.com/it/serie/serie-flybridge/">Serie Flybridge</a>
-          <a href="https://filippettiyachts.com/it/serie/serie-sport/">Serie Sport</a>
-          <a href="https://filippettiyachts.com/it/serie/serie-navetta/">Serie Navetta</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Menu</div>
-        <div class="footer-col-body">
-          <a href="https://filippettiyachts.com/it/">Home</a>
-          <a href="https://filippettiyachts.com/it/azienda/">Company</a>
-          <a href="https://filippettiyachts.com/it/brokerage/">Brokerage</a>
-          <a href="https://filippettiyachts.com/it/assistenza/">Service</a>
-          <a href="https://filippettiyachts.com/it/news-ed-eventi/">News</a>
-          <a href="https://filippettiyachts.com/it/contatti/">Contacts</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Follow us</div>
-        <div class="footer-col-body">
-          <a href="https://www.facebook.com/FilippettiYachts" target="_blank">Facebook</a>
-          <a href="https://www.instagram.com/filippettiyachts/" target="_blank">Instagram</a>
-          <a href="https://www.linkedin.com/company/filippetti-yacht/" target="_blank">LinkedIn</a>
-        </div>
-      </div>
+      <div class="fy-spinner"></div>
+      <span class="fy-loader-text">Sending&hellip;</span>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; <script>document.write(new Date().getFullYear())</script> Filippetti Yachts &ndash; All rights reserved &ndash;
-        <a href="https://filippettiyachts.com/it/privacy-policy/" target="_blank">Privacy Policy</a>
-        <a href="https://filippettiyachts.com/it/cookie-policy/" target="_blank">Cookie Policy</a>
-        <a href="https://filippettiyachts.com/it/termini-condizioni/" target="_blank">Terms of Service</a>
-      </span>
-    </div>
-  </div>
-</footer>
 
-<!-- SCRIPTS -->
-<script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
-<script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/utils.js"></script>
+    <!-- HEADER -->
+    <header>
+      <div class="header-inner">
+        <a href="https://filippettiyachts.com/it/" class="header-logo">
+          <img
+            src="https://filippettiyachts.com/wp-content/uploads/2024/04/Logo_FY_w.svg"
+            alt="Filippetti Yachts"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'block';
+            "
+          />
+          <span class="header-logo-text" style="display: none"
+            >Filippetti Yachts</span
+          >
+        </a>
+      </div>
+    </header>
 
-<script type="text/javascript">
-window.addEventListener("load", function () {
-  function getCountryCode() {
-    var timezoneCountryMap = {"Africa/Abidjan":"ci","Africa/Accra":"gh","Africa/Addis_Ababa":"et","Africa/Algiers":"dz","Africa/Asmara":"er","Africa/Asmera":"er","Africa/Bamako":"ml","Africa/Bangui":"cf","Africa/Banjul":"gm","Africa/Bissau":"gw","Africa/Blantyre":"mw","Africa/Brazzaville":"cg","Africa/Bujumbura":"bi","Africa/Cairo":"eg","Africa/Casablanca":"ma","Africa/Ceuta":"es","Africa/Conakry":"gn","Africa/Dakar":"sn","Africa/Dar_es_Salaam":"tz","Africa/Djibouti":"dj","Africa/Douala":"cm","Africa/El_Aaiun":"eh","Africa/Freetown":"sl","Africa/Gaborone":"bw","Africa/Harare":"zw","Africa/Johannesburg":"za","Africa/Juba":"ss","Africa/Kampala":"ug","Africa/Khartoum":"sd","Africa/Kigali":"rw","Africa/Kinshasa":"cd","Africa/Lagos":"ng","Africa/Libreville":"ga","Africa/Lome":"tg","Africa/Luanda":"ao","Africa/Lubumbashi":"cd","Africa/Lusaka":"zm","Africa/Malabo":"gq","Africa/Maputo":"mz","Africa/Maseru":"ls","Africa/Mbabane":"sz","Africa/Mogadishu":"so","Africa/Monrovia":"lr","Africa/Nairobi":"ke","Africa/Ndjamena":"td","Africa/Niamey":"ne","Africa/Nouakchott":"mr","Africa/Ouagadougou":"bf","Africa/Porto-Novo":"bj","Africa/Sao_Tome":"st","Africa/Timbuktu":"ml","Africa/Tripoli":"ly","Africa/Tunis":"tn","Africa/Windhoek":"na","America/Adak":"us","America/Anchorage":"us","America/Anguilla":"ai","America/Antigua":"ag","America/Araguaina":"br","America/Argentina/Buenos_Aires":"ar","America/Argentina/Catamarca":"ar","America/Argentina/ComodRivadavia":"ar","America/Argentina/Cordoba":"ar","America/Argentina/Jujuy":"ar","America/Argentina/La_Rioja":"ar","America/Argentina/Mendoza":"ar","America/Argentina/Rio_Gallegos":"ar","America/Argentina/Salta":"ar","America/Argentina/San_Juan":"ar","America/Argentina/San_Luis":"ar","America/Argentina/Tucuman":"ar","America/Argentina/Ushuaia":"ar","America/Aruba":"aw","America/Asuncion":"py","America/Atikokan":"ca","America/Atka":"us","America/Bahia":"br","America/Bahia_Banderas":"mx","America/Barbados":"bb","America/Belem":"br","America/Belize":"bz","America/Blanc-Sablon":"ca","America/Boa_Vista":"br","America/Bogota":"co","America/Boise":"us","America/Buenos_Aires":"ar","America/Cambridge_Bay":"ca","America/Campo_Grande":"br","America/Cancun":"mx","America/Caracas":"ve","America/Catamarca":"ar","America/Cayenne":"gf","America/Cayman":"ky","America/Chicago":"us","America/Chihuahua":"mx","America/Coral_Harbour":"ca","America/Cordoba":"ar","America/Costa_Rica":"cr","America/Creston":"ca","America/Cuiaba":"br","America/Curacao":"cw","America/Danmarkshavn":"gl","America/Dawson":"ca","America/Dawson_Creek":"ca","America/Denver":"us","America/Detroit":"us","America/Dominica":"dm","America/Edmonton":"ca","America/Eirunepe":"br","America/El_Salvador":"sv","America/Ensenada":"mx","America/Fort_Nelson":"ca","America/Fort_Wayne":"us","America/Fortaleza":"br","America/Glace_Bay":"ca","America/Godthab":"gl","America/Goose_Bay":"ca","America/Grand_Turk":"tc","America/Grenada":"gd","America/Guadeloupe":"gp","America/Guatemala":"gt","America/Guayaquil":"ec","America/Guyana":"gy","America/Halifax":"ca","America/Havana":"cu","America/Hermosillo":"mx","America/Indiana/Indianapolis":"us","America/Indiana/Knox":"us","America/Indiana/Marengo":"us","America/Indiana/Petersburg":"us","America/Indiana/Tell_City":"us","America/Indiana/Vevay":"us","America/Indiana/Vincennes":"us","America/Indiana/Winamac":"us","America/Indianapolis":"us","America/Inuvik":"ca","America/Iqaluit":"ca","America/Jamaica":"jm","America/Jujuy":"ar","America/Juneau":"us","America/Kentucky/Louisville":"us","America/Kentucky/Monticello":"us","America/Knox_IN":"us","America/Kralendijk":"bq","America/La_Paz":"bo","America/Lima":"pe","America/Los_Angeles":"us","America/Louisville":"us","America/Lower_Princes":"sx","America/Maceio":"br","America/Managua":"ni","America/Manaus":"br","America/Marigot":"mf","America/Martinique":"mq","America/Matamoros":"mx","America/Mazatlan":"mx","America/Mendoza":"ar","America/Menominee":"us","America/Merida":"mx","America/Metlakatla":"us","America/Mexico_City":"mx","America/Miquelon":"pm","America/Moncton":"ca","America/Monterrey":"mx","America/Montevideo":"uy","America/Montreal":"ca","America/Montserrat":"ms","America/Nassau":"bs","America/New_York":"us","America/Nipigon":"ca","America/Nome":"us","America/Noronha":"br","America/North_Dakota/Beulah":"us","America/North_Dakota/Center":"us","America/North_Dakota/New_Salem":"us","America/Nuuk":"gl","America/Ojinaga":"mx","America/Panama":"pa","America/Pangnirtung":"ca","America/Paramaribo":"sr","America/Phoenix":"us","America/Port-au-Prince":"ht","America/Port_of_Spain":"tt","America/Porto_Acre":"br","America/Porto_Velho":"br","America/Puerto_Rico":"pr","America/Punta_Arenas":"cl","America/Rainy_River":"ca","America/Rankin_Inlet":"ca","America/Recife":"br","America/Regina":"ca","America/Resolute":"ca","America/Rio_Branco":"br","America/Rosario":"ar","America/Santa_Isabel":"mx","America/Santarem":"br","America/Santiago":"cl","America/Santo_Domingo":"do","America/Sao_Paulo":"br","America/Scoresbysund":"gl","America/Shiprock":"us","America/Sitka":"us","America/St_Barthelemy":"bl","America/St_Johns":"ca","America/St_Kitts":"kn","America/St_Lucia":"lc","America/St_Thomas":"vi","America/St_Vincent":"vc","America/Swift_Current":"ca","America/Tegucigalpa":"hn","America/Thule":"gl","America/Thunder_Bay":"ca","America/Tijuana":"mx","America/Toronto":"ca","America/Tortola":"vg","America/Vancouver":"ca","America/Virgin":"vi","America/Whitehorse":"ca","America/Winnipeg":"ca","America/Yakutat":"us","America/Yellowknife":"ca","Antarctica/Casey":"aq","Antarctica/Davis":"aq","Antarctica/DumontDUrville":"aq","Antarctica/Macquarie":"au","Antarctica/Mawson":"aq","Antarctica/McMurdo":"aq","Antarctica/Palmer":"aq","Antarctica/Rothera":"aq","Antarctica/South_Pole":"aq","Antarctica/Syowa":"aq","Antarctica/Troll":"aq","Antarctica/Vostok":"aq","Arctic/Longyearbyen":"sj","Asia/Aden":"ye","Asia/Almaty":"kz","Asia/Amman":"jo","Asia/Anadyr":"ru","Asia/Aqtau":"kz","Asia/Aqtobe":"kz","Asia/Ashgabat":"tm","Asia/Ashkhabad":"tm","Asia/Atyrau":"kz","Asia/Baghdad":"iq","Asia/Bahrain":"bh","Asia/Baku":"az","Asia/Bangkok":"th","Asia/Barnaul":"ru","Asia/Beirut":"lb","Asia/Bishkek":"kg","Asia/Brunei":"bn","Asia/Calcutta":"in","Asia/Chita":"ru","Asia/Choibalsan":"mn","Asia/Chongqing":"cn","Asia/Chungking":"cn","Asia/Colombo":"lk","Asia/Dacca":"bd","Asia/Damascus":"sy","Asia/Dhaka":"bd","Asia/Dili":"tl","Asia/Dubai":"ae","Asia/Dushanbe":"tj","Asia/Famagusta":"cy","Asia/Gaza":"ps","Asia/Harbin":"cn","Asia/Hebron":"ps","Asia/Ho_Chi_Minh":"vn","Asia/Hong_Kong":"hk","Asia/Hovd":"mn","Asia/Irkutsk":"ru","Asia/Istanbul":"tr","Asia/Jakarta":"id","Asia/Jayapura":"id","Asia/Jerusalem":"il","Asia/Kabul":"af","Asia/Kamchatka":"ru","Asia/Karachi":"pk","Asia/Kashgar":"cn","Asia/Kathmandu":"np","Asia/Katmandu":"np","Asia/Khandyga":"ru","Asia/Kolkata":"in","Asia/Krasnoyarsk":"ru","Asia/Kuala_Lumpur":"my","Asia/Kuching":"my","Asia/Kuwait":"kw","Asia/Macao":"mo","Asia/Macau":"mo","Asia/Magadan":"ru","Asia/Makassar":"id","Asia/Manila":"ph","Asia/Muscat":"om","Asia/Nicosia":"cy","Asia/Novokuznetsk":"ru","Asia/Novosibirsk":"ru","Asia/Omsk":"ru","Asia/Oral":"kz","Asia/Phnom_Penh":"kh","Asia/Pontianak":"id","Asia/Pyongyang":"kp","Asia/Qatar":"qa","Asia/Qostanay":"kz","Asia/Qyzylorda":"kz","Asia/Rangoon":"mm","Asia/Riyadh":"sa","Asia/Saigon":"vn","Asia/Sakhalin":"ru","Asia/Samarkand":"uz","Asia/Seoul":"kr","Asia/Shanghai":"cn","Asia/Singapore":"sg","Asia/Srednekolymsk":"ru","Asia/Taipei":"tw","Asia/Tashkent":"uz","Asia/Tbilisi":"ge","Asia/Tehran":"ir","Asia/Tel_Aviv":"il","Asia/Thimbu":"bt","Asia/Thimphu":"bt","Asia/Tokyo":"jp","Asia/Tomsk":"ru","Asia/Ujung_Pandang":"id","Asia/Ulaanbaatar":"mn","Asia/Ulan_Bator":"mn","Asia/Urumqi":"cn","Asia/Ust-Nera":"ru","Asia/Vientiane":"la","Asia/Vladivostok":"ru","Asia/Yakutsk":"ru","Asia/Yangon":"mm","Asia/Yekaterinburg":"ru","Asia/Yerevan":"am","Atlantic/Azores":"pt","Atlantic/Bermuda":"bm","Atlantic/Canary":"es","Atlantic/Cape_Verde":"cv","Atlantic/Faeroe":"fo","Atlantic/Faroe":"fo","Atlantic/Jan_Mayen":"sj","Atlantic/Madeira":"pt","Atlantic/Reykjavik":"is","Atlantic/South_Georgia":"gs","Atlantic/St_Helena":"sh","Atlantic/Stanley":"fk","Australia/ACT":"au","Australia/Adelaide":"au","Australia/Brisbane":"au","Australia/Broken_Hill":"au","Australia/Canberra":"au","Australia/Currie":"au","Australia/Darwin":"au","Australia/Eucla":"au","Australia/Hobart":"au","Australia/LHI":"au","Australia/Lindeman":"au","Australia/Lord_Howe":"au","Australia/Melbourne":"au","Australia/North":"au","Australia/NSW":"au","Australia/Perth":"au","Australia/Queensland":"au","Australia/South":"au","Australia/Sydney":"au","Australia/Tasmania":"au","Australia/Victoria":"au","Australia/West":"au","Australia/Yancowinna":"au","Brazil/Acre":"br","Brazil/DeNoronha":"br","Brazil/East":"br","Brazil/West":"br","Canada/Atlantic":"ca","Canada/Central":"ca","Canada/Eastern":"ca","Canada/Mountain":"ca","Canada/Newfoundland":"ca","Canada/Pacific":"ca","Canada/Saskatchewan":"ca","Canada/Yukon":"ca","Chile/Continental":"cl","Chile/EasterIsland":"cl","Cuba":"cu","Egypt":"eg","Eire":"ie","Europe/Amsterdam":"nl","Europe/Andorra":"ad","Europe/Astrakhan":"ru","Europe/Athens":"gr","Europe/Belfast":"gb","Europe/Belgrade":"rs","Europe/Berlin":"de","Europe/Bratislava":"sk","Europe/Brussels":"be","Europe/Bucharest":"ro","Europe/Budapest":"hu","Europe/Busingen":"de","Europe/Chisinau":"md","Europe/Copenhagen":"dk","Europe/Dublin":"ie","Europe/Gibraltar":"gi","Europe/Guernsey":"gg","Europe/Helsinki":"fi","Europe/Isle_of_Man":"im","Europe/Istanbul":"tr","Europe/Jersey":"je","Europe/Kaliningrad":"ru","Europe/Kiev":"ua","Europe/Kirov":"ru","Europe/Lisbon":"pt","Europe/Ljubljana":"si","Europe/London":"gb","Europe/Luxembourg":"lu","Europe/Madrid":"es","Europe/Malta":"mt","Europe/Mariehamn":"ax","Europe/Minsk":"by","Europe/Monaco":"mc","Europe/Moscow":"ru","Europe/Nicosia":"cy","Europe/Oslo":"no","Europe/Paris":"fr","Europe/Podgorica":"me","Europe/Prague":"cz","Europe/Riga":"lv","Europe/Rome":"it","Europe/Samara":"ru","Europe/San_Marino":"sm","Europe/Sarajevo":"ba","Europe/Saratov":"ru","Europe/Simferopol":"ru","Europe/Skopje":"mk","Europe/Sofia":"bg","Europe/Stockholm":"se","Europe/Tallinn":"ee","Europe/Tirane":"al","Europe/Tiraspol":"md","Europe/Ulyanovsk":"ru","Europe/Uzhgorod":"ua","Europe/Vaduz":"li","Europe/Vatican":"va","Europe/Vienna":"at","Europe/Vilnius":"lt","Europe/Volgograd":"ru","Europe/Warsaw":"pl","Europe/Zagreb":"hr","Europe/Zaporozhye":"ua","Europe/Zurich":"ch","GB":"gb","GB-Eire":"gb","Hongkong":"hk","Iceland":"is","Indian/Antananarivo":"mg","Indian/Chagos":"io","Indian/Christmas":"cx","Indian/Cocos":"cc","Indian/Comoro":"km","Indian/Kerguelen":"tf","Indian/Mahe":"sc","Indian/Maldives":"mv","Indian/Mauritius":"mu","Indian/Mayotte":"yt","Indian/Reunion":"re","Iran":"ir","Israel":"il","Jamaica":"jm","Japan":"jp","Kwajalein":"mh","Libya":"ly","Mexico/BajaNorte":"mx","Mexico/BajaSur":"mx","Mexico/General":"mx","Navajo":"us","NZ":"nz","NZ-CHAT":"nz","Pacific/Apia":"ws","Pacific/Auckland":"nz","Pacific/Bougainville":"pg","Pacific/Chatham":"nz","Pacific/Chuuk":"fm","Pacific/Easter":"cl","Pacific/Efate":"vu","Pacific/Enderbury":"ki","Pacific/Fakaofo":"tk","Pacific/Fiji":"fj","Pacific/Funafuti":"tv","Pacific/Galapagos":"ec","Pacific/Gambier":"pf","Pacific/Guadalcanal":"sb","Pacific/Guam":"gu","Pacific/Honolulu":"us","Pacific/Johnston":"um","Pacific/Kanton":"ki","Pacific/Kiritimati":"ki","Pacific/Kosrae":"fm","Pacific/Kwajalein":"mh","Pacific/Majuro":"mh","Pacific/Marquesas":"pf","Pacific/Midway":"um","Pacific/Nauru":"nr","Pacific/Niue":"nu","Pacific/Norfolk":"nf","Pacific/Noumea":"nc","Pacific/Pago_Pago":"as","Pacific/Palau":"pw","Pacific/Pitcairn":"pn","Pacific/Pohnpei":"fm","Pacific/Ponape":"fm","Pacific/Port_Moresby":"pg","Pacific/Rarotonga":"ck","Pacific/Saipan":"mp","Pacific/Samoa":"ws","Pacific/Tahiti":"pf","Pacific/Tarawa":"ki","Pacific/Tongatapu":"to","Pacific/Truk":"fm","Pacific/Wake":"um","Pacific/Wallis":"wf","Pacific/Yap":"fm","Poland":"pl","Portugal":"pt","PRC":"cn","ROC":"tw","ROK":"kr","Singapore":"sg","Turkey":"tr","US/Alaska":"us","US/Aleutian":"us","US/Arizona":"us","US/Central":"us","US/East-Indiana":"us","US/Eastern":"us","US/Hawaii":"us","US/Indiana-Starke":"us","US/Michigan":"us","US/Mountain":"us","US/Pacific":"us","US/Samoa":"ws","W-SU":"ru"};
-    var timezone = "";
-    var country = "us";
-    if (Intl && Intl.DateTimeFormat) timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    if (timezoneCountryMap[timezone]) country = timezoneCountryMap[timezone];
-    return country;
-  }
-  var phoneFields = document.querySelectorAll('[data-type="phone"]');
-  if (phoneFields && phoneFields.length) {
-    phoneFields.forEach(function(ele) {
-      window.intlTelInput(ele, {
-        initialCountry: "auto", separateDialCode: true, autoPlaceholder: false,
-        hiddenInput: ele.getAttribute("name"),
-        geoIpLookup: function(success, failure) { success(getCountryCode()); }
-      });
-    });
-  }
-});
-</script>
+    <!-- CONTACT FORM SECTION -->
+    <section class="contact-section">
+      <div class="alignwide">
+        <h1 class="contact-section-title">
+          Please fill the fields below to update your contact information.
+        </h1>
 
-<input type="hidden" id="phoneLibScript_2"  value="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/intlTelInput.min.js" disabled=""/>
-<input type="hidden" id="phoneUtilScript_2" value="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/utils.js" disabled=""/>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 
-<script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/jquery/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
+        <!-- Hidden iframe absorbs vtiger's JSON response -->
+        <iframe
+          name="vtiger_sink"
+          id="vtiger_sink"
+          style="display: none"
+          aria-hidden="true"
+        ></iframe>
 
-<script type="text/javascript">
-window.addEventListener("load", function() {
-  var form = jQuery("#__vtigerWebForm_2");
-  form.find("select:visible").each(function() {
-    var isMultiple = jQuery(this).attr("multiple") !== undefined;
-    jQuery(this).select2({ tags: false, closeOnSelect: !isMultiple });
-  });
-});
-</script>
+        <div id="form-error-banner">
+          Please check the form for errors before submitting.
+        </div>
 
-<input type="hidden" id="jQueryScript_2"  value="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/jquery/jquery.min.js" disabled=""/>
-<input type="hidden" id="select2Script_2" value="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js" disabled=""/>
+        <form
+          id="__vtigerWebForm_2"
+          name="FILIPPETTI YACHTS"
+          action="https://filippettiyachtsrl.od2.vtiger.com/modules/Webforms/capture.php"
+          method="post"
+          accept-charset="utf-8"
+          enctype="multipart/form-data"
+          target="vtiger_sink"
+        >
+          <input
+            type="hidden"
+            name="publicid"
+            value="d1b5b5e03206515ce42106af0d0f4a62"
+          />
+          <input type="hidden" name="urlencodeenable" value="1" />
+          <input type="hidden" name="name" value="FILIPPETTI YACHTS" />
+          <input type="hidden" name="__vtCurrency" value="1" />
 
-<!-- vtiger submit + validation (original, untouched) -->
-<script type="text/javascript">
-window.addEventListener("load", function () {
-  var N = navigator.appName, ua = navigator.userAgent, tem;
-  var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
-  if (M && (tem = ua.match(/version\/([\.\d]+)/i)) != null) M[2] = tem[1];
-  M = M ? [M[1], M[2]] : [N, navigator.appVersion, "-?"];
-  var form = document.getElementById("__vtigerWebForm_2"), inputs = form.elements;
-  form.onsubmit = function (event) {
-    document.getElementById("vtigerFormSubmitBtn_2").disabled = true;
-    var required = [], att, val;
-    var endDate, startDate, endDate1;
-    for (var i = 0; i < inputs.length; i++) {
-      att = inputs[i].getAttribute("required");
-      val = inputs[i].value;
-      type = inputs[i].type;
-      if (inputs[i].name == "birthday") {
-        birthdayDate = new Date(inputs[i].value); todayDate = new Date();
-        todayDate.setHours(0,0,0,0); birthdayDate.setHours(0,0,0,0);
-        if (birthdayDate >= todayDate) { alert("Date of Birth should be less than Today's Date."); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; }
-      }
-      if (inputs[i].getAttribute("data-type") == "anniversary" && inputs[i].value) {
-        anniversaryDate = new Date(inputs[i].value); todayDate = new Date();
-        todayDate.setHours(0,0,0,0); anniversaryDate.setHours(0,0,0,0);
-        if (anniversaryDate >= todayDate) { var anniversaryLabel = inputs[i].getAttribute("data-displaylabel"); alert(anniversaryLabel + " should be less than Today's Date."); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; }
-      }
-      if (inputs[i].name == "support_start_date" || inputs[i].name == "startdate") startDate = inputs[i].value;
-      if (inputs[i].name == "support_end_date" || inputs[i].name == "targetenddate" || inputs[i].name == "enddate") endDate = inputs[i].value;
-      if (inputs[i].name == "actualenddate") endDate1 = inputs[i].value;
-      if (type == "email") {
-        if (val != "") {
-          var elemLabel = inputs[i].getAttribute("data-label");
-          var emailFilter = /^[_/a-zA-Z0-9]+([!"#$%&()*+,./:;<=>?\^_`{|}~-]?[a-zA-Z0-9/_/-])*@[a-zA-Z0-9]+([\_\-\.]?[a-zA-Z0-9]+)*\.([\-\_]?[a-zA-Z0-9])+(\.?[a-zA-Z0-9]+)?$/;
-          var illegalChars = /[\(\)\<\>\,\;\:\"\[\]]/;
-          if (!emailFilter.test(val)) { alert("For " + elemLabel + " field please enter valid email address"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; }
-          else if (val.match(illegalChars)) { alert(elemLabel + " field contains illegal characters"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; }
+          <table>
+            <tbody>
+              <tr>
+                <td><label>Last Name *</label></td>
+                <td>
+                  <input
+                    type="text"
+                    name="lastname"
+                    maxlength="80"
+                    data-label=""
+                    value=""
+                    required=""
+                    placeholder="Last Name *"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="checkbox"
+                    name="vtField"
+                    value="1"
+                    style="display: none !important"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </td>
+              </tr>
+
+              <tr>
+                <td><label>Primary Email *</label></td>
+                <td>
+                  <input
+                    type="email"
+                    name="email"
+                    data-label="Primary Email"
+                    value=""
+                    required=""
+                    placeholder="Email *"
+                  />
+                </td>
+              </tr>
+
+              <tr>
+                <td><label>Office Phone</label></td>
+                <td>
+                  <input
+                    type="text"
+                    name="phone"
+                    maxlength="50"
+                    data-label=""
+                    value=""
+                    data-type="phone"
+                    placeholder="Phone"
+                  />
+                </td>
+              </tr>
+
+              <tr>
+                <td><label>Interested in</label></td>
+                <td>
+                  <select
+                    name="cf_contacts_interestedin"
+                    data-label="label:Interested+in"
+                    id="interestedInSelect"
+                  >
+                    <option value="">Select Value</option>
+                    <option value="New Yacht">New Yacht</option>
+                    <option value="Pre Owned Yacht">Pre Owned Yacht</option>
+                    <option value="New and Pre Owned Yacht">
+                      New and Pre Owned Yacht
+                    </option>
+                    <option value="Refitting">Refitting</option>
+                    <option value="Service">Service</option>
+                    <option value="Charter">Charter</option>
+                    <option value="Represent Filippetti Yachts">
+                      Represent Filippetti Yachts
+                    </option>
+                    <option value="Other">Other</option>
+                  </select>
+                </td>
+              </tr>
+
+              <!-- Type of New Yacht — shown conditionally when "New Yacht" or "New and Pre Owned Yacht" is selected -->
+              <tr id="newYachtTypeRow" class="row-full" style="display: none">
+                <td>
+                  <label
+                    >Type of New Yacht (select either ALL or one or more
+                    options)</label
+                  >
+                </td>
+                <td>
+                  <select
+                    name="cf_contacts_typeofyacht[]"
+                    data-label="label:Type+of+yacht"
+                    multiple=""
+                    id="newYachtTypeSelect"
+                  >
+                    <option value="ALL">ALL</option>
+                    <option value="S Line">S Line</option>
+                    <option value="S55">S55</option>
+                    <option value="S70">S70</option>
+                    <option value="S75">S75</option>
+                    <option value="S80">S80</option>
+                    <option value="S90">S90</option>
+                    <option value="S100">S100</option>
+                    <option value="F Line">F Line</option>
+                    <option value="F70">F70</option>
+                    <option value="F80">F80</option>
+                    <option value="F90">F90</option>
+                    <option value="F100">F100</option>
+                    <option value="N Line">N Line</option>
+                    <option value="N28">N28</option>
+                    <option value="N32">N32</option>
+                    <option value="N35">N35</option>
+                    <option value="HERITAGE COLLECTION">
+                      HERITAGE COLLECTION
+                    </option>
+                    <option value="F93">F93</option>
+                    <option value="N26 C">N26 C</option>
+                    <option value="N26 O">N26 O</option>
+                    <option value="N30">N30</option>
+                    <option value="S65 Old">S65 Old</option>
+                    <option value="F76 Old">F76 Old</option>
+                    <option value="E32 Old">E32 Old</option>
+                    <option value="E36 Old">E36 Old</option>
+                    <option value="E40 Old">E40 Old</option>
+                    <option value="E series Old">E series Old</option>
+                    <option value="C&amp;N Endeavour 42">
+                      C&amp;N Endeavour 42
+                    </option>
+                    <option value="C&amp;N Velsheda 50">
+                      C&amp;N Velsheda 50
+                    </option>
+                  </select>
+                </td>
+              </tr>
+
+              <!-- Language Spoken (multiselect) -->
+              <tr>
+                <td>
+                  <label>Language Spoken (select one or more options)</label>
+                </td>
+                <td>
+                  <select
+                    name="cf_contacts_languagespoken[]"
+                    data-label="label:Language+spoken"
+                    multiple=""
+                  >
+                    <option value="IT">Italiano</option>
+                    <option value="EN">English</option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td><label>Yacht Owner</label></td>
+                <td>
+                  <select
+                    name="cf_contacts_ownedyacht"
+                    data-label="label:Owned+Yacht"
+                    id="ownedYachtSelect"
+                  >
+                    <option value="">Select Value</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr id="yachtModelRow" class="row-full" style="display: none">
+                <td><label>Yacht Owned — Model and Year</label></td>
+                <td>
+                  <input
+                    type="text"
+                    name="cf_contacts_modelyachtowned"
+                    maxlength="50"
+                    data-label=""
+                    value=""
+                    placeholder="Modello / Anno"
+                    id="yachtModelInput"
+                    disabled
+                  />
+                </td>
+              </tr>
+
+              <tr>
+                <td><label>Length</label></td>
+                <td>
+                  <select name="cf_contacts_length" data-label="label:Length">
+                    <option value="">Select Value</option>
+                    <option value="up to 10mt/33ft">up to 10mt / 33ft</option>
+                    <option value="10mt-15mt (33ft - 49ft)">
+                      10mt&ndash;15mt (33ft&ndash;49ft)
+                    </option>
+                    <option value="15mt-20mt (50ft - 66ft)">
+                      15mt&ndash;20mt (50ft&ndash;66ft)
+                    </option>
+                    <option value="20mt-25mt (67ft - 82ft)">
+                      20mt&ndash;25mt (67ft&ndash;82ft)
+                    </option>
+                    <option value="25mt-30mt (82ft - 98ft)">
+                      25mt&ndash;30mt (82ft&ndash;98ft)
+                    </option>
+                    <option value="30mt-35mt (99ft - 115ft)">
+                      30mt&ndash;35mt (99ft&ndash;115ft)
+                    </option>
+                    <option value="35mt/116ft and more">
+                      35mt / 116ft and more
+                    </option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td><label>Budget &mdash; specify &euro; or $</label></td>
+                <td>
+                  <input
+                    type="text"
+                    name="cf_contacts_budget"
+                    maxlength="30"
+                    data-label=""
+                    value=""
+                    placeholder="Budget"
+                    id="budgetField"
+                  />
+                  <span
+                    id="budgetError"
+                    style="
+                      display: none;
+                      margin-top: 6px;
+                      font-family: &quot;Rajdhani&quot;, sans-serif;
+                      font-size: 0.85rem;
+                      font-weight: 400;
+                      letter-spacing: 0.06em;
+                      color: rgba(255, 255, 255, 0.55);
+                    "
+                  >
+                    Please enter digits followed by $ or € — e.g. 4000000$ or
+                    5000000€
+                  </span>
+                </td>
+              </tr>
+
+              <tr class="row-full">
+                <td><label>Privacy Policy Authorization *</label></td>
+                <td>
+                  <label class="checkbox-row">
+                    <input
+                      type="hidden"
+                      name="cf_contacts_privacypolicyauthorization"
+                      data-label=""
+                      value="0"
+                    />
+                    <input
+                      type="checkbox"
+                      name="cf_contacts_privacypolicyauthorization"
+                      data-label=""
+                      value="1"
+                      required=""
+                    />
+                    <span class="checkbox-label-text">
+                      I have read the
+                      <a
+                        href="https://filippettiyachts.com/it/privacy-policy/"
+                        target="_blank"
+                        >Privacy Policy</a
+                      >
+                      of FSY S.r.l. – Filippetti Yachts and I authorise the
+                      processing of my personal data for the purposes of this
+                      form
+                    </span>
+                  </label>
+                </td>
+              </tr>
+
+              <tr class="row-full">
+                <td><label>Marketing &amp; Newsletter Consent</label></td>
+                <td>
+                  <label class="checkbox-row">
+                    <input
+                      type="hidden"
+                      name="emailoptin"
+                      data-label=""
+                      value="User opted out"
+                    />
+                    <input
+                      type="checkbox"
+                      name="emailoptin"
+                      data-label=""
+                      value="Single opt-in (webform)"
+                    />
+                    <input
+                      type="hidden"
+                      name="cf_contacts_newsletterauthorization"
+                      data-label=""
+                      value="No"
+                    />
+                    <input
+                      type="checkbox"
+                      name="cf_contacts_newsletterauthorization"
+                      data-label=""
+                      value="1"
+                      style="display: none"
+                    />
+                    <span class="checkbox-label-text">
+                      I consent to receiving commercial communications and
+                      newsletter updates by email from FSY S.r.l. – Filippetti
+                      Yachts
+                    </span>
+                  </label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="form-submit-row">
+            <input
+              type="submit"
+              value="Send request"
+              id="vtigerFormSubmitBtn_2"
+            />
+          </div>
+        </form>
+
+        <input type="hidden" name="isCaptchaEnabled" value="" disabled="" />
+        <input
+          type="hidden"
+          name="isVerificationEnabled"
+          value="0"
+          disabled=""
+        />
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-cols">
+          <div>
+            <div class="footer-col-title">Headquarter</div>
+            <div class="footer-col-body">
+              FSY S.r.l.<br />
+              Sede Operativa / Operational Headquarters<br />
+              Via Val Cesano 66, 61037 Mondolfo (PU), Italy<br />
+              Sede Legale / Registered Office<br />
+              Via Nicol&ograve; Porpora 12, 00198 Roma, Italy<br />
+              C.f e P.Iva / Tax No. 16621211008
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">Yachts</div>
+            <div class="footer-col-body">
+              <a href="https://filippettiyachts.com/it/serie/serie-flybridge/"
+                >Serie Flybridge</a
+              >
+              <a href="https://filippettiyachts.com/it/serie/serie-sport/"
+                >Serie Sport</a
+              >
+              <a href="https://filippettiyachts.com/it/serie/serie-navetta/"
+                >Serie Navetta</a
+              >
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">Menu</div>
+            <div class="footer-col-body">
+              <a href="https://filippettiyachts.com/it/">Home</a>
+              <a href="https://filippettiyachts.com/it/azienda/">Company</a>
+              <a href="https://filippettiyachts.com/it/brokerage/">Brokerage</a>
+              <a href="https://filippettiyachts.com/it/assistenza/">Service</a>
+              <a href="https://filippettiyachts.com/it/news-ed-eventi/">News</a>
+              <a href="https://filippettiyachts.com/it/contatti/">Contacts</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">Follow us</div>
+            <div class="footer-col-body">
+              <a
+                href="https://www.facebook.com/FilippettiYachts"
+                target="_blank"
+                >Facebook</a
+              >
+              <a
+                href="https://www.instagram.com/filippettiyachts/"
+                target="_blank"
+                >Instagram</a
+              >
+              <a
+                href="https://www.linkedin.com/company/filippetti-yacht/"
+                target="_blank"
+                >LinkedIn</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span
+            >&copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            Filippetti Yachts &ndash; All rights reserved &ndash;
+            <a
+              href="https://filippettiyachts.com/it/privacy-policy/"
+              target="_blank"
+              >Privacy Policy</a
+            >
+            <a
+              href="https://filippettiyachts.com/it/cookie-policy/"
+              target="_blank"
+              >Cookie Policy</a
+            >
+            <a
+              href="https://filippettiyachts.com/it/termini-condizioni/"
+              target="_blank"
+              >Terms of Service</a
+            >
+          </span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
+    <script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/utils.js"></script>
+
+    <script type="text/javascript">
+      window.addEventListener("load", function () {
+        function getCountryCode() {
+          var timezoneCountryMap = {
+            "Africa/Abidjan": "ci",
+            "Africa/Accra": "gh",
+            "Africa/Addis_Ababa": "et",
+            "Africa/Algiers": "dz",
+            "Africa/Asmara": "er",
+            "Africa/Asmera": "er",
+            "Africa/Bamako": "ml",
+            "Africa/Bangui": "cf",
+            "Africa/Banjul": "gm",
+            "Africa/Bissau": "gw",
+            "Africa/Blantyre": "mw",
+            "Africa/Brazzaville": "cg",
+            "Africa/Bujumbura": "bi",
+            "Africa/Cairo": "eg",
+            "Africa/Casablanca": "ma",
+            "Africa/Ceuta": "es",
+            "Africa/Conakry": "gn",
+            "Africa/Dakar": "sn",
+            "Africa/Dar_es_Salaam": "tz",
+            "Africa/Djibouti": "dj",
+            "Africa/Douala": "cm",
+            "Africa/El_Aaiun": "eh",
+            "Africa/Freetown": "sl",
+            "Africa/Gaborone": "bw",
+            "Africa/Harare": "zw",
+            "Africa/Johannesburg": "za",
+            "Africa/Juba": "ss",
+            "Africa/Kampala": "ug",
+            "Africa/Khartoum": "sd",
+            "Africa/Kigali": "rw",
+            "Africa/Kinshasa": "cd",
+            "Africa/Lagos": "ng",
+            "Africa/Libreville": "ga",
+            "Africa/Lome": "tg",
+            "Africa/Luanda": "ao",
+            "Africa/Lubumbashi": "cd",
+            "Africa/Lusaka": "zm",
+            "Africa/Malabo": "gq",
+            "Africa/Maputo": "mz",
+            "Africa/Maseru": "ls",
+            "Africa/Mbabane": "sz",
+            "Africa/Mogadishu": "so",
+            "Africa/Monrovia": "lr",
+            "Africa/Nairobi": "ke",
+            "Africa/Ndjamena": "td",
+            "Africa/Niamey": "ne",
+            "Africa/Nouakchott": "mr",
+            "Africa/Ouagadougou": "bf",
+            "Africa/Porto-Novo": "bj",
+            "Africa/Sao_Tome": "st",
+            "Africa/Timbuktu": "ml",
+            "Africa/Tripoli": "ly",
+            "Africa/Tunis": "tn",
+            "Africa/Windhoek": "na",
+            "America/Adak": "us",
+            "America/Anchorage": "us",
+            "America/Anguilla": "ai",
+            "America/Antigua": "ag",
+            "America/Araguaina": "br",
+            "America/Argentina/Buenos_Aires": "ar",
+            "America/Argentina/Catamarca": "ar",
+            "America/Argentina/ComodRivadavia": "ar",
+            "America/Argentina/Cordoba": "ar",
+            "America/Argentina/Jujuy": "ar",
+            "America/Argentina/La_Rioja": "ar",
+            "America/Argentina/Mendoza": "ar",
+            "America/Argentina/Rio_Gallegos": "ar",
+            "America/Argentina/Salta": "ar",
+            "America/Argentina/San_Juan": "ar",
+            "America/Argentina/San_Luis": "ar",
+            "America/Argentina/Tucuman": "ar",
+            "America/Argentina/Ushuaia": "ar",
+            "America/Aruba": "aw",
+            "America/Asuncion": "py",
+            "America/Atikokan": "ca",
+            "America/Atka": "us",
+            "America/Bahia": "br",
+            "America/Bahia_Banderas": "mx",
+            "America/Barbados": "bb",
+            "America/Belem": "br",
+            "America/Belize": "bz",
+            "America/Blanc-Sablon": "ca",
+            "America/Boa_Vista": "br",
+            "America/Bogota": "co",
+            "America/Boise": "us",
+            "America/Buenos_Aires": "ar",
+            "America/Cambridge_Bay": "ca",
+            "America/Campo_Grande": "br",
+            "America/Cancun": "mx",
+            "America/Caracas": "ve",
+            "America/Catamarca": "ar",
+            "America/Cayenne": "gf",
+            "America/Cayman": "ky",
+            "America/Chicago": "us",
+            "America/Chihuahua": "mx",
+            "America/Coral_Harbour": "ca",
+            "America/Cordoba": "ar",
+            "America/Costa_Rica": "cr",
+            "America/Creston": "ca",
+            "America/Cuiaba": "br",
+            "America/Curacao": "cw",
+            "America/Danmarkshavn": "gl",
+            "America/Dawson": "ca",
+            "America/Dawson_Creek": "ca",
+            "America/Denver": "us",
+            "America/Detroit": "us",
+            "America/Dominica": "dm",
+            "America/Edmonton": "ca",
+            "America/Eirunepe": "br",
+            "America/El_Salvador": "sv",
+            "America/Ensenada": "mx",
+            "America/Fort_Nelson": "ca",
+            "America/Fort_Wayne": "us",
+            "America/Fortaleza": "br",
+            "America/Glace_Bay": "ca",
+            "America/Godthab": "gl",
+            "America/Goose_Bay": "ca",
+            "America/Grand_Turk": "tc",
+            "America/Grenada": "gd",
+            "America/Guadeloupe": "gp",
+            "America/Guatemala": "gt",
+            "America/Guayaquil": "ec",
+            "America/Guyana": "gy",
+            "America/Halifax": "ca",
+            "America/Havana": "cu",
+            "America/Hermosillo": "mx",
+            "America/Indiana/Indianapolis": "us",
+            "America/Indiana/Knox": "us",
+            "America/Indiana/Marengo": "us",
+            "America/Indiana/Petersburg": "us",
+            "America/Indiana/Tell_City": "us",
+            "America/Indiana/Vevay": "us",
+            "America/Indiana/Vincennes": "us",
+            "America/Indiana/Winamac": "us",
+            "America/Indianapolis": "us",
+            "America/Inuvik": "ca",
+            "America/Iqaluit": "ca",
+            "America/Jamaica": "jm",
+            "America/Jujuy": "ar",
+            "America/Juneau": "us",
+            "America/Kentucky/Louisville": "us",
+            "America/Kentucky/Monticello": "us",
+            "America/Knox_IN": "us",
+            "America/Kralendijk": "bq",
+            "America/La_Paz": "bo",
+            "America/Lima": "pe",
+            "America/Los_Angeles": "us",
+            "America/Louisville": "us",
+            "America/Lower_Princes": "sx",
+            "America/Maceio": "br",
+            "America/Managua": "ni",
+            "America/Manaus": "br",
+            "America/Marigot": "mf",
+            "America/Martinique": "mq",
+            "America/Matamoros": "mx",
+            "America/Mazatlan": "mx",
+            "America/Mendoza": "ar",
+            "America/Menominee": "us",
+            "America/Merida": "mx",
+            "America/Metlakatla": "us",
+            "America/Mexico_City": "mx",
+            "America/Miquelon": "pm",
+            "America/Moncton": "ca",
+            "America/Monterrey": "mx",
+            "America/Montevideo": "uy",
+            "America/Montreal": "ca",
+            "America/Montserrat": "ms",
+            "America/Nassau": "bs",
+            "America/New_York": "us",
+            "America/Nipigon": "ca",
+            "America/Nome": "us",
+            "America/Noronha": "br",
+            "America/North_Dakota/Beulah": "us",
+            "America/North_Dakota/Center": "us",
+            "America/North_Dakota/New_Salem": "us",
+            "America/Nuuk": "gl",
+            "America/Ojinaga": "mx",
+            "America/Panama": "pa",
+            "America/Pangnirtung": "ca",
+            "America/Paramaribo": "sr",
+            "America/Phoenix": "us",
+            "America/Port-au-Prince": "ht",
+            "America/Port_of_Spain": "tt",
+            "America/Porto_Acre": "br",
+            "America/Porto_Velho": "br",
+            "America/Puerto_Rico": "pr",
+            "America/Punta_Arenas": "cl",
+            "America/Rainy_River": "ca",
+            "America/Rankin_Inlet": "ca",
+            "America/Recife": "br",
+            "America/Regina": "ca",
+            "America/Resolute": "ca",
+            "America/Rio_Branco": "br",
+            "America/Rosario": "ar",
+            "America/Santa_Isabel": "mx",
+            "America/Santarem": "br",
+            "America/Santiago": "cl",
+            "America/Santo_Domingo": "do",
+            "America/Sao_Paulo": "br",
+            "America/Scoresbysund": "gl",
+            "America/Shiprock": "us",
+            "America/Sitka": "us",
+            "America/St_Barthelemy": "bl",
+            "America/St_Johns": "ca",
+            "America/St_Kitts": "kn",
+            "America/St_Lucia": "lc",
+            "America/St_Thomas": "vi",
+            "America/St_Vincent": "vc",
+            "America/Swift_Current": "ca",
+            "America/Tegucigalpa": "hn",
+            "America/Thule": "gl",
+            "America/Thunder_Bay": "ca",
+            "America/Tijuana": "mx",
+            "America/Toronto": "ca",
+            "America/Tortola": "vg",
+            "America/Vancouver": "ca",
+            "America/Virgin": "vi",
+            "America/Whitehorse": "ca",
+            "America/Winnipeg": "ca",
+            "America/Yakutat": "us",
+            "America/Yellowknife": "ca",
+            "Antarctica/Casey": "aq",
+            "Antarctica/Davis": "aq",
+            "Antarctica/DumontDUrville": "aq",
+            "Antarctica/Macquarie": "au",
+            "Antarctica/Mawson": "aq",
+            "Antarctica/McMurdo": "aq",
+            "Antarctica/Palmer": "aq",
+            "Antarctica/Rothera": "aq",
+            "Antarctica/South_Pole": "aq",
+            "Antarctica/Syowa": "aq",
+            "Antarctica/Troll": "aq",
+            "Antarctica/Vostok": "aq",
+            "Arctic/Longyearbyen": "sj",
+            "Asia/Aden": "ye",
+            "Asia/Almaty": "kz",
+            "Asia/Amman": "jo",
+            "Asia/Anadyr": "ru",
+            "Asia/Aqtau": "kz",
+            "Asia/Aqtobe": "kz",
+            "Asia/Ashgabat": "tm",
+            "Asia/Ashkhabad": "tm",
+            "Asia/Atyrau": "kz",
+            "Asia/Baghdad": "iq",
+            "Asia/Bahrain": "bh",
+            "Asia/Baku": "az",
+            "Asia/Bangkok": "th",
+            "Asia/Barnaul": "ru",
+            "Asia/Beirut": "lb",
+            "Asia/Bishkek": "kg",
+            "Asia/Brunei": "bn",
+            "Asia/Calcutta": "in",
+            "Asia/Chita": "ru",
+            "Asia/Choibalsan": "mn",
+            "Asia/Chongqing": "cn",
+            "Asia/Chungking": "cn",
+            "Asia/Colombo": "lk",
+            "Asia/Dacca": "bd",
+            "Asia/Damascus": "sy",
+            "Asia/Dhaka": "bd",
+            "Asia/Dili": "tl",
+            "Asia/Dubai": "ae",
+            "Asia/Dushanbe": "tj",
+            "Asia/Famagusta": "cy",
+            "Asia/Gaza": "ps",
+            "Asia/Harbin": "cn",
+            "Asia/Hebron": "ps",
+            "Asia/Ho_Chi_Minh": "vn",
+            "Asia/Hong_Kong": "hk",
+            "Asia/Hovd": "mn",
+            "Asia/Irkutsk": "ru",
+            "Asia/Istanbul": "tr",
+            "Asia/Jakarta": "id",
+            "Asia/Jayapura": "id",
+            "Asia/Jerusalem": "il",
+            "Asia/Kabul": "af",
+            "Asia/Kamchatka": "ru",
+            "Asia/Karachi": "pk",
+            "Asia/Kashgar": "cn",
+            "Asia/Kathmandu": "np",
+            "Asia/Katmandu": "np",
+            "Asia/Khandyga": "ru",
+            "Asia/Kolkata": "in",
+            "Asia/Krasnoyarsk": "ru",
+            "Asia/Kuala_Lumpur": "my",
+            "Asia/Kuching": "my",
+            "Asia/Kuwait": "kw",
+            "Asia/Macao": "mo",
+            "Asia/Macau": "mo",
+            "Asia/Magadan": "ru",
+            "Asia/Makassar": "id",
+            "Asia/Manila": "ph",
+            "Asia/Muscat": "om",
+            "Asia/Nicosia": "cy",
+            "Asia/Novokuznetsk": "ru",
+            "Asia/Novosibirsk": "ru",
+            "Asia/Omsk": "ru",
+            "Asia/Oral": "kz",
+            "Asia/Phnom_Penh": "kh",
+            "Asia/Pontianak": "id",
+            "Asia/Pyongyang": "kp",
+            "Asia/Qatar": "qa",
+            "Asia/Qostanay": "kz",
+            "Asia/Qyzylorda": "kz",
+            "Asia/Rangoon": "mm",
+            "Asia/Riyadh": "sa",
+            "Asia/Saigon": "vn",
+            "Asia/Sakhalin": "ru",
+            "Asia/Samarkand": "uz",
+            "Asia/Seoul": "kr",
+            "Asia/Shanghai": "cn",
+            "Asia/Singapore": "sg",
+            "Asia/Srednekolymsk": "ru",
+            "Asia/Taipei": "tw",
+            "Asia/Tashkent": "uz",
+            "Asia/Tbilisi": "ge",
+            "Asia/Tehran": "ir",
+            "Asia/Tel_Aviv": "il",
+            "Asia/Thimbu": "bt",
+            "Asia/Thimphu": "bt",
+            "Asia/Tokyo": "jp",
+            "Asia/Tomsk": "ru",
+            "Asia/Ujung_Pandang": "id",
+            "Asia/Ulaanbaatar": "mn",
+            "Asia/Ulan_Bator": "mn",
+            "Asia/Urumqi": "cn",
+            "Asia/Ust-Nera": "ru",
+            "Asia/Vientiane": "la",
+            "Asia/Vladivostok": "ru",
+            "Asia/Yakutsk": "ru",
+            "Asia/Yangon": "mm",
+            "Asia/Yekaterinburg": "ru",
+            "Asia/Yerevan": "am",
+            "Atlantic/Azores": "pt",
+            "Atlantic/Bermuda": "bm",
+            "Atlantic/Canary": "es",
+            "Atlantic/Cape_Verde": "cv",
+            "Atlantic/Faeroe": "fo",
+            "Atlantic/Faroe": "fo",
+            "Atlantic/Jan_Mayen": "sj",
+            "Atlantic/Madeira": "pt",
+            "Atlantic/Reykjavik": "is",
+            "Atlantic/South_Georgia": "gs",
+            "Atlantic/St_Helena": "sh",
+            "Atlantic/Stanley": "fk",
+            "Australia/ACT": "au",
+            "Australia/Adelaide": "au",
+            "Australia/Brisbane": "au",
+            "Australia/Broken_Hill": "au",
+            "Australia/Canberra": "au",
+            "Australia/Currie": "au",
+            "Australia/Darwin": "au",
+            "Australia/Eucla": "au",
+            "Australia/Hobart": "au",
+            "Australia/LHI": "au",
+            "Australia/Lindeman": "au",
+            "Australia/Lord_Howe": "au",
+            "Australia/Melbourne": "au",
+            "Australia/North": "au",
+            "Australia/NSW": "au",
+            "Australia/Perth": "au",
+            "Australia/Queensland": "au",
+            "Australia/South": "au",
+            "Australia/Sydney": "au",
+            "Australia/Tasmania": "au",
+            "Australia/Victoria": "au",
+            "Australia/West": "au",
+            "Australia/Yancowinna": "au",
+            "Brazil/Acre": "br",
+            "Brazil/DeNoronha": "br",
+            "Brazil/East": "br",
+            "Brazil/West": "br",
+            "Canada/Atlantic": "ca",
+            "Canada/Central": "ca",
+            "Canada/Eastern": "ca",
+            "Canada/Mountain": "ca",
+            "Canada/Newfoundland": "ca",
+            "Canada/Pacific": "ca",
+            "Canada/Saskatchewan": "ca",
+            "Canada/Yukon": "ca",
+            "Chile/Continental": "cl",
+            "Chile/EasterIsland": "cl",
+            Cuba: "cu",
+            Egypt: "eg",
+            Eire: "ie",
+            "Europe/Amsterdam": "nl",
+            "Europe/Andorra": "ad",
+            "Europe/Astrakhan": "ru",
+            "Europe/Athens": "gr",
+            "Europe/Belfast": "gb",
+            "Europe/Belgrade": "rs",
+            "Europe/Berlin": "de",
+            "Europe/Bratislava": "sk",
+            "Europe/Brussels": "be",
+            "Europe/Bucharest": "ro",
+            "Europe/Budapest": "hu",
+            "Europe/Busingen": "de",
+            "Europe/Chisinau": "md",
+            "Europe/Copenhagen": "dk",
+            "Europe/Dublin": "ie",
+            "Europe/Gibraltar": "gi",
+            "Europe/Guernsey": "gg",
+            "Europe/Helsinki": "fi",
+            "Europe/Isle_of_Man": "im",
+            "Europe/Istanbul": "tr",
+            "Europe/Jersey": "je",
+            "Europe/Kaliningrad": "ru",
+            "Europe/Kiev": "ua",
+            "Europe/Kirov": "ru",
+            "Europe/Lisbon": "pt",
+            "Europe/Ljubljana": "si",
+            "Europe/London": "gb",
+            "Europe/Luxembourg": "lu",
+            "Europe/Madrid": "es",
+            "Europe/Malta": "mt",
+            "Europe/Mariehamn": "ax",
+            "Europe/Minsk": "by",
+            "Europe/Monaco": "mc",
+            "Europe/Moscow": "ru",
+            "Europe/Nicosia": "cy",
+            "Europe/Oslo": "no",
+            "Europe/Paris": "fr",
+            "Europe/Podgorica": "me",
+            "Europe/Prague": "cz",
+            "Europe/Riga": "lv",
+            "Europe/Rome": "it",
+            "Europe/Samara": "ru",
+            "Europe/San_Marino": "sm",
+            "Europe/Sarajevo": "ba",
+            "Europe/Saratov": "ru",
+            "Europe/Simferopol": "ru",
+            "Europe/Skopje": "mk",
+            "Europe/Sofia": "bg",
+            "Europe/Stockholm": "se",
+            "Europe/Tallinn": "ee",
+            "Europe/Tirane": "al",
+            "Europe/Tiraspol": "md",
+            "Europe/Ulyanovsk": "ru",
+            "Europe/Uzhgorod": "ua",
+            "Europe/Vaduz": "li",
+            "Europe/Vatican": "va",
+            "Europe/Vienna": "at",
+            "Europe/Vilnius": "lt",
+            "Europe/Volgograd": "ru",
+            "Europe/Warsaw": "pl",
+            "Europe/Zagreb": "hr",
+            "Europe/Zaporozhye": "ua",
+            "Europe/Zurich": "ch",
+            GB: "gb",
+            "GB-Eire": "gb",
+            Hongkong: "hk",
+            Iceland: "is",
+            "Indian/Antananarivo": "mg",
+            "Indian/Chagos": "io",
+            "Indian/Christmas": "cx",
+            "Indian/Cocos": "cc",
+            "Indian/Comoro": "km",
+            "Indian/Kerguelen": "tf",
+            "Indian/Mahe": "sc",
+            "Indian/Maldives": "mv",
+            "Indian/Mauritius": "mu",
+            "Indian/Mayotte": "yt",
+            "Indian/Reunion": "re",
+            Iran: "ir",
+            Israel: "il",
+            Jamaica: "jm",
+            Japan: "jp",
+            Kwajalein: "mh",
+            Libya: "ly",
+            "Mexico/BajaNorte": "mx",
+            "Mexico/BajaSur": "mx",
+            "Mexico/General": "mx",
+            Navajo: "us",
+            NZ: "nz",
+            "NZ-CHAT": "nz",
+            "Pacific/Apia": "ws",
+            "Pacific/Auckland": "nz",
+            "Pacific/Bougainville": "pg",
+            "Pacific/Chatham": "nz",
+            "Pacific/Chuuk": "fm",
+            "Pacific/Easter": "cl",
+            "Pacific/Efate": "vu",
+            "Pacific/Enderbury": "ki",
+            "Pacific/Fakaofo": "tk",
+            "Pacific/Fiji": "fj",
+            "Pacific/Funafuti": "tv",
+            "Pacific/Galapagos": "ec",
+            "Pacific/Gambier": "pf",
+            "Pacific/Guadalcanal": "sb",
+            "Pacific/Guam": "gu",
+            "Pacific/Honolulu": "us",
+            "Pacific/Johnston": "um",
+            "Pacific/Kanton": "ki",
+            "Pacific/Kiritimati": "ki",
+            "Pacific/Kosrae": "fm",
+            "Pacific/Kwajalein": "mh",
+            "Pacific/Majuro": "mh",
+            "Pacific/Marquesas": "pf",
+            "Pacific/Midway": "um",
+            "Pacific/Nauru": "nr",
+            "Pacific/Niue": "nu",
+            "Pacific/Norfolk": "nf",
+            "Pacific/Noumea": "nc",
+            "Pacific/Pago_Pago": "as",
+            "Pacific/Palau": "pw",
+            "Pacific/Pitcairn": "pn",
+            "Pacific/Pohnpei": "fm",
+            "Pacific/Ponape": "fm",
+            "Pacific/Port_Moresby": "pg",
+            "Pacific/Rarotonga": "ck",
+            "Pacific/Saipan": "mp",
+            "Pacific/Samoa": "ws",
+            "Pacific/Tahiti": "pf",
+            "Pacific/Tarawa": "ki",
+            "Pacific/Tongatapu": "to",
+            "Pacific/Truk": "fm",
+            "Pacific/Wake": "um",
+            "Pacific/Wallis": "wf",
+            "Pacific/Yap": "fm",
+            Poland: "pl",
+            Portugal: "pt",
+            PRC: "cn",
+            ROC: "tw",
+            ROK: "kr",
+            Singapore: "sg",
+            Turkey: "tr",
+            "US/Alaska": "us",
+            "US/Aleutian": "us",
+            "US/Arizona": "us",
+            "US/Central": "us",
+            "US/East-Indiana": "us",
+            "US/Eastern": "us",
+            "US/Hawaii": "us",
+            "US/Indiana-Starke": "us",
+            "US/Michigan": "us",
+            "US/Mountain": "us",
+            "US/Pacific": "us",
+            "US/Samoa": "ws",
+            "W-SU": "ru",
+          };
+          var timezone = "";
+          var country = "us";
+          if (Intl && Intl.DateTimeFormat)
+            timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          if (timezoneCountryMap[timezone])
+            country = timezoneCountryMap[timezone];
+          return country;
         }
-      }
-      if (startDate) {
-        if (typeof startDate !== "undefined") {
-          if (endDate && typeof endDate !== "undefined") { startDate = new Date(startDate); endDate = new Date(endDate); if (endDate < startDate) { alert("End Date should be greater than or equal to Start Date"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; } }
-          if (endDate1 && typeof endDate1 !== "undefined") { startDate = new Date(startDate); endDate1 = new Date(endDate1); if (endDate1 < startDate) { alert("End Date should be greater than or equal to Start Date"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; } }
-        }
-      }
-      if (att != null) { if (val.replace(/^\s+|\s+$/g, "") == "") { required.push(inputs[i].getAttribute("label")); } }
-    }
-    if (required.length > 0) { alert("The following fields are required: " + required.join()); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; }
-    var numberTypeInputs = document.querySelectorAll("input[type=number]");
-    for (var i = 0; i < numberTypeInputs.length; i++) { val = numberTypeInputs[i].value; var elemLabel = numberTypeInputs[i].getAttribute("label"); if (val != "") { var intRegex = /^[+-]?\d+$/; if (!intRegex.test(val)) { alert("For " + elemLabel + " field please enter valid number"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; } } }
-    var dateTypeInputs = document.querySelectorAll("input[type=date]");
-    for (var i = 0; i < dateTypeInputs.length; i++) { dateVal = dateTypeInputs[i].value; var elemLabel = dateTypeInputs[i].getAttribute("label"); if (dateVal != "") { var dateRegex = /^[1-9][0-9]{3}-(0[1-9]|1[0-2]|[1-9]{1})-(0[1-9]|[1-2][0-9]|3[0-1]|[1-9]{1})$/; if (!dateRegex.test(dateVal)) { alert("For " + elemLabel + " field please enter valid date in required format"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; } } }
-    var inputElems = document.getElementsByTagName("input"); var totalFileSize = 0;
-    for (var i = 0; i < inputElems.length; i++) { if (inputElems[i].type.toLowerCase() === "file") { var file = inputElems[i].files[0]; if (typeof file !== "undefined") { totalFileSize = totalFileSize + file.size; } } }
-    var dateTimeTypeInputs = document.querySelectorAll("input[type=datetime-local]");
-    for (var i = 0; i < dateTimeTypeInputs.length; i++) { dateTimeVal = dateTimeTypeInputs[i].value; var elemLabel = dateTimeTypeInputs[i].getAttribute("label"); if (dateTimeVal != "") { var dateTimeRegex = /^[1-9][0-9]{3}-(0[1-9]|1[0-2]|[1-9])-(0[1-9]|[12][0-9]|3[01]|[1-9])T(0[0-9]|1[0-9]|2[0-3]|[0-9]):([0-5][0-9]|[0-9])$/; if (!dateTimeRegex.test(dateTimeVal)) { alert("For " + elemLabel + " field please enter valid date in required format"); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; } var formattedDateTime = dateTimeVal.replace("T", " "); var actulaFieldnameAttr = dateTimeTypeInputs[i].getAttribute("data-actual-fieldname"); document.querySelector("input[name=" + CSS.escape(actulaFieldnameAttr) + "]").value = formattedDateTime; } }
-    if (totalFileSize > 52428800) { alert("Maximum allowed file size including all files is 50MB."); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; }
-    var inputElem = document.querySelectorAll("input[type=file]"); var fileSize = 0;
-    for (var i = 0; i < inputElem.length; i++) { if (inputElem[i].type.toLowerCase() === "file") { if (inputElem[i].hasAttribute("selectedTypeImage")) { var imageFile = inputElem[i].files[0]; var fileSize = imageFile.size; } } if (fileSize > 5242880) { alert("Maximum allowed image size is 5MB."); document.getElementById("vtigerFormSubmitBtn_2").disabled = false; return false; } }
-  };
-  var getParams = function (a) {
-    var e = {}, t = document.createElement("a"); t.href = a;
-    for (var r = t.search.substring(1).split("&"), l = 0; l < r.length; l++) { var o = r[l].split("="); if (o[0]) { var c = decodeURIComponent(o[1]); c && ((e[o[0]] = c), c && localStorage.setItem(o[0], c)); } }
-    return e;
-  };
-  document.querySelectorAll("[data-type=storage]").forEach((a) => { if (a) { var e = a.getAttribute("data-param"), t = localStorage.getItem(e); t && (a.value = t); } });
-  var allParameters = getParams(window.location.href);
-  Object.keys(allParameters).length > 0 && document.querySelectorAll("[data-type=url]").forEach((a) => { if (a) { var e = a.getAttribute("data-param"); allParameters[e] && (a.value = allParameters[e]); } });
-});
-</script>
-
-<!-- Conditional: show Yacht Model row when "Yes" selected -->
-<script>
-(function() {
-  function initConditional() {
-    var sel   = document.getElementById("ownedYachtSelect");
-    var row   = document.getElementById("yachtModelRow");
-    var input = document.getElementById("yachtModelInput");
-    if (!sel || !row) return;
-    function update() {
-      var val = sel.value;
-      if (val === "Yes") { row.style.display = "flex"; if (input) input.disabled = false; }
-      else { row.style.display = "none"; if (input) { input.disabled = true; input.value = ""; } }
-    }
-    sel.addEventListener("change", update);
-    if (typeof jQuery !== 'undefined') { jQuery('#ownedYachtSelect').on('change', update); }
-    update();
-  }
-  window.addEventListener('load', initConditional);
-})();
-</script>
-
-<!-- Conditional: Type of New Yacht row when "New Yacht" or "New and Pre Owned Yacht" selected -->
-<script>
-(function() {
-  function initNewYachtConditional() {
-    var sel  = document.getElementById("interestedInSelect");
-    var row  = document.getElementById("newYachtTypeRow");
-    var sub  = document.getElementById("newYachtTypeSelect");
-    if (!sel || !row) return;
-
-    var NEW_YACHT_VALUES = ["New Yacht", "New and Pre Owned Yacht"];
-    var ACTIVE_NAME = "cf_contacts_typeofyacht[]";
-    var INACTIVE_NAME = "_cf_contacts_typeofyacht_disabled";
-
-    function update() {
-      var val = sel.value;
-      if (NEW_YACHT_VALUES.indexOf(val) !== -1) {
-        row.style.display = "flex";
-        if (sub) {
-          // Restore the real field name so the value is submitted
-          sub.name = ACTIVE_NAME;
-          // Init Select2 the first time the row becomes visible
-          if (typeof jQuery !== 'undefined' && !jQuery(sub).hasClass('select2-hidden-accessible')) {
-            jQuery(sub).select2({ tags: false, closeOnSelect: false });
-          }
-        }
-      } else {
-        row.style.display = "none";
-        if (sub) {
-          // Rename the field so it is NOT submitted when hidden
-          sub.name = INACTIVE_NAME;
-          if (typeof jQuery !== 'undefined' && jQuery(sub).hasClass('select2-hidden-accessible')) {
-            jQuery(sub).val(null).trigger('change');
-          }
-        }
-      }
-    }
-
-    // Start with field excluded from submission
-    if (sub) sub.name = INACTIVE_NAME;
-
-    // ALL mutual exclusion: selecting ALL disables all other options; deselecting ALL re-enables them
-    if (typeof jQuery !== 'undefined') {
-      jQuery(document).on('change', '#newYachtTypeSelect', function() {
-        var selected = jQuery(sub).val() || [];
-        if (selected.indexOf('ALL') !== -1) {
-          // ALL was just selected — remove every other value, keep only ALL
-          jQuery(sub).val(['ALL']).trigger('change.select2');
-          // Disable all options except ALL
-          jQuery(sub).find('option').each(function() {
-            if (this.value !== 'ALL') this.disabled = true;
+        var phoneFields = document.querySelectorAll('[data-type="phone"]');
+        if (phoneFields && phoneFields.length) {
+          phoneFields.forEach(function (ele) {
+            window.intlTelInput(ele, {
+              initialCountry: "auto",
+              separateDialCode: true,
+              autoPlaceholder: false,
+              hiddenInput: ele.getAttribute("name"),
+              geoIpLookup: function (success, failure) {
+                success(getCountryCode());
+              },
+            });
           });
-        } else {
-          // ALL not selected — re-enable everything
-          jQuery(sub).find('option').each(function() {
-            this.disabled = false;
-          });
         }
       });
-    }
+    </script>
 
-    sel.addEventListener("change", update);
-    if (typeof jQuery !== 'undefined') {
-      jQuery('#interestedInSelect').on('change', update);
-    }
-    update();
-  }
-  window.addEventListener('load', initNewYachtConditional);
-})();
-</script>
+    <input
+      type="hidden"
+      id="phoneLibScript_2"
+      value="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/intlTelInput.min.js"
+      disabled=""
+    />
+    <input
+      type="hidden"
+      id="phoneUtilScript_2"
+      value="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/intl-tel-input/build/js/utils.js"
+      disabled=""
+    />
 
-<!-- Custom validation for required checkboxes (vtiger's onsubmit doesn't handle checkbox required) -->
-<script>
-(function() {
-  window.addEventListener('load', function() {
-    var form = document.getElementById('__vtigerWebForm_2');
-    if (!form) return;
-    var originalOnsubmit = form.onsubmit;
-    form.onsubmit = function(event) {
-      // Run vtiger's original validation first
-      var result = originalOnsubmit ? originalOnsubmit.call(this, event) : true;
-      if (result === false) return false;
+    <script src="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
 
-      // Check required checkboxes manually
-      var privacyCb = form.querySelector('input[name="cf_contacts_privacypolicyauthorization"][type="checkbox"]');
-      if (privacyCb && !privacyCb.checked) {
-        alert('Privacy Policy Authorization is required.');
-        document.getElementById('vtigerFormSubmitBtn_2').disabled = false;
-        return false;
-      }
+    <script type="text/javascript">
+      window.addEventListener("load", function () {
+        var form = jQuery("#__vtigerWebForm_2");
+        form.find("select:visible").each(function () {
+          var isMultiple = jQuery(this).attr("multiple") !== undefined;
+          jQuery(this).select2({ tags: false, closeOnSelect: !isMultiple });
+        });
+      });
+    </script>
 
-      // Budget: if filled, must be digits followed by exactly one € or $
-      var budgetField = form.querySelector('input[name="cf_contacts_budget"]');
-      var budgetError = document.getElementById('budgetError');
-      if (budgetField && budgetField.value.trim() !== '') {
-        var budgetRegex = /^\d+[$€]$/;
-        if (!budgetRegex.test(budgetField.value.trim())) {
-          if (budgetError) budgetError.style.display = 'block';
-          document.getElementById('vtigerFormSubmitBtn_2').disabled = false;
-          return false;
+    <input
+      type="hidden"
+      id="jQueryScript_2"
+      value="https://filippettiyachtsrl.od2.vtiger.com//layouts/v8/lib/jquery/jquery.min.js"
+      disabled=""
+    />
+    <input
+      type="hidden"
+      id="select2Script_2"
+      value="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"
+      disabled=""
+    />
+
+    <!-- vtiger submit + validation (original, untouched) -->
+    <script type="text/javascript">
+      window.addEventListener("load", function () {
+        var N = navigator.appName,
+          ua = navigator.userAgent,
+          tem;
+        var M = ua.match(
+          /(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i,
+        );
+        if (M && (tem = ua.match(/version\/([\.\d]+)/i)) != null) M[2] = tem[1];
+        M = M ? [M[1], M[2]] : [N, navigator.appVersion, "-?"];
+        var form = document.getElementById("__vtigerWebForm_2"),
+          inputs = form.elements;
+        form.onsubmit = function (event) {
+          document.getElementById("vtigerFormSubmitBtn_2").disabled = true;
+          var required = [],
+            att,
+            val;
+          var endDate, startDate, endDate1;
+          for (var i = 0; i < inputs.length; i++) {
+            att = inputs[i].getAttribute("required");
+            val = inputs[i].value;
+            type = inputs[i].type;
+            if (inputs[i].name == "birthday") {
+              birthdayDate = new Date(inputs[i].value);
+              todayDate = new Date();
+              todayDate.setHours(0, 0, 0, 0);
+              birthdayDate.setHours(0, 0, 0, 0);
+              if (birthdayDate >= todayDate) {
+                alert("Date of Birth should be less than Today's Date.");
+                document.getElementById("vtigerFormSubmitBtn_2").disabled =
+                  false;
+                return false;
+              }
+            }
+            if (
+              inputs[i].getAttribute("data-type") == "anniversary" &&
+              inputs[i].value
+            ) {
+              anniversaryDate = new Date(inputs[i].value);
+              todayDate = new Date();
+              todayDate.setHours(0, 0, 0, 0);
+              anniversaryDate.setHours(0, 0, 0, 0);
+              if (anniversaryDate >= todayDate) {
+                var anniversaryLabel =
+                  inputs[i].getAttribute("data-displaylabel");
+                alert(anniversaryLabel + " should be less than Today's Date.");
+                document.getElementById("vtigerFormSubmitBtn_2").disabled =
+                  false;
+                return false;
+              }
+            }
+            if (
+              inputs[i].name == "support_start_date" ||
+              inputs[i].name == "startdate"
+            )
+              startDate = inputs[i].value;
+            if (
+              inputs[i].name == "support_end_date" ||
+              inputs[i].name == "targetenddate" ||
+              inputs[i].name == "enddate"
+            )
+              endDate = inputs[i].value;
+            if (inputs[i].name == "actualenddate") endDate1 = inputs[i].value;
+            if (type == "email") {
+              if (val != "") {
+                var elemLabel = inputs[i].getAttribute("data-label");
+                var emailFilter =
+                  /^[_/a-zA-Z0-9]+([!"#$%&()*+,./:;<=>?\^_`{|}~-]?[a-zA-Z0-9/_/-])*@[a-zA-Z0-9]+([\_\-\.]?[a-zA-Z0-9]+)*\.([\-\_]?[a-zA-Z0-9])+(\.?[a-zA-Z0-9]+)?$/;
+                var illegalChars = /[\(\)\<\>\,\;\:\"\[\]]/;
+                if (!emailFilter.test(val)) {
+                  alert(
+                    "For " +
+                      elemLabel +
+                      " field please enter valid email address",
+                  );
+                  document.getElementById("vtigerFormSubmitBtn_2").disabled =
+                    false;
+                  return false;
+                } else if (val.match(illegalChars)) {
+                  alert(elemLabel + " field contains illegal characters");
+                  document.getElementById("vtigerFormSubmitBtn_2").disabled =
+                    false;
+                  return false;
+                }
+              }
+            }
+            if (startDate) {
+              if (typeof startDate !== "undefined") {
+                if (endDate && typeof endDate !== "undefined") {
+                  startDate = new Date(startDate);
+                  endDate = new Date(endDate);
+                  if (endDate < startDate) {
+                    alert(
+                      "End Date should be greater than or equal to Start Date",
+                    );
+                    document.getElementById("vtigerFormSubmitBtn_2").disabled =
+                      false;
+                    return false;
+                  }
+                }
+                if (endDate1 && typeof endDate1 !== "undefined") {
+                  startDate = new Date(startDate);
+                  endDate1 = new Date(endDate1);
+                  if (endDate1 < startDate) {
+                    alert(
+                      "End Date should be greater than or equal to Start Date",
+                    );
+                    document.getElementById("vtigerFormSubmitBtn_2").disabled =
+                      false;
+                    return false;
+                  }
+                }
+              }
+            }
+            if (att != null) {
+              if (val.replace(/^\s+|\s+$/g, "") == "") {
+                required.push(inputs[i].getAttribute("label"));
+              }
+            }
+          }
+          if (required.length > 0) {
+            alert("The following fields are required: " + required.join());
+            document.getElementById("vtigerFormSubmitBtn_2").disabled = false;
+            return false;
+          }
+          var numberTypeInputs =
+            document.querySelectorAll("input[type=number]");
+          for (var i = 0; i < numberTypeInputs.length; i++) {
+            val = numberTypeInputs[i].value;
+            var elemLabel = numberTypeInputs[i].getAttribute("label");
+            if (val != "") {
+              var intRegex = /^[+-]?\d+$/;
+              if (!intRegex.test(val)) {
+                alert("For " + elemLabel + " field please enter valid number");
+                document.getElementById("vtigerFormSubmitBtn_2").disabled =
+                  false;
+                return false;
+              }
+            }
+          }
+          var dateTypeInputs = document.querySelectorAll("input[type=date]");
+          for (var i = 0; i < dateTypeInputs.length; i++) {
+            dateVal = dateTypeInputs[i].value;
+            var elemLabel = dateTypeInputs[i].getAttribute("label");
+            if (dateVal != "") {
+              var dateRegex =
+                /^[1-9][0-9]{3}-(0[1-9]|1[0-2]|[1-9]{1})-(0[1-9]|[1-2][0-9]|3[0-1]|[1-9]{1})$/;
+              if (!dateRegex.test(dateVal)) {
+                alert(
+                  "For " +
+                    elemLabel +
+                    " field please enter valid date in required format",
+                );
+                document.getElementById("vtigerFormSubmitBtn_2").disabled =
+                  false;
+                return false;
+              }
+            }
+          }
+          var inputElems = document.getElementsByTagName("input");
+          var totalFileSize = 0;
+          for (var i = 0; i < inputElems.length; i++) {
+            if (inputElems[i].type.toLowerCase() === "file") {
+              var file = inputElems[i].files[0];
+              if (typeof file !== "undefined") {
+                totalFileSize = totalFileSize + file.size;
+              }
+            }
+          }
+          var dateTimeTypeInputs = document.querySelectorAll(
+            "input[type=datetime-local]",
+          );
+          for (var i = 0; i < dateTimeTypeInputs.length; i++) {
+            dateTimeVal = dateTimeTypeInputs[i].value;
+            var elemLabel = dateTimeTypeInputs[i].getAttribute("label");
+            if (dateTimeVal != "") {
+              var dateTimeRegex =
+                /^[1-9][0-9]{3}-(0[1-9]|1[0-2]|[1-9])-(0[1-9]|[12][0-9]|3[01]|[1-9])T(0[0-9]|1[0-9]|2[0-3]|[0-9]):([0-5][0-9]|[0-9])$/;
+              if (!dateTimeRegex.test(dateTimeVal)) {
+                alert(
+                  "For " +
+                    elemLabel +
+                    " field please enter valid date in required format",
+                );
+                document.getElementById("vtigerFormSubmitBtn_2").disabled =
+                  false;
+                return false;
+              }
+              var formattedDateTime = dateTimeVal.replace("T", " ");
+              var actulaFieldnameAttr = dateTimeTypeInputs[i].getAttribute(
+                "data-actual-fieldname",
+              );
+              document.querySelector(
+                "input[name=" + CSS.escape(actulaFieldnameAttr) + "]",
+              ).value = formattedDateTime;
+            }
+          }
+          if (totalFileSize > 52428800) {
+            alert("Maximum allowed file size including all files is 50MB.");
+            document.getElementById("vtigerFormSubmitBtn_2").disabled = false;
+            return false;
+          }
+          var inputElem = document.querySelectorAll("input[type=file]");
+          var fileSize = 0;
+          for (var i = 0; i < inputElem.length; i++) {
+            if (inputElem[i].type.toLowerCase() === "file") {
+              if (inputElem[i].hasAttribute("selectedTypeImage")) {
+                var imageFile = inputElem[i].files[0];
+                var fileSize = imageFile.size;
+              }
+            }
+            if (fileSize > 5242880) {
+              alert("Maximum allowed image size is 5MB.");
+              document.getElementById("vtigerFormSubmitBtn_2").disabled = false;
+              return false;
+            }
+          }
+        };
+        var getParams = function (a) {
+          var e = {},
+            t = document.createElement("a");
+          t.href = a;
+          for (
+            var r = t.search.substring(1).split("&"), l = 0;
+            l < r.length;
+            l++
+          ) {
+            var o = r[l].split("=");
+            if (o[0]) {
+              var c = decodeURIComponent(o[1]);
+              c && ((e[o[0]] = c), c && localStorage.setItem(o[0], c));
+            }
+          }
+          return e;
+        };
+        document.querySelectorAll("[data-type=storage]").forEach((a) => {
+          if (a) {
+            var e = a.getAttribute("data-param"),
+              t = localStorage.getItem(e);
+            t && (a.value = t);
+          }
+        });
+        var allParameters = getParams(window.location.href);
+        Object.keys(allParameters).length > 0 &&
+          document.querySelectorAll("[data-type=url]").forEach((a) => {
+            if (a) {
+              var e = a.getAttribute("data-param");
+              allParameters[e] && (a.value = allParameters[e]);
+            }
+          });
+      });
+    </script>
+
+    <!-- Conditional: show Yacht Model row when "Yes" selected -->
+    <script>
+      (function () {
+        function initConditional() {
+          var sel = document.getElementById("ownedYachtSelect");
+          var row = document.getElementById("yachtModelRow");
+          var input = document.getElementById("yachtModelInput");
+          if (!sel || !row) return;
+          function update() {
+            var val = sel.value;
+            if (val === "Yes") {
+              row.style.display = "flex";
+              if (input) input.disabled = false;
+            } else {
+              row.style.display = "none";
+              if (input) {
+                input.disabled = true;
+                input.value = "";
+              }
+            }
+          }
+          sel.addEventListener("change", update);
+          if (typeof jQuery !== "undefined") {
+            jQuery("#ownedYachtSelect").on("change", update);
+          }
+          update();
         }
-      }
-      if (budgetError) budgetError.style.display = 'none';
+        window.addEventListener("load", initConditional);
+      })();
+    </script>
 
-      return true;
-    };
-  });
-})();
-</script>
+    <!-- Conditional: Type of New Yacht row when "New Yacht" or "New and Pre Owned Yacht" selected -->
+    <script>
+      (function () {
+        function initNewYachtConditional() {
+          var sel = document.getElementById("interestedInSelect");
+          var row = document.getElementById("newYachtTypeRow");
+          var sub = document.getElementById("newYachtTypeSelect");
+          if (!sel || !row) return;
 
-<!-- Budget real-time validation -->
-<script>
-(function() {
-  window.addEventListener('load', function() {
-    var field = document.getElementById('budgetField');
-    var error = document.getElementById('budgetError');
-    if (!field || !error) return;
-    var regex = /^\d+[$€]$/;
-    field.addEventListener('input', function() {
-      if (field.value.trim() === '' || regex.test(field.value.trim())) {
-        error.style.display = 'none';
-      } else {
-        error.style.display = 'block';
-      }
-    });
-  });
-})();
-</script>
-<script>
-window.addEventListener("load", function() {
-    var mainCheckbox = document.querySelector('input[name="emailoptin"][type="checkbox"]');
-    var hiddenNewsletterCheckbox = document.querySelector('input[name="cf_contacts_newsletterauthorization"][type="checkbox"]');
+          var NEW_YACHT_VALUES = ["New Yacht", "New and Pre Owned Yacht"];
+          var ACTIVE_NAME = "cf_contacts_typeofyacht[]";
+          var INACTIVE_NAME = "_cf_contacts_typeofyacht_disabled";
 
-    if (mainCheckbox && hiddenNewsletterCheckbox) {
-        mainCheckbox.addEventListener("change", function() {
+          function update() {
+            var val = sel.value;
+            if (NEW_YACHT_VALUES.indexOf(val) !== -1) {
+              row.style.display = "flex";
+              if (sub) {
+                // Restore the real field name so the value is submitted
+                sub.name = ACTIVE_NAME;
+                // Init Select2 the first time the row becomes visible
+                if (
+                  typeof jQuery !== "undefined" &&
+                  !jQuery(sub).hasClass("select2-hidden-accessible")
+                ) {
+                  jQuery(sub).select2({ tags: false, closeOnSelect: false });
+                }
+              }
+            } else {
+              row.style.display = "none";
+              if (sub) {
+                // Rename the field so it is NOT submitted when hidden
+                sub.name = INACTIVE_NAME;
+                if (
+                  typeof jQuery !== "undefined" &&
+                  jQuery(sub).hasClass("select2-hidden-accessible")
+                ) {
+                  jQuery(sub).val(null).trigger("change");
+                }
+              }
+            }
+          }
+
+          // Start with field excluded from submission
+          if (sub) sub.name = INACTIVE_NAME;
+
+          // ALL mutual exclusion: selecting ALL disables all other options; deselecting ALL re-enables them
+          if (typeof jQuery !== "undefined") {
+            jQuery(document).on("change", "#newYachtTypeSelect", function () {
+              var selected = jQuery(sub).val() || [];
+              if (selected.indexOf("ALL") !== -1) {
+                // ALL was just selected — remove every other value, keep only ALL
+                jQuery(sub).val(["ALL"]).trigger("change.select2");
+                // Disable all options except ALL
+                jQuery(sub)
+                  .find("option")
+                  .each(function () {
+                    if (this.value !== "ALL") this.disabled = true;
+                  });
+              } else {
+                // ALL not selected — re-enable everything
+                jQuery(sub)
+                  .find("option")
+                  .each(function () {
+                    this.disabled = false;
+                  });
+              }
+            });
+          }
+
+          sel.addEventListener("change", update);
+          if (typeof jQuery !== "undefined") {
+            jQuery("#interestedInSelect").on("change", update);
+          }
+          update();
+        }
+        window.addEventListener("load", initNewYachtConditional);
+      })();
+    </script>
+
+    <!-- Custom validation for required checkboxes (vtiger's onsubmit doesn't handle checkbox required) -->
+    <script>
+      (function () {
+        window.addEventListener("load", function () {
+          var form = document.getElementById("__vtigerWebForm_2");
+          var inputs = form.elements;
+          var banner = document.getElementById("form-error-banner");
+
+          form.onsubmit = function (event) {
+            // Reset errori precedenti
+            var existingErrors = form.querySelectorAll(".error-message");
+            existingErrors.forEach(function (e) {
+              e.remove();
+            });
+            var erroredInputs = form.querySelectorAll(".input-error");
+            erroredInputs.forEach(function (i) {
+              i.classList.remove("input-error");
+            });
+            banner.style.display = "none";
+
+            var hasErrors = false;
+
+            function showError(input, msg) {
+              hasErrors = true;
+              input.classList.add("input-error");
+              var errorDiv = document.createElement("div");
+              errorDiv.className = "error-message";
+              errorDiv.innerText = msg;
+              // Inserisce l'errore dopo l'input o il contenitore (es. Select2 o Phone)
+              var container = input.closest("td") || input.parentNode;
+              container.appendChild(errorDiv);
+            }
+
+            // 1. Validazione Campi Required (Standard & Checkbox)
+            for (var i = 0; i < inputs.length; i++) {
+              var input = inputs[i];
+              var val = input.value.trim();
+              var isRequired = input.hasAttribute("required");
+
+              if (isRequired) {
+                if (input.type === "checkbox" && !input.checked) {
+                  showError(input, "This confirmation is required.");
+                } else if (val === "") {
+                  showError(input, "This field is required.");
+                }
+              }
+
+              // 2. Validazione Email
+              if (input.type === "email" && val !== "") {
+                var emailFilter =
+                  /^[_/a-zA-Z0-9]+([!"#$%&()*+,./:;<=>?\^_`{|}~-]?[a-zA-Z0-9/_/-])*@[a-zA-Z0-9]+([\_\-\.]?[a-zA-Z0-9]+)*\.([\-\_]?[a-zA-Z0-9])+(\.?[a-zA-Z0-9]+)?$/;
+                if (!emailFilter.test(val)) {
+                  showError(input, "Please enter a valid email address.");
+                }
+              }
+            }
+
+            // 3. Validazione Budget (già presente nel tuo codice, integrata qui)
+            var budgetField = document.getElementById("budgetField");
+            if (budgetField && budgetField.value.trim() !== "") {
+              var budgetRegex = /^\d+[$€]$/;
+              if (!budgetRegex.test(budgetField.value.trim())) {
+                showError(
+                  budgetField,
+                  "Invalid format. Use digits followed by $ or € (e.g. 5000000€).",
+                );
+              }
+            }
+
+            // SE CI SONO ERRORI
+            if (hasErrors) {
+              banner.style.display = "block";
+              window.scrollTo({
+                top: banner.offsetTop - 100,
+                behavior: "smooth",
+              });
+              return false; // Blocca invio
+            }
+
+            // SE TUTTO OK: Gestione "No" per le checkbox
+            // Forza il valore "No" nei campi hidden se le checkbox non sono spuntate
+            var optInCb = form.querySelector(
+              'input[name="emailoptin"][type="checkbox"]',
+            );
+            var optInHidden = form.querySelector(
+              'input[name="emailoptin"][type="hidden"]',
+            );
+            if (optInCb && optInHidden) {
+              optInHidden.value = optInCb.checked
+                ? "Single opt-in (webform)"
+                : "No";
+            }
+
+            var newsCb = form.querySelector(
+              'input[name="cf_contacts_newsletterauthorization"][type="checkbox"]',
+            );
+            var newsHidden = form.querySelector(
+              'input[name="cf_contacts_newsletterauthorization"][type="hidden"]',
+            );
+            if (newsCb && newsHidden) {
+              newsHidden.value = newsCb.checked ? "1" : "No";
+            }
+
+            document.getElementById("vtigerFormSubmitBtn_2").disabled = true;
+            return true; // Procede con l'invio all'iframe
+          };
+        });
+      })();
+    </script>
+
+    <!-- Budget real-time validation -->
+    <script>
+      (function () {
+        window.addEventListener("load", function () {
+          var field = document.getElementById("budgetField");
+          var error = document.getElementById("budgetError");
+          if (!field || !error) return;
+          var regex = /^\d+[$€]$/;
+          field.addEventListener("input", function () {
+            if (field.value.trim() === "" || regex.test(field.value.trim())) {
+              error.style.display = "none";
+            } else {
+              error.style.display = "block";
+            }
+          });
+        });
+      })();
+    </script>
+    <script>
+      window.addEventListener("load", function () {
+        var mainCheckbox = document.querySelector(
+          'input[name="emailoptin"][type="checkbox"]',
+        );
+        var hiddenNewsletterCheckbox = document.querySelector(
+          'input[name="cf_contacts_newsletterauthorization"][type="checkbox"]',
+        );
+
+        if (mainCheckbox && hiddenNewsletterCheckbox) {
+          mainCheckbox.addEventListener("change", function () {
             // Sincronizza semplicemente lo stato "checked"
             hiddenNewsletterCheckbox.checked = mainCheckbox.checked;
+          });
+        }
+      });
+    </script>
+
+    <!-- LOADER + CONFIRMATION HANDLER -->
+    <script>
+      (function () {
+        var loader = document.getElementById("fy-loader");
+        var sink = document.getElementById("vtiger_sink");
+        var form = document.getElementById("__vtigerWebForm_2");
+
+        if (!loader || !sink || !form) return;
+
+        /* ── Show loader when submit proceeds (vtiger's own validation must pass first) ── */
+        form.addEventListener("submit", function () {
+          // rAF so vtiger's onsubmit runs first; if validation fails it re-enables the button
+          requestAnimationFrame(function () {
+            var btn = document.getElementById("vtigerFormSubmitBtn_2");
+            // button stays disabled only when submission is actually proceeding
+            if (btn && btn.disabled) {
+              loader.classList.add("active");
+              document.body.classList.add("fy-loading");
+            }
+          });
         });
-    }
-});
-</script>
 
-<!-- LOADER + CONFIRMATION HANDLER -->
-<script>
-(function() {
+        /* ── Listen for vtiger's JSON response arriving in the hidden iframe ── */
+        sink.addEventListener("load", function () {
+          // Ignore the initial blank load on page render
+          try {
+            var loc = sink.contentWindow.location.href;
+            if (!loc || loc === "about:blank") return;
+          } catch (e) {
+            // Cross-origin error = vtiger responded = success
+          }
 
-  var loader  = document.getElementById('fy-loader');
-  var sink    = document.getElementById('vtiger_sink');
-  var form    = document.getElementById('__vtigerWebForm_2');
+          var section = document.querySelector(".contact-section");
+          if (!section) return;
 
-  if (!loader || !sink || !form) return;
+          // 1. Hide loader and restore full page interactivity
+          loader.classList.remove("active");
+          document.body.classList.remove("fy-loading");
 
-  /* ── Show loader when submit proceeds (vtiger's own validation must pass first) ── */
-  form.addEventListener('submit', function() {
-    // rAF so vtiger's onsubmit runs first; if validation fails it re-enables the button
-    requestAnimationFrame(function() {
-      var btn = document.getElementById('vtigerFormSubmitBtn_2');
-      // button stays disabled only when submission is actually proceeding
-      if (btn && btn.disabled) {
-        loader.classList.add('active');
-        document.body.classList.add('fy-loading');
-      }
-    });
-  });
+          // 2. Replace form section with thank-you message
+          section.innerHTML =
+            '<div style="display:flex;align-items:center;justify-content:center;min-height:480px;padding:100px 40px;">' +
+            '<p id="fy-confirm-msg" style="' +
+            "font-family:'Prata',serif;" +
+            "font-size:clamp(1.4rem,2.5vw,2rem);" +
+            "font-weight:400;" +
+            "color:#ffffff;" +
+            "text-align:center;" +
+            "line-height:1.6;" +
+            "max-width:680px;" +
+            "opacity:0;" +
+            "transform:translateY(20px);" +
+            'transition:opacity 0.65s ease, transform 0.65s ease;">' +
+            "Thank you for submitting the form.<br>" +
+            "Your contact information has been updated." +
+            "</p>" +
+            "</div>";
 
-  /* ── Listen for vtiger's JSON response arriving in the hidden iframe ── */
-  sink.addEventListener('load', function() {
-    // Ignore the initial blank load on page render
-    try {
-      var loc = sink.contentWindow.location.href;
-      if (!loc || loc === 'about:blank') return;
-    } catch(e) {
-      // Cross-origin error = vtiger responded = success
-    }
+          // 3. Smooth-scroll so the message is centred in the viewport
+          var headerH =
+            (document.querySelector("header") || {}).offsetHeight || 80;
+          var rect = section.getBoundingClientRect();
+          var scrollTarget =
+            rect.top +
+            window.pageYOffset -
+            headerH -
+            (window.innerHeight - rect.height) / 2;
+          window.scrollTo({
+            top: Math.max(0, scrollTarget),
+            behavior: "smooth",
+          });
 
-    var section = document.querySelector('.contact-section');
-    if (!section) return;
-
-    // 1. Hide loader and restore full page interactivity
-    loader.classList.remove('active');
-    document.body.classList.remove('fy-loading');
-
-    // 2. Replace form section with thank-you message
-    section.innerHTML =
-      '<div style="display:flex;align-items:center;justify-content:center;min-height:480px;padding:100px 40px;">' +
-        '<p id="fy-confirm-msg" style="' +
-          'font-family:\'Prata\',serif;' +
-          'font-size:clamp(1.4rem,2.5vw,2rem);' +
-          'font-weight:400;' +
-          'color:#ffffff;' +
-          'text-align:center;' +
-          'line-height:1.6;' +
-          'max-width:680px;' +
-          'opacity:0;' +
-          'transform:translateY(20px);' +
-          'transition:opacity 0.65s ease, transform 0.65s ease;">' +
-          'Thank you for submitting the form.<br>' +
-          'Your contact information has been updated.' +
-        '</p>' +
-      '</div>';
-
-    // 3. Smooth-scroll so the message is centred in the viewport
-    var headerH = (document.querySelector('header') || {}).offsetHeight || 80;
-    var rect = section.getBoundingClientRect();
-    var scrollTarget = rect.top + window.pageYOffset - headerH - ((window.innerHeight - rect.height) / 2);
-    window.scrollTo({ top: Math.max(0, scrollTarget), behavior: 'smooth' });
-
-    // 4. Fade the message in after scroll settles (~650ms)
-    setTimeout(function() {
-      var msg = document.getElementById('fy-confirm-msg');
-      if (msg) { msg.style.opacity = '1'; msg.style.transform = 'translateY(0)'; }
-    }, 660);
-  });
-
-})();
-</script>
-
-</body>
+          // 4. Fade the message in after scroll settles (~650ms)
+          setTimeout(function () {
+            var msg = document.getElementById("fy-confirm-msg");
+            if (msg) {
+              msg.style.opacity = "1";
+              msg.style.transform = "translateY(0)";
+            }
+          }, 660);
+        });
+      })();
+    </script>
+  </body>
 </html>
