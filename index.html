@@ -665,7 +665,8 @@
         ></iframe>
 
         <div id="form-error-banner">
-          Please check the form for errors before submitting.
+          Please check the form for errors before submitting.<br>
+          Si prega di controllare gli errori prima dell'invio.
         </div>
 
         <form
@@ -760,7 +761,7 @@
                     <option value="Service">Service / Assistenza</option>
                     <option value="Charter">Charter</option>
                     <option value="Represent Filippetti Yachts">
-                      Represent Filippetti Yachts / Rappresentare Filippetti Yachts
+                      Represent Filippetti Yachts
                     </option>
                     <option value="Other">Other / Altro</option>
                   </select>
@@ -922,8 +923,7 @@
                       color: rgba(255, 255, 255, 0.55);
                     "
                   >
-                    Please enter digits followed by $ or € — e.g. 4000000$ or
-                    5000000€
+                    Please enter digits followed by $ or € — e.g. 4000000$ or 5000000€ / Inserisci cifre seguite da $ o € — es. 4000000€
                   </span>
                 </td>
               </tr>
@@ -1791,7 +1791,7 @@
                   alert(
                     "For " +
                       elemLabel +
-                      " field please enter valid email address",
+                      " field please enter a valid email address. / Inserisci un indirizzo email valido.",
                   );
                   document.getElementById("vtigerFormSubmitBtn_2").disabled =
                     false;
@@ -2123,9 +2123,9 @@
 
               if (isRequired) {
                 if (input.type === "checkbox" && !input.checked) {
-                  showError(input, "This confirmation is required.");
+                  showError(input, "This confirmation is required. / Questa conferma è obbligatoria.");
                 } else if (val === "") {
-                  showError(input, "This field is required.");
+                  showError(input, "This field is required. / Questo campo è obbligatorio.");
                 }
               }
 
@@ -2134,7 +2134,7 @@
                 var emailFilter =
                   /^[_/a-zA-Z0-9]+([!"#$%&()*+,./:;<=>?\^_`{|}~-]?[a-zA-Z0-9/_/-])*@[a-zA-Z0-9]+([\_\-\.]?[a-zA-Z0-9]+)*\.([\-\_]?[a-zA-Z0-9])+(\.?[a-zA-Z0-9]+)?$/;
                 if (!emailFilter.test(val)) {
-                  showError(input, "Please enter a valid email address.");
+                  showError(input, "Please enter a valid email address. / Inserire un indirizzo email valido.");
                 }
               }
             }
@@ -2146,7 +2146,7 @@
               if (!budgetRegex.test(budgetField.value.trim())) {
                 showError(
                   budgetField,
-                  "Invalid format. Use digits followed by $ or € (e.g. 5000000€).",
+                  "Invalid format. Use digits followed by $ or € (e.g. 5000000€). / Formato non valido. Usare cifre seguite da $ o € (es. 5000000€).",
                 );
               }
             }
