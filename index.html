@@ -117,6 +117,12 @@
         margin-bottom: 60px;
         line-height: 1.3;
       }
+      .contact-section-title p { margin: 0; }
+      .contact-section-title__en { margin-bottom: 10px !important; }
+      .contact-section-title__it { color: rgba(255,255,255,0.7); }
+      @media (max-width: 600px) {
+        .contact-section-title { font-size: 1.35rem; }
+      }
 
       /* VTIGER FORM */
       #__vtigerWebForm_2 {
@@ -618,7 +624,7 @@
       aria-label="Sending your request&hellip;"
     >
       <div class="fy-spinner"></div>
-      <span class="fy-loader-text">Sending&hellip;</span>
+      <span class="fy-loader-text">Sending / Invio&hellip;</span>
     </div>
 
     <!-- HEADER -->
@@ -644,7 +650,8 @@
     <section class="contact-section">
       <div class="alignwide">
         <h1 class="contact-section-title">
-          Please fill the fields below to update your contact information.
+          <p class="contact-section-title__en">Please fill the fields below to update your contact information.</p>
+          <p class="contact-section-title__it">Compila i campi sottostanti per aggiornare le tue informazioni.</p>
         </h1>
 
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
@@ -682,7 +689,7 @@
           <table>
             <tbody>
               <tr>
-                <td><label>Last Name *</label></td>
+                <td><label>Last Name * / Cognome *</label></td>
                 <td>
                   <input
                     type="text"
@@ -691,7 +698,7 @@
                     data-label=""
                     value=""
                     required=""
-                    placeholder="Last Name *"
+                    placeholder="Last Name * / Cognome *"
                   />
                 </td>
                 <td>
@@ -707,7 +714,7 @@
               </tr>
 
               <tr>
-                <td><label>Primary Email *</label></td>
+                <td><label>Primary Email * / Email *</label></td>
                 <td>
                   <input
                     type="email"
@@ -721,7 +728,7 @@
               </tr>
 
               <tr>
-                <td><label>Office Phone</label></td>
+                <td><label>Office Phone / Telefono</label></td>
                 <td>
                   <input
                     type="text"
@@ -730,32 +737,32 @@
                     data-label=""
                     value=""
                     data-type="phone"
-                    placeholder="Phone"
+                    placeholder="Phone / Telefono"
                   />
                 </td>
               </tr>
 
               <tr>
-                <td><label>Interested in</label></td>
+                <td><label>Interested in / Interessato a</label></td>
                 <td>
                   <select
                     name="cf_contacts_interestedin"
                     data-label="label:Interested+in"
                     id="interestedInSelect"
                   >
-                    <option value="">Select Value</option>
-                    <option value="New Yacht">New Yacht</option>
-                    <option value="Pre Owned Yacht">Pre Owned Yacht</option>
+                    <option value="">Select Value / Seleziona</option>
+                    <option value="New Yacht">New Yacht / Nuovo Yacht</option>
+                    <option value="Pre Owned Yacht">Pre Owned Yacht / Yacht Usato</option>
                     <option value="New and Pre Owned Yacht">
                       New and Pre Owned Yacht
                     </option>
-                    <option value="Refitting">Refitting</option>
-                    <option value="Service">Service</option>
+                    <option value="Refitting">Refitting / Refit</option>
+                    <option value="Service">Service / Assistenza</option>
                     <option value="Charter">Charter</option>
                     <option value="Represent Filippetti Yachts">
                       Represent Filippetti Yachts
                     </option>
-                    <option value="Other">Other</option>
+                    <option value="Other">Other / Altro</option>
                   </select>
                 </td>
               </tr>
@@ -764,7 +771,7 @@
               <tr id="newYachtTypeRow" class="row-full" style="display: none">
                 <td>
                   <label
-                    >Type of New Yacht (select either ALL or one or more
+                    >Type of New Yacht (select either ALL or one or more options) / Tipo di Yacht Nuovo (seleziona ALL oppure una o più opzioni
                     options)</label
                   >
                 </td>
@@ -818,7 +825,7 @@
               <!-- Language Spoken (multiselect) -->
               <tr>
                 <td>
-                  <label>Language Spoken (select one or more options)</label>
+                  <label>Language Spoken / Lingua parlata (select one or more / seleziona una o più)</label>
                 </td>
                 <td>
                   <select
@@ -833,7 +840,7 @@
               </tr>
 
               <tr>
-                <td><label>Yacht Owner</label></td>
+                <td><label>Yacht Owner / Proprietario di uno Yacht</label></td>
                 <td>
                   <select
                     name="cf_contacts_ownedyacht"
@@ -841,14 +848,14 @@
                     id="ownedYachtSelect"
                   >
                     <option value="">Select Value</option>
-                    <option value="Yes">Yes</option>
+                    <option value="Yes">Yes / Sì</option>
                     <option value="No">No</option>
                   </select>
                 </td>
               </tr>
 
               <tr id="yachtModelRow" class="row-full" style="display: none">
-                <td><label>Yacht Owned — Model and Year</label></td>
+                <td><label>Yacht Owned — Model and Year / Yacht di proprietà — Modello e Anno</label></td>
                 <td>
                   <input
                     type="text"
@@ -856,7 +863,7 @@
                     maxlength="50"
                     data-label=""
                     value=""
-                    placeholder="Modello / Anno"
+                    placeholder="Model / Year — Modello / Anno"
                     id="yachtModelInput"
                     disabled
                   />
@@ -864,11 +871,11 @@
               </tr>
 
               <tr>
-                <td><label>Length</label></td>
+                <td><label>Length / Lunghezza</label></td>
                 <td>
                   <select name="cf_contacts_length" data-label="label:Length">
                     <option value="">Select Value</option>
-                    <option value="up to 10mt/33ft">up to 10mt / 33ft</option>
+                    <option value="up to 10mt/33ft">up to 10mt / 33ft / fino a 10mt</option>
                     <option value="10mt-15mt (33ft - 49ft)">
                       10mt&ndash;15mt (33ft&ndash;49ft)
                     </option>
@@ -892,7 +899,7 @@
               </tr>
 
               <tr>
-                <td><label>Budget &mdash; specify &euro; or $</label></td>
+                <td><label>Budget &mdash; specify &euro; or $ / Budget &mdash; specificare &euro; o $</label></td>
                 <td>
                   <input
                     type="text"
@@ -922,7 +929,7 @@
               </tr>
 
               <tr class="row-full">
-                <td><label>Privacy Policy Authorization *</label></td>
+                <td><label>Privacy Policy Authorization * / Autorizzazione al trattamento dei dati *</label></td>
                 <td>
                   <label class="checkbox-row">
                     <input
@@ -939,22 +946,21 @@
                       required=""
                     />
                     <span class="checkbox-label-text">
-                      I have read the
+                      I have read the / Ho letto la
                       <a
                         href="https://filippettiyachts.com/it/privacy-policy/"
                         target="_blank"
                         >Privacy Policy</a
                       >
-                      of FSY S.r.l. – Filippetti Yachts and I authorise the
-                      processing of my personal data for the purposes of this
-                      form
+                      of FSY S.r.l. – Filippetti Yachts and I authorise the processing of my personal data for the purposes of this form /
+                      di FSY S.r.l. – Filippetti Yachts e autorizzo il trattamento dei miei dati personali per le finalità del presente modulo
                     </span>
                   </label>
                 </td>
               </tr>
 
               <tr class="row-full">
-                <td><label>Marketing &amp; Newsletter Consent</label></td>
+                <td><label>Marketing &amp; Newsletter Consent / Consenso marketing e newsletter</label></td>
                 <td>
                   <label class="checkbox-row">
                     <input
@@ -983,9 +989,8 @@
                       style="display: none"
                     />
                     <span class="checkbox-label-text">
-                      I consent to receiving commercial communications and
-                      newsletter updates by email from FSY S.r.l. – Filippetti
-                      Yachts
+                      I consent to receiving commercial communications and newsletter updates by email from FSY S.r.l. – Filippetti Yachts /
+                      Acconsento a ricevere comunicazioni commerciali e aggiornamenti newsletter via email da FSY S.r.l. – Filippetti Yachts
                     </span>
                   </label>
                 </td>
@@ -996,7 +1001,7 @@
           <div class="form-submit-row">
             <input
               type="submit"
-              value="Send request"
+              value="Send request / Invia richiesta"
               id="vtigerFormSubmitBtn_2"
             />
           </div>
@@ -2276,8 +2281,8 @@
             "opacity:0;" +
             "transform:translateY(20px);" +
             'transition:opacity 0.65s ease, transform 0.65s ease;">' +
-            "Thank you for submitting the form.<br>" +
-            "Your contact information has been updated." +
+            "Thank you for submitting the form / Grazie per aver inviato il modulo.<br>" +
+            "Your contact information has been updated. / Le tue informazioni di contatto sono state aggiornate." +
             "</p>" +
             "</div>";
 
